@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 const appRoutes: Routes = [
    { path: '', component: HomeComponent },
@@ -11,6 +12,7 @@ const appRoutes: Routes = [
    { path: 'register', component: RegisterComponent },
    { path: 'profile', component: ProfileComponent },
    { path: 'search', component: SearchResultComponent },
+   { path: 'recipe', component: RecipeComponent },
 
 ];
 export const routing = RouterModule.forRoot(appRoutes);

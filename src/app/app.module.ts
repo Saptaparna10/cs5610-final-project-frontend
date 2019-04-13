@@ -12,6 +12,7 @@ import { Constants } from './services/Constants';
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,

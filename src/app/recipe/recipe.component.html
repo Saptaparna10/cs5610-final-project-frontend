@@ -1,0 +1,177 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+
+  <div class="text-center ml-auto navbar-brand ">
+    <h4 class=" mx-auto ah-font">
+      <strong>Always Hungry</strong></h4>
+  </div>
+
+  <ul class="navbar-nav ml-auto">
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/register">Login/Register</a>
+    </li>
+
+  </ul>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+
+<div class="container mt-4 ah-font-recipe">
+
+  <div class="row">
+
+    <div class="col-md-2">
+
+      <div class="row">
+        <button type="button" class="btn btn-primary">
+          Likes <span class="badge badge-light ah-icon-pl">9</span>
+          <span class="sr-only">unread messages</span>
+        </button>
+      </div>
+      <div class="row mt-5">
+        Time: 30 mins
+      </div>
+      <div class="row">
+        Yields: 6 servings
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h1> New England Clam Chowder</h1>
+      <hr>
+
+      <div class="row ah-img-wrapper">
+        <img src="../../assets/sample-1.jpg" alt="" class="ah-fit-img">
+      </div>
+
+      <section>
+        <div class="mt-5">
+          <h4>Ingredients</h4>
+        </div>
+        <hr>
+        <div class=" ah-ingredients-div">
+          <ul>
+            <li>Clam</li>
+            <li>chowder</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="mt-5">
+          <h4>Directions</h4>
+        </div>
+        <hr>
+        <div class="ah-directions-div">
+          Check out the directions for this recipe <a href="">here.</a>
+        </div>
+      </section>
+
+      <section>
+        <div class="mt-5">
+          <h4>Comments</h4>
+        </div>
+        <hr>
+        <div class="ah-comments-div">
+
+          <textarea class="form-control" id='comment' name="comment" [(ngModel)]="comment"
+            placeholder="Write a comment..." rows="3"></textarea>
+          <br>
+          <div class=" d-flex justify-content-end ">
+
+            <button type="button" class="btn btn-info" (click)='addComment()'>Post</button>
+
+          </div>
+
+          <ul class="list-unstyled">
+            <li class="media">
+
+              <div class="mr-5">
+                <div class="row"> <img src="../../assets/sample-2.jpg" alt="" class="ah-fit-img-comment">
+                </div>
+                <div class="row d-flex align-items-end"> <strong class="text-success">@Username</strong></div>
+              </div>
+              <div class="media-body">
+                <span class="text-muted d-flex justify-content-end">
+                  <small class="text-muted">04/01/2019</small>
+                </span>
+
+
+                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+                odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+                fringilla. Donec lacinia congue felis in faucibus.
+              </div>
+            </li>
+
+            <li class="media">
+
+                <div class="mr-5">
+                  <div class="row"> <img src="../../assets/sample-2.jpg" alt="" class="ah-fit-img-comment">
+                  </div>
+                  <div class="row d-flex align-items-end"> <strong class="text-success">@Username</strong></div>
+                </div>
+                <div class="media-body">
+                  <span class="text-muted d-flex justify-content-end">
+                    <small class="text-muted">03/29/2019</small>
+                  </span>
+  
+  
+                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+                  odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+                  fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+              </li>
+
+              <li class="media">
+
+                  <div class="mr-5">
+                    <div class="row"> <img src="../../assets/sample-2.jpg" alt="" class="ah-fit-img-comment">
+                    </div>
+                    <div class="row d-flex align-items-end"> <strong class="text-success">@Username</strong></div>
+                  </div>
+                  <div class="media-body">
+                    <span class="text-muted d-flex justify-content-end">
+                      <small class="text-muted">02/22/2019</small>
+                    </span>
+    
+    
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+                    odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+                    fringilla. Donec lacinia congue felis in faucibus.
+                  </div>
+                </li>
+           
+         
+          </ul>
+
+
+        </div>
+      </section>
+
+
+    </div>
+    <div class="col-md-2">
+      <div class="row d-flex d-flex justify-content-start mt-2">
+        <button class="btn btn-primary" name="follow" id="follow"> <i class="fas fa-thumbs-up ah-icon-pr"></i>
+          Like</button>
+      </div>
+      <div class="row d-flex d-flex justify-content-start mt-2">
+        <button class="btn btn-warning" name="follow" id="follow"> <i class="fas fa-bookmark ah-icon-pr"></i>
+          Save</button>
+      </div>
+
+      <div class="row d-flex d-flex justify-content-start mt-2">
+        <button class="btn btn-success" name="follow" id="follow"> <i class="fa fa-plus-square ah-icon-pr"></i>
+          Add To Collection</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="py-3 mt-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-white text-center ">Created by <i>Always Hungry Team 2019 </i></p>
+  </div>
+</footer>
