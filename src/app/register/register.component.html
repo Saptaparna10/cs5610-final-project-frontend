@@ -1,71 +1,124 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
 
-    <div class="text-center ml-auto navbar-brand ">
-      <h4 class=" mx-auto ah-font">
-        <strong>Register</strong></h4>
-    </div>
-  
-    <ul class="navbar-nav ml-auto">
-  
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Home</a>
-      </li>
-  
-    </ul>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-  </nav>
+  <div class="text-center ml-auto navbar-brand ">
+    <h4 class=" mx-auto ah-font">
+      <strong>Register</strong></h4>
+  </div>
+
+  <ul class="navbar-nav ml-auto">
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/">Home</a>
+    </li>
+
+  </ul>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
 
 <div class="hero">
-    <div class="container ah-font-sm">
-       
-        <br/>
-        <form>
-          <div class="form-group row">
-            <label for="username" class="col-sm-2 col-form-label">
-              Username </label>
-            <div class="col-sm-10">
-              <input class="form-control"
-                            id="username"
-                            placeholder="Alice">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="password" class="col-sm-2 col-form-label">
-              Password </label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control wbdv-password-fld"
-                     id="password" placeholder="123qwe#$%">
-            </div>
-          </div>
-          <br/>
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10">
+  <div class="container ah-font-sm">
+
+    <br />
+    <form>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 col-form-label"> </label>
+            <div class="col-sm-8">
                 <div class="row">
-                <div class="col-6">
-                <a href="../profile/profile.template.client.html" 
-                class="btn btn-outline-dark btn-block">Register</a>
-                </div>
-                <div class="col-6">
-                <a href="../index.html" 
-                class="btn btn-block btn-outline-dark">Cancel</a>
-                </div>
-                </div>
-              
-              <div class="row">
-                <div class="col-4">
-                 
-                </div>
-                <div class="col-8">
-                  <a href="../register/register.template.client.html" class="float-right">Already a member? Login</a>
-                </div>
-              </div>
+                    <div class="col-4">
+        
+                    </div>
+                    <div class="col-8">
+                      <a routerLink="/login" class="float-right">Already a member? Login.</a>
+                    </div>
+                  </div>
             </div>
           </div>
-        </form>
-       </div>
+
+      <div class="form-group row">
+        <label for="firstname" class="col-sm-4 col-form-label">
+          First name </label>
+        <div class="col-sm-8">
+          <input class="form-control" id="firstname" placeholder="Alice">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lastname" class="col-sm-4 col-form-label">
+          Last name </label>
+        <div class="col-sm-8">
+          <input class="form-control" id="lastname" placeholder="Wonderland">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="username" class="col-sm-4 col-form-label">
+          Username </label>
+        <div class="col-sm-8">
+          <input class="form-control" id="username" placeholder="alice">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="password" class="col-sm-4 col-form-label">
+          Password </label>
+        <div class="col-sm-8">
+          <input type="password" class="form-control wbdv-password-fld" id="password" placeholder="123qwe#$%">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="password2" class="col-sm-4 col-form-label">
+          Confirm Password </label>
+        <div class="col-sm-8">
+          <input type="password" class="form-control wbdv-password-fld" id="password2" placeholder="123qwe#$%">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="phone" class="col-sm-4 col-form-label">
+          Phone number </label>
+        <div class="col-sm-8">
+          <input class="form-control" id="phone" placeholder="2222222222">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label htmlFor="role" class="col-sm-4 col-form-label">
+          Role </label>
+        <div class="col-sm-8">
+          <select id="role" class="form-control wbdv-role-fld" required>
+            <option value="NORMAL">
+              Normal
+            </option>
+            <option value="EXPERT">
+              Expert
+            </option>
+
+          </select>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label"></label>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-6">
+              <a href="../profile/profile.template.client.html" class="btn btn-dark btn-block">Register</a>
+            </div>
+            <div class="col-6">
+              <a routerLink="/" class="btn btn-block btn-dark">Cancel</a>
+            </div>
+          </div>
+
+         
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
