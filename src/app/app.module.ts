@@ -10,13 +10,15 @@ import { RegisterComponent } from './register/register.component';
 import { UserServiceClient } from './services/UserServiceClient';
 import { Constants } from './services/Constants';
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
