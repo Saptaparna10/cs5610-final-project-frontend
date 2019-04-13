@@ -11,6 +11,7 @@ import { UserServiceClient } from './services/UserServiceClient';
 import { Constants } from './services/Constants';
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProfileComponent } from './profile/profile.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
