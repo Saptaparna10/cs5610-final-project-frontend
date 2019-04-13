@@ -1,0 +1,37 @@
+.hero {
+    background-image: url('../../assets/login-bkg.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;   
+    text-align:center; 
+  }
+
+  .container {
+  
+    /* background-color: #f7f9fb; */
+    /* background: rgba(241, 245, 241, 0.3); */
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+   
+  }
+
+  .ah-font{
+    font-size: 28px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    color: black
+ }
+
+ .ah-font-sm{
+    font-size: 18px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    color: black
+ }
+ label{
+    padding-right:10px;
+}
