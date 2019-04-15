@@ -37,7 +37,7 @@ import {FollowServiceClient} from './services/FollowServiceClient';
 
   providers: [UserServiceClient, CommentServiceClient, SaveServiceClient, FollowServiceClient,
     Constants,
-    YummlyServiceClient],
+    YummlyServiceClient  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
