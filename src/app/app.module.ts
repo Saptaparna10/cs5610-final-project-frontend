@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import {CommentServiceClient} from './services/CommentServiceClient';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { RecipeComponent } from './recipe/recipe.component';
     routing,
     FormsModule
   ],
-  providers: [UserServiceClient,
+  providers: [UserServiceClient, CommentServiceClient,
     Constants],
   bootstrap: [AppComponent]
 })

@@ -12,7 +12,7 @@ const appRoutes: Routes = [
    { path: 'register', component: RegisterComponent },
    { path: 'profile', component: ProfileComponent },
    { path: 'search', component: SearchResultComponent },
-   { path: 'recipe', component: RecipeComponent },
+   { path: 'recipe/:recipeId', component: RecipeComponent },
 
 ];
 export const routing = RouterModule.forRoot(appRoutes);

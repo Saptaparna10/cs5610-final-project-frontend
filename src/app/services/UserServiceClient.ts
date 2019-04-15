@@ -1,6 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { Constants } from './Constants';
+
 @Injectable()
 export class UserServiceClient {
 
