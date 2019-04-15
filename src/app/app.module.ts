@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import {CommentServiceClient} from './services/CommentServiceClient';
+import { YummlyServiceClient } from './services/YummlyServiceClient';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,10 @@ import { RecipeComponent } from './recipe/recipe.component';
     routing,
     FormsModule
   ],
-  providers: [UserServiceClient,
-    Constants],
+  
+  providers: [UserServiceClient, CommentServiceClient,
+    Constants,
+    YummlyServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

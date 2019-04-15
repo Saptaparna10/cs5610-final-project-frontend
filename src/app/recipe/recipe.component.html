@@ -76,7 +76,7 @@
         <hr>
         <div class="ah-comments-div">
 
-          <textarea class="form-control" id='comment' name="comment" [(ngModel)]="comment"
+          <textarea class="form-control" id='comment' name="comment" [(ngModel)]="content"
             placeholder="Write a comment..." rows="3"></textarea>
           <br>
           <div class=" d-flex justify-content-end ">
@@ -86,12 +86,12 @@
           </div>
 
           <ul class="list-unstyled">
-            <li class="media">
+            <li class="media" *ngFor="let comment of comments">
 
               <div class="mr-5">
                 <div class="row"> <img src="../../assets/sample-2.jpg" alt="" class="ah-fit-img-comment">
                 </div>
-                <div class="row d-flex align-items-end"> <strong class="text-success">@Username</strong></div>
+                <div class="row d-flex align-items-end"> <strong class="text-success">@{{comment.user.username}}</strong></div>
               </div>
               <div class="media-body">
                 <span class="text-muted d-flex justify-content-end">
@@ -99,50 +99,9 @@
                 </span>
 
 
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                fringilla. Donec lacinia congue felis in faucibus.
+                {{comment.content}}
               </div>
             </li>
-
-            <li class="media">
-
-                <div class="mr-5">
-                  <div class="row"> <img src="../../assets/sample-2.jpg" alt="" class="ah-fit-img-comment">
-                  </div>
-                  <div class="row d-flex align-items-end"> <strong class="text-success">@Username</strong></div>
-                </div>
-                <div class="media-body">
-                  <span class="text-muted d-flex justify-content-end">
-                    <small class="text-muted">03/29/2019</small>
-                  </span>
-  
-  
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                  odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                  fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-              </li>
-
-              <li class="media">
-
-                  <div class="mr-5">
-                    <div class="row"> <img src="../../assets/sample-2.jpg" alt="" class="ah-fit-img-comment">
-                    </div>
-                    <div class="row d-flex align-items-end"> <strong class="text-success">@Username</strong></div>
-                  </div>
-                  <div class="media-body">
-                    <span class="text-muted d-flex justify-content-end">
-                      <small class="text-muted">02/22/2019</small>
-                    </span>
-    
-    
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                    odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                    fringilla. Donec lacinia congue felis in faucibus.
-                  </div>
-                </li>
-           
          
           </ul>
 
