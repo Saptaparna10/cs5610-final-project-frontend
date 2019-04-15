@@ -19,7 +19,7 @@ export class RecipeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.commentService.getComments(2)
+    this.commentService.getComments(this.recipeId)
       .then((c) => {
         this.comments=c;
       });
@@ -35,6 +35,18 @@ export class RecipeComponent implements OnInit {
       .then((res) => {
         this.comments.push(res);
     });
+
+  }
+
+  deleteComment(commendId): void {
+
+    this.commentService.deleteComment(commendId)
+      .then((res) => {
+        this.commentService.getComments(this.recipeId)
+          .then((c) => {
+            this.comments=c;
+          });
+      });
 
   }
 

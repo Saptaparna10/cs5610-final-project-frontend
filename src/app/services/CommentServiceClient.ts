@@ -24,7 +24,20 @@ export class CommentServiceClient {
       }
     )
 
-
+  deleteComment = (commentId) =>
+    fetch(this.SERVER_API_URL + `/api/comment/${commentId}`, {
+      method: 'delete',
+      headers: {
+        'content-type': 'application/json',
+      },
+      credentials: 'include'
+    }).then(response => {
+        console.log(response)
+        if (response.headers.get('content-type') === null) {
+          return null;
+        } else { return response.json(); }
+      }
+    )
 
   getComments = (recipeId) =>
     fetch(this.SERVER_API_URL + `/api/comment/recipe/${recipeId}`)

@@ -26,8 +26,8 @@
     <div class="col-md-2">
 
       <div class="row">
-        <button type="button" class="btn btn-primary">
-          Likes <span class="badge badge-light ah-icon-pl">9</span>
+        <button type="button" class="btn btn-warning">
+          Saved <span class="badge badge-light ah-icon-pl">9</span>
           <span class="sr-only">unread messages</span>
         </button>
       </div>
@@ -100,6 +100,7 @@
 
 
                 {{comment.content}}
+                <button style="float:right" type="button" class="btn btn-danger" (click)='deleteComment(comment.id)'>Delete</button>
               </div>
             </li>
          
@@ -112,10 +113,7 @@
 
     </div>
     <div class="col-md-2">
-      <div class="row d-flex d-flex justify-content-start mt-2">
-        <button class="btn btn-primary" name="follow" id="follow"> <i class="fas fa-thumbs-up ah-icon-pr"></i>
-          Like</button>
-      </div>
+
       <div class="row d-flex d-flex justify-content-start mt-2">
         <button class="btn btn-warning" name="follow" id="follow"> <i class="fas fa-bookmark ah-icon-pr"></i>
           Save</button>
