@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { YummlyServiceClient } from '../services/YummlyServiceClient';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  searchTerm: String;
+  constructor(private router: Router, private yummlyService: YummlyServiceClient) { }
 
   ngOnInit() {
+  }
+
+  search(): void {
+   
+    this.router.navigate(['/search/results/'+this.searchTerm ]);
+    
+
   }
 
 }

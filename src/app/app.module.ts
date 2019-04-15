@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { YummlyServiceClient } from './services/YummlyServiceClient';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RecipeComponent } from './recipe/recipe.component';
     FormsModule
   ],
   providers: [UserServiceClient,
-    Constants],
+    Constants,
+    YummlyServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
