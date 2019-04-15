@@ -12,3 +12,8 @@
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
     color: black
  }
+
+ .ah-img-thumbnail{
+    width: 100%;
+    height: auto;
+ }

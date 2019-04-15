@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import {CommentServiceClient} from './services/CommentServiceClient';
+import { YummlyServiceClient } from './services/YummlyServiceClient';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,10 @@ import {CommentServiceClient} from './services/CommentServiceClient';
     routing,
     FormsModule
   ],
+  
   providers: [UserServiceClient, CommentServiceClient,
-    Constants],
+    Constants,
+    YummlyServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
