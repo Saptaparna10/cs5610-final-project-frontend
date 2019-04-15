@@ -6,9 +6,11 @@
   </div>
 
   <ul class="navbar-nav ml-auto">
-
     <li class="nav-item">
-      <a class="nav-link" routerLink="/register">Login/Register</a>
+      <a class="nav-link" routerLink="/login">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/register">Register</a>
     </li>
 
   </ul>
@@ -26,10 +28,11 @@
 
   <div class="search-bar">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search Recipe ..." aria-label="Recipient's username"
+      <input type="text" class="form-control"  [(ngModel)]="searchTerm"  placeholder="Search Recipe ..." aria-label="Recipient's username"
         aria-describedby="basic-addon2">
       <div class="input-group-append">
-        <a routerLink="/search" class="btn btn-outline-secondary" >Search</a>
+          <button  class="btn btn-outline-secondary" (click)="search()" >Search</button>
+        <!-- <a routerLink="/search" class="btn btn-outline-secondary" >Search</a> -->
       </div>
     </div>
 
