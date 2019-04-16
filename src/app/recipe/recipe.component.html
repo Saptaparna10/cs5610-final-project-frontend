@@ -100,7 +100,9 @@
 
 
                 {{comment.content}}
-                <button style="float:right" type="button" class="btn btn-danger" (click)='deleteComment(comment.id)'>Delete</button>
+                <div *ngIf="comment.user.id===userId">
+                  <button style="float:right" type="button" class="btn btn-danger" (click)='deleteComment(comment.id)'>Delete</button>
+              </div>
               </div>
             </li>
          

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {CommentServiceClient} from '../services/CommentServiceClient';
 import {SaveServiceClient} from '../services/SaveServiceClient';
+import {UserServiceClient} from '../services/UserServiceClient';
 
 @Component({
   selector: 'app-recipe',
@@ -10,38 +11,48 @@ import {SaveServiceClient} from '../services/SaveServiceClient';
 })
 export class RecipeComponent implements OnInit {
 
+  userId;
   recipeId;
   comments = [];
   content: String;
-  saves= [];
-  savesByCurrUser= [];
+  saves = [];
+  savesByCurrUser = [];
   saveId;
 
-  constructor(private route: ActivatedRoute, private commentService: CommentServiceClient, private saveService: SaveServiceClient) {
+  constructor(private route: ActivatedRoute, private commentService: CommentServiceClient,
+              private saveService: SaveServiceClient, private userService: UserServiceClient) {
     this.route.params.subscribe(
       params => this.recipeId = params.recipeId);
   }
 
   ngOnInit() {
-    this.commentService.getComments(this.recipeId)
-      .then((c) => {
-        this.comments=c;
-      });
+    this.userService.profile()
+      .then((usr) => {
+        console.log('user id' + usr.id);
+        this.userId = usr.id;
+      })
+      .then(() => {
+        this.commentService.getComments(this.recipeId)
+          .then((c) => {
+            this.comments = c;
+          });
+        })
+      .then(() => {
+        this.saveService.getSaves(this.recipeId)
+          .then((c) => {
+            this.saves = c;
+          });
+      })
+      .then(() => {
+        this.saveService.getSavesByUser(this.userId, this.recipeId)
+        .then((c) => {
+          this.savesByCurrUser = c;
+          if(c.length > 0) {
+            this.saveId = c[0].id;
+          }
+        });
+    });
 
-    this.saveService.getSaves(this.recipeId)
-      .then((c) => {
-        this.saves=c;
-      });
-
-    this.saveService.getSavesByUser(2, this.recipeId)
-      .then((c) => {
-        this.savesByCurrUser=c;
-        if(c.length > 0) {
-          this.saveId = c[0].id;
-        }
-        // else { this.enableSave=false; }
-        console.log('save id: ' + this.saveId);
-      });
   }
 
   addComment(): void {
@@ -50,7 +61,7 @@ export class RecipeComponent implements OnInit {
       content: this.content,
     }
     console.log(comment);
-    this.commentService.addComment(2, this.recipeId, comment)
+    this.commentService.addComment(this.userId, this.recipeId, comment)
       .then((res) => {
         this.comments.push(res);
     });
@@ -73,7 +84,7 @@ export class RecipeComponent implements OnInit {
 
     const favorite = {
     }
-    this.saveService.saveRecipe(2, this.recipeId, favorite)
+    this.saveService.saveRecipe(this.userId, this.recipeId, favorite)
       .then((res) => {
         this.saves.push(res);
         this.savesByCurrUser.push(res);
