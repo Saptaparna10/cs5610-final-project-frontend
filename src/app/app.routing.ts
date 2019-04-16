@@ -10,7 +10,7 @@ const appRoutes: Routes = [
    { path: '', component: HomeComponent },
    { path: 'login', component: LoginComponent },
    { path: 'register', component: RegisterComponent },
-   { path: 'profile', component: ProfileComponent },  
+   { path: 'profile', component: ProfileComponent },
    { path: 'recipe/:recipeId', component: RecipeComponent },
    { path: 'search/results/:searchTerm' , component: SearchResultComponent },
   

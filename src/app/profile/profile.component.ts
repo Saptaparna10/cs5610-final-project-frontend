@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   phoneNum: Number;
   role: String;
 
-  tabOptions: string[] = ['About', 'Liked Recipes', 'Following'];
+  tabOptions: string[] = ['About', 'Liked Recipes', 'Following', 'Followers'];
   recipes: [{
     image_url: 'https://assets.epicurious.com/photos/5c8fc9eb1808bd2c8ed6ca7b/16:9/w_1280%2Cc_limit/Cook-This-Now-Torn-Tofu-Hero-Alt-05032019.jpg',
     title: 'Chicken Tikka Masala',
