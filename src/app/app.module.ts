@@ -16,6 +16,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import {CommentServiceClient} from './services/CommentServiceClient';
 import { YummlyServiceClient } from './services/YummlyServiceClient';
 import {SaveServiceClient} from './services/SaveServiceClient';
+import {FollowServiceClient} from './services/FollowServiceClient';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,8 @@ import {SaveServiceClient} from './services/SaveServiceClient';
     routing,
     FormsModule
   ],
-  
-  providers: [UserServiceClient, CommentServiceClient, SaveServiceClient,
+
+  providers: [UserServiceClient, CommentServiceClient, SaveServiceClient, FollowServiceClient,
     Constants,
     YummlyServiceClient],
   bootstrap: [AppComponent]

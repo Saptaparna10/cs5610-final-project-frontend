@@ -32,7 +32,7 @@
       <h4> {{firstName}} {{lastName}}</h4>
 
       <div *ngIf="role==='MODERATOR'">
-            <button  class="btn btn-primary" name="follow" id="follow"  > <i class="fa fa-plus-square ah-icon-pr"></i>  Follow</button>
+            <button  class="btn btn-primary" name="follow" id="follow" (click)='follow()'> <i class="fa fa-plus-square ah-icon-pr"></i>  Follow</button>
       </div>
                    
            <br/>
@@ -160,9 +160,13 @@
               </div>
             </div>
         </div>
-        <div *ngIf="selectedTabOption === tabOptions[2]" class="tab-pane active" id="contact" role="tabpanel"
-          aria-labelledby="contact-tab">.following..</div>
+        <div *ngIf="selectedTabOption === tabOptions[2]" class="tab-pane active" id="follwoing" role="tabpanel"
+          aria-labelledby="contact-tab"> count: {{following.length}}</div>
+        <div *ngIf="selectedTabOption === tabOptions[3]" class="tab-pane active" id="followers" role="tabpanel"
+             aria-labelledby="contact-tab"> count: {{followers.length}}</div>
+
       </div>
+
     </div>
 
   </div>
