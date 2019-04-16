@@ -58,4 +58,11 @@ export class UserServiceClient {
       credentials: 'include'
     })
       .then(response => response.json())
+
+  getUserById = (userId) =>
+    fetch
+    (this.SERVER_API_URL + `/api/users/${userId}`, {
+      credentials: 'include'
+    })
+      .then(response => response.json())
 }
