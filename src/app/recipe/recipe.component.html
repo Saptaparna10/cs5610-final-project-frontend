@@ -115,8 +115,16 @@
     <div class="col-md-2">
 
       <div class="row d-flex d-flex justify-content-start mt-2">
-        <button class="btn btn-warning" name="follow" id="follow"> <i class="fas fa-bookmark ah-icon-pr"></i>
-          Save</button>
+        <div *ngIf="savesByCurrUser.length===0; else templateName">
+          <button class="btn btn-primary" name="undoSave" id="undoSave" (click)="saveRecipe()" > <i class="fas fa-bookmark ah-icon-pr"></i>
+            Save</button>
+        </div>
+
+        <ng-template #templateName>
+          <button class="btn btn-info" name="save" id="save" (click)="undoSaveRecipe(saveId)" > <i class="fas fa-bookmark ah-icon-pr"></i>
+          Undo Save</button>
+        </ng-template>
+
       </div>
 
       <div class="row d-flex d-flex justify-content-start mt-2">

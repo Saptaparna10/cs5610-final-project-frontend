@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router,ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {CommentServiceClient} from '../services/CommentServiceClient';
 import {SaveServiceClient} from '../services/SaveServiceClient';
 
@@ -11,9 +11,11 @@ import {SaveServiceClient} from '../services/SaveServiceClient';
 export class RecipeComponent implements OnInit {
 
   recipeId;
-  comments = []
+  comments = [];
   content: String;
-  saves = [];
+  saves= [];
+  savesByCurrUser= [];
+  saveId;
 
   constructor(private route: ActivatedRoute, private commentService: CommentServiceClient, private saveService: SaveServiceClient) {
     this.route.params.subscribe(
@@ -25,12 +27,21 @@ export class RecipeComponent implements OnInit {
       .then((c) => {
         this.comments=c;
       });
+
     this.saveService.getSaves(this.recipeId)
       .then((c) => {
         this.saves=c;
       });
 
-    console.log(this.saves);
+    this.saveService.getSavesByUser(2, this.recipeId)
+      .then((c) => {
+        this.savesByCurrUser=c;
+        if(c.length > 0) {
+          this.saveId = c[0].id;
+        }
+        // else { this.enableSave=false; }
+        console.log('save id: ' + this.saveId);
+      });
   }
 
   addComment(): void {
@@ -58,5 +69,30 @@ export class RecipeComponent implements OnInit {
 
   }
 
+  saveRecipe(): void {
+
+    const favorite = {
+    }
+    this.saveService.saveRecipe(2, this.recipeId, favorite)
+      .then((res) => {
+        this.saves.push(res);
+        this.savesByCurrUser.push(res);
+      });
+
+  }
+
+  undoSaveRecipe(saveId): void {
+
+    this.saveService.undoSaveRecipe(saveId)
+      .then((res) => {
+        this.saveService.getSaves(this.recipeId)
+          .then((c) => {
+            console.log('---'+c)
+            this.saves=c;
+            this.savesByCurrUser=[];
+          });
+      });
+
+  }
 
 }
