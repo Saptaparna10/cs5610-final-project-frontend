@@ -51,4 +51,11 @@ export class UserServiceClient {
         else return response.json()
       }
     );
+
+  profile = () =>
+    fetch
+    (this.SERVER_API_URL + '/api/profile',{
+      credentials: 'include'
+    })
+      .then(response => response.json())
 }

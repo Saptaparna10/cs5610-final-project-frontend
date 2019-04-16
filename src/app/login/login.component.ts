@@ -19,15 +19,17 @@ export class LoginComponent implements OnInit {
 
 
   login(): void {
-   
     const user = {
       username: this.username,
       password: this.password
     }
     console.log(user);
     this.userService.logInUser(user).then((loggedInUser) => {
-      this.router.navigate(['/']);
-     
+      if (loggedInUser === null) {
+        alert('Invalid Credentials!');
+      } else {
+        this.router.navigate(['/profile']);
+      }
     });
 
   }
