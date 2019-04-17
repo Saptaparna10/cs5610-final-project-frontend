@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UserServiceClient} from '../services/UserServiceClient';
-import {ActivatedRoute} from '@angular/router';
-import {FollowServiceClient} from '../services/FollowServiceClient';
+import { UserServiceClient } from '../services/UserServiceClient';
+import { ActivatedRoute } from '@angular/router';
+import { FollowServiceClient } from '../services/FollowServiceClient';
+import { RecipeCollection } from '../models/recipe-collection.model.client';
 
 @Component({
   selector: 'app-profile',
@@ -25,7 +26,8 @@ export class ProfileComponent implements OnInit {
   isFollowing;
 
   //Collection attributes:
-  newCollImgSrc: String = "";
+  newCollection: RecipeCollection;
+  //newCollImgSrc: String = "";
 
   tabOptions: string[] = ['Personal', 'Saved Recipes', 'Recipe lists', 'Following', 'Followers'];
   recipes: [{
@@ -75,14 +77,14 @@ export class ProfileComponent implements OnInit {
             this.followService.getFollowers(this.loggedInUserId)
               .then((res) => this.followers = res);
           } else {
-            console.log('I am user..user id '+ this.loggedInUserId);
+            console.log('I am user..user id ' + this.loggedInUserId);
             this.followService.getFollowing(this.loggedInUserId)
               .then((res) => this.following = res);
           }
         });
       } else {
         this.userService.getUserById(this.userId).then((usr) => {
-          console.log('RESPONSE '+ usr.type);
+          console.log('RESPONSE ' + usr.type);
           this.firstName = usr.firstName;
           this.lastName = usr.lastName;
           this.username = usr.username;
@@ -125,7 +127,16 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
 
-    this.newCollImgSrc = "https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60";
+    this.newCollection = {
+      id: 0,
+      name: "",
+      imageURL: "https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60",
+      recipes: []
+
+    }
+
+    console.log(this.newCollection);
+    // this.newCollImgSrc = "https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60";
 
   }
 
@@ -137,8 +148,8 @@ export class ProfileComponent implements OnInit {
 
     this.followService.follow(this.loggedInUserId, this.userId)
       .then((res) => {
-          this.isFollowing = true;
-          this.followers.push(res);
+        this.isFollowing = true;
+        this.followers.push(res);
       });
 
   }
@@ -157,6 +168,12 @@ export class ProfileComponent implements OnInit {
           });
       });
 
+  }
+
+
+  createCollection() {
+    console.log("inside create coleectionnn");
+    console.log(this.newCollection);
   }
 
   confirmDeleteCollection(collec) {
