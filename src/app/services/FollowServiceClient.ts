@@ -26,6 +26,23 @@ export class FollowServiceClient {
       }
     )
 
+  unfollow = (userId, moderatorId) =>
+    fetch(this.SERVER_API_URL + `/api/registereduser/follow/${userId}/${moderatorId}`, {
+      method: 'delete',
+      headers: {
+        'content-type': 'application/json',
+      },
+      credentials: 'include'
+    }).then(response => {
+        console.log(response)
+        if (response.headers.get('content-type') === null) {
+          return null;
+        } else {
+          return response.json();
+        }
+      }
+    )
+
     getFollowers = (modId) =>
       fetch(this.SERVER_API_URL + `/api/moderator/registereduser/follower/${modId}`)
         .then(response => {
@@ -42,6 +59,18 @@ export class FollowServiceClient {
     fetch(this.SERVER_API_URL + `/api/registereduser/${userId}/following`)
       .then(response => {
           console.log(response)
+          if (response.headers.get('content-type') === null) {
+            return null;
+          } else {
+            return response.json();
+          }
+        }
+      )
+
+  getIfUserFollowingMod = (userId, moderatorId) =>
+    fetch(this.SERVER_API_URL + `/api/follow/${userId}/${moderatorId}`)
+      .then(response => {
+          console.log('getIfUserFollowingMod'+ response)
           if (response.headers.get('content-type') === null) {
             return null;
           } else {

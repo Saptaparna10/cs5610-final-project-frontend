@@ -22,8 +22,9 @@ export class ProfileComponent implements OnInit {
   enableEdit: Boolean;
   followers = [];
   following = [];
+  isFollowing;
 
-  tabOptions: string[] = ['About', 'Liked Recipes', 'Following', 'Followers'];
+  tabOptions: string[] = ['Personal', 'Saved Recipes', 'Recipe lists', 'Following', 'Followers'];
   recipes: [{
     image_url: 'https://assets.epicurious.com/photos/5c8fc9eb1808bd2c8ed6ca7b/16:9/w_1280%2Cc_limit/Cook-This-Now-Torn-Tofu-Hero-Alt-05032019.jpg',
     title: 'Chicken Tikka Masala',
@@ -87,12 +88,20 @@ export class ProfileComponent implements OnInit {
           })
             .then(() => {
               if (this.role === 'MODERATOR') {
+                this.selectedTabOption = this.tabOptions[2];
                 console.log('I am mod..user id ' + this.userId);
+                this.followService.getIfUserFollowingMod(this.loggedInUserId, this.userId)
+                  .then((res) => {
+                    console.log('button!!!!!!! ' + res);
+                    this.isFollowing = res;
+                  });
                 this.followService.getFollowers(this.userId)
                   .then((res) => {
                     console.log('followers ' + res.length);
-                    this.followers = res});
+                    this.followers = res;
+                  });
               } else {
+                this.selectedTabOption = this.tabOptions[1];
                 console.log('I am user..user id ' + this.userId);
                 this.followService.getFollowing(this.userId)
                   .then((res) => {
@@ -110,7 +119,21 @@ export class ProfileComponent implements OnInit {
 
     this.followService.follow(this.loggedInUserId, this.userId)
       .then((res) => {
+          this.isFollowing = true;
           this.followers.push(res);
+      });
+
+  }
+
+  unfollow(): void {
+
+    this.followService.unfollow(this.loggedInUserId, this.userId)
+      .then((res) => {
+        this.followService.getFollowers(this.userId)
+          .then((c) => {
+            this.isFollowing = false;
+            this.followers = c;
+          });
       });
 
   }
