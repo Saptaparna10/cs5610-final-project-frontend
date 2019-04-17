@@ -34,7 +34,7 @@
     </div>
     <div class="col-md-8">
 
-      <h3>The Best Thanksgiving Brunches</h3>
+      <h3>The Best Thanksgiving Lunches</h3>
      
 
       <div *ngFor="let recipe of recipes">
@@ -47,7 +47,11 @@
             <div class="card-body col-9">
               <h5 class="card-title">{{recipe.title}}</h5>
               <p class="card-text">{{recipe.description.substring(0,200)}}...</p>
-              <a routerLink="/" class="btn-block btn btn-primary">View</a>
+              <span class="btn-group ">
+                  <a routerLink="/" class="btn btn-primary">View</a>
+                  <button type="button" (click)="confirmDeleteRecipe(recipe)" class="btn btn-danger">Remove </button>
+                  
+              </span>
             </div>
           </div>
         </div>
@@ -57,9 +61,8 @@
        
 
         <div class="card-body col-9">
-          <h5 class="card-title">No Search Results!</h5>
-          <p class="card-text">Please try again.</p>
-         
+          <h5 class="card-title">No Recipes in this collection!</h5>
+                
         </div>
       </div>
 
@@ -71,9 +74,3 @@
   </div>
 
 </div>
-
-<footer class="py-3 mt-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-white text-center ">Created by <i>Always Hungry Team 2019 </i></p>
-    </div>
-  </footer>

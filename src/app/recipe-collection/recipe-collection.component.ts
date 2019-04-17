@@ -23,4 +23,11 @@ export class RecipeCollectionComponent implements OnInit {
   ngOnInit() {
   }
 
+  confirmDeleteRecipe(recipe) {
+    var affirm = confirm("Are you sure you want to remove this recipe?");
+    if (affirm) {
+      //delete collection
+    }
+  }
+
 }
