@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { RecipeCollectionComponent } from './recipe-collection/recipe-collection.component';
 
 const appRoutes: Routes = [
    { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
   { path:  'profile/:userId', component: ProfileComponent },
    { path: 'recipe/:recipeId', component: RecipeComponent },
    { path: 'search/results/:searchTerm' , component: SearchResultComponent },
+   { path: 'collection/:collectionId', component: RecipeCollectionComponent },
   
 
 ];

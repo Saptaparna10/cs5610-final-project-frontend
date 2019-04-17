@@ -17,6 +17,7 @@ import {CommentServiceClient} from './services/CommentServiceClient';
 import { YummlyServiceClient } from './services/YummlyServiceClient';
 import {SaveServiceClient} from './services/SaveServiceClient';
 import {FollowServiceClient} from './services/FollowServiceClient';
+import { RecipeCollectionComponent } from './recipe-collection/recipe-collection.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {FollowServiceClient} from './services/FollowServiceClient';
     RegisterComponent,
     ProfileComponent,
     SearchResultComponent,
-    RecipeComponent
+    RecipeComponent,
+    RecipeCollectionComponent
   ],
   imports: [
     BrowserModule,
