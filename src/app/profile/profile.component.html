@@ -151,7 +151,6 @@
         </div>
         <div *ngIf="selectedTabOption === tabOptions[1]" class="tab-pane active" id="profile" role="tabpanel"
           aria-labelledby="profile-tab">
-          ..liked.
           <div *ngFor="let recipe of recipes">
               <div>
                 <div class="row">
@@ -170,7 +169,6 @@
         </div>
         <div *ngIf="selectedTabOption === tabOptions[2]" class="tab-pane active" id="recipelist" role="tabpanel"
              aria-labelledby="profile-tab">
-          recipe collectios...
           <div *ngFor="let recipe of recipes">
             <div>
               <div class="row">
@@ -188,10 +186,33 @@
           </div>
         </div>
         <div *ngIf="selectedTabOption === tabOptions[3]" class="tab-pane active" id="follwoing" role="tabpanel"
-          aria-labelledby="contact-tab"> count: {{following.length}}</div>
-        <div *ngIf="selectedTabOption === tabOptions[4]" class="tab-pane active" id="followers" role="tabpanel"
-             aria-labelledby="contact-tab"> count: {{followers.length}}</div>
+          aria-labelledby="contact-tab">
+          <ul class="list-unstyled">
+            <li class="media" *ngFor="let user of following">
 
+              <div class="mr-5">
+                <div class="row d-flex align-items-end"> <strong class="text-success">@{{user.username}}</strong></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </div>
+        <div *ngIf="selectedTabOption === tabOptions[4]" class="tab-pane active" id="followers" role="tabpanel"
+             aria-labelledby="contact-tab">
+        <ul class="list-unstyled">
+          <li class="media" *ngFor="let user of followers">
+
+            <div class="mr-5">
+
+              <div class="row d-flex align-items-end"> <strong class="text-success">@{{user.username}}</strong></div>
+            </div>
+
+          </li>
+
+        </ul>
+      </div>
       </div>
 
     </div>

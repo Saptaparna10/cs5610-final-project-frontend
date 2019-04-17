@@ -117,6 +117,10 @@ export class ProfileComponent implements OnInit {
 
   follow(): void {
 
+    if (this.loggedInUserId === this.userId) {
+      return;
+    }
+
     this.followService.follow(this.loggedInUserId, this.userId)
       .then((res) => {
           this.isFollowing = true;
@@ -127,6 +131,9 @@ export class ProfileComponent implements OnInit {
 
   unfollow(): void {
 
+    if (this.loggedInUserId === this.userId) {
+      return;
+    }
     this.followService.unfollow(this.loggedInUserId, this.userId)
       .then((res) => {
         this.followService.getFollowers(this.userId)
