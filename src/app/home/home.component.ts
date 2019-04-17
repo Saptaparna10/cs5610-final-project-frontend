@@ -12,11 +12,13 @@ export class HomeComponent implements OnInit {
 
   searchTerm: String;
   experts = [];
+  user;
 
   constructor(private router: Router, private yummlyService: YummlyServiceClient, private userService: UserServiceClient) { }
 
   ngOnInit() {
-
+    this.userService.profile()
+      .then((res) => this.user = res)
     this.userService.getAllModerators()
       .then((mods) => this.experts = mods);
   }
