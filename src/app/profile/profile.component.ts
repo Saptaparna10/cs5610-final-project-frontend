@@ -46,11 +46,12 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit() {
-    this.userService.profile().then((loggedInUser) => {
-      this.loggedInUserId = loggedInUser.id;
-    })
-      .then(() => {
-        if (this.userId == null) {
+    this.userService.profile().then((res) => {
+      this.loggedInUserId = res.id;
+      if (this.loggedInUserId == this.userId) {
+        this.userId = null;
+      }
+      if (this.userId == null) {
           console.log('HERE!!')
           this.userService.profile().then((loggedInUser) => {
             this.firstName = loggedInUser.firstName;
@@ -111,7 +112,8 @@ export class ProfileComponent implements OnInit {
               }
             });
         }
-      });
+
+    });
 
   }
 

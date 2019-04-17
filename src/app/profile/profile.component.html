@@ -187,31 +187,50 @@
         </div>
         <div *ngIf="selectedTabOption === tabOptions[3]" class="tab-pane active" id="follwoing" role="tabpanel"
           aria-labelledby="contact-tab">
-          <ul class="list-unstyled">
-            <li class="media" *ngFor="let user of following">
+          <br />
+          <section>
+            <div *ngFor="let user of following">
+              <div>
+                <div class="row">
+                  <div class="card-header border-0 col-3">
+                    <img src="../../assets/sample-2.jpg" alt="" class="ah-fit-img-comment">
+                  </div>
 
-              <div class="mr-5">
-                <div class="row d-flex align-items-end"> <strong class="text-success">@{{user.username}}</strong></div>
+                  <div class="card-body col-9">
+                    <h5 class="card-title">
+                      <a routerLink="/profile/{{user.id}}">
+                        <strong class="text-success">@{{user.username}}</strong>
+                      </a>
+                    </h5>
+                  </div>
+                </div>
               </div>
-
-            </li>
-
-          </ul>
+            </div>
+          </section>
 
         </div>
         <div *ngIf="selectedTabOption === tabOptions[4]" class="tab-pane active" id="followers" role="tabpanel"
              aria-labelledby="contact-tab">
-        <ul class="list-unstyled">
-          <li class="media" *ngFor="let user of followers">
+          <br />
+          <section>
+            <div *ngFor="let user of followers">
+              <div>
+                <div class="row">
+                  <div class="card-header border-0 col-3">
+                    <img src="../../assets/sample-2.jpg" alt="" class="ah-fit-img-comment">
+                  </div>
 
-            <div class="mr-5">
-
-              <div class="row d-flex align-items-end"> <strong class="text-success">@{{user.username}}</strong></div>
+                  <div class="card-body col-9">
+                    <h5 class="card-title">
+                      <a routerLink="/profile/{{user.id}}">
+                        <strong class="text-success">@{{user.username}}</strong>
+                      </a>
+                    </h5>
+                  </div>
+                </div>
+              </div>
             </div>
-
-          </li>
-
-        </ul>
+          </section>
       </div>
       </div>
 
