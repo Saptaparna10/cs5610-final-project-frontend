@@ -13,7 +13,8 @@ import { Recipe } from '../models/recipe.model.client';
 })
 export class RecipeComponent implements OnInit {
 
-  userId : Number;
+  userId: Number;
+  userType: String;
   recipeId;
   comments = [];
   content: String;
@@ -23,10 +24,10 @@ export class RecipeComponent implements OnInit {
   recipe: Recipe;
 
   constructor(private route: ActivatedRoute,
-    private commentService: CommentServiceClient,
-    private saveService: SaveServiceClient,
-    private userService: UserServiceClient,
-    private yummlyService: YummlyServiceClient) {
+              private commentService: CommentServiceClient,
+              private saveService: SaveServiceClient,
+              private userService: UserServiceClient,
+              private yummlyService: YummlyServiceClient) {
 
 
     this.route.params.subscribe(params => this.recipeId = params.recipeId);
@@ -35,17 +36,19 @@ export class RecipeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadRecipe();
     this.userService.profile()
       .then((usr) => {
-        this.userId = (usr===null) ? 0 : usr.id; 
+        this.userType = (usr === null) ? 'ANON' : usr.type;
+        this.userId = (usr === null) ? 0 : usr.id;
         this.saveService.getSavesByUser(this.userId, this.recipeId)
           .then((c) => {
-            this.savesByCurrUser = (c===null) ? this.savesByCurrUser: c;
-            if (c!=null && c.length > 0) {
+            this.savesByCurrUser = (c === null) ? this.savesByCurrUser : c;
+            if (c != null && c.length > 0) {
               this.saveId = c[0].id;
             }
-          });     
-        
+          });
+
       })
       .then(() => {
         this.commentService.getComments(this.recipeId)
@@ -60,8 +63,7 @@ export class RecipeComponent implements OnInit {
             console.log(c);
             this.saves = (c===null) ? this.saves : c;
           });
-      })    
-
+      });
   }
 
   loadRecipe() {

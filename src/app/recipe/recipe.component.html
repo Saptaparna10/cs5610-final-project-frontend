@@ -8,7 +8,7 @@
   <ul class="navbar-nav ml-auto">
 
     <li class="nav-item">
-      <a class="nav-link" routerLink="/register">Login/Register</a>
+      <a class="nav-link" routerLink="/">Home</a>
     </li>
 
   </ul>
@@ -32,18 +32,18 @@
         </button>
       </div>
       <div class="row mt-5">
-        Time: 30 mins
+        Time: {{recipe.totalTime}}
       </div>
       <div class="row">
-        Yields: 6 servings
+        Serves: {{recipe.numberOfServings}}
       </div>
     </div>
     <div class="col-md-8">
-      <h1> New England Clam Chowder</h1>
+      <h1> {{recipe.name}}</h1>
       <hr>
 
       <div class="row ah-img-wrapper">
-        <img src="../../assets/sample-1.jpg" alt="" class="ah-fit-img">
+        <img [src]="recipe.images" alt="" class="ah-fit-img">
       </div>
 
       <section>
@@ -53,8 +53,7 @@
         <hr>
         <div class=" ah-ingredients-div">
           <ul>
-            <li>Clam</li>
-            <li>chowder</li>
+            <li *ngFor="let line of recipe.ingredientLines">{{line}}</li>
           </ul>
         </div>
       </section>
@@ -65,7 +64,7 @@
         </div>
         <hr>
         <div class="ah-directions-div">
-          Check out the directions for this recipe <a href="">here.</a>
+          Check out the directions for this recipe <a [href]="recipe.sourceRecipeUrl">{{recipe.sourceDisplayName}}</a>
         </div>
       </section>
 
@@ -76,12 +75,12 @@
         <hr>
         <div class="ah-comments-div">
 
-          <textarea class="form-control" id='comment' name="comment" [(ngModel)]="content"
+          <textarea *ngIf="userType==='NORMAL'" class="form-control" id='comment' name="comment" [(ngModel)]="content"
             placeholder="Write a comment..." rows="3"></textarea>
           <br>
           <div class=" d-flex justify-content-end ">
 
-            <button type="button" class="btn btn-info" (click)='addComment()'>Post</button>
+            <button *ngIf="userType==='NORMAL'" type="button" class="btn btn-info" (click)='addComment()'>Post</button>
 
           </div>
 
@@ -116,7 +115,7 @@
     </div>
     <div class="col-md-2">
 
-      <div class="row d-flex d-flex justify-content-start mt-2">
+      <div *ngIf="userType==='NORMAL'" class="row d-flex d-flex justify-content-start mt-2">
         <div *ngIf="savesByCurrUser.length===0; else templateName">
           <button class="btn btn-primary" name="undoSave" id="undoSave" (click)="saveRecipe()" > <i class="fas fa-bookmark ah-icon-pr"></i>
             Save</button>
@@ -129,7 +128,7 @@
 
       </div>
 
-      <div class="row d-flex d-flex justify-content-start mt-2">
+      <div *ngIf="userType==='MODERATOR'" class="row d-flex d-flex justify-content-start mt-2">
         <button class="btn btn-success" name="follow" id="follow"> <i class="fa fa-plus-square ah-icon-pr"></i>
           Add To Collection</button>
       </div>
