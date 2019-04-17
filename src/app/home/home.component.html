@@ -15,7 +15,7 @@
 
   </ul>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -25,13 +25,13 @@
 <div class="hero">
 
 
-
   <div class="search-bar">
     <div class="input-group mb-3">
-      <input type="text" class="form-control"  [(ngModel)]="searchTerm"  placeholder="Search Recipe ..." aria-label="Recipient's username"
-        aria-describedby="basic-addon2">
+      <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search Recipe ..."
+             aria-label="Recipient's username"
+             aria-describedby="basic-addon2">
       <div class="input-group-append">
-          <button  class="btn btn-outline-secondary" (click)="search()" >Search</button>
+        <button class="btn btn-outline-secondary" (click)="search()">Search</button>
         <!-- <a routerLink="/search" class="btn btn-outline-secondary" >Search</a> -->
       </div>
     </div>
@@ -39,110 +39,182 @@
   </div>
 
 
-
 </div>
+<div *ngIf="user!==null && user.type==='NORMAL'">
+  <hr>
 
-<hr>
-
-<div class="container">
-  <div class="row">
+  <div class="container">
+    <div class="row">
 
 
-    <h4 class=" mx-auto ah-font">
-      <strong>Collections from experts you follow</strong></h4>
-    <br />
-    <br />
-    <div class="card-deck h-100">
-      <div class="col-sm-4 ">
+      <h4 class=" mx-auto ah-font">
+        <strong>Collections from experts you follow</strong></h4>
+      <br/>
+      <br/>
+      <div class="card-deck h-100">
+        <div class="col-sm-4 ">
 
-        <div class="card h-100">
+          <div class="card h-100">
 
-          <img src="../../assets/sample-1.jpg" class="card-img-top " alt="...">
+            <img src="../../assets/sample-1.jpg" class="card-img-top " alt="...">
 
-          <div class="card-body">
-            <h5 class="card-title">Chritsmas Cakes</h5>
-            <p class="card-text"></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <div class="card-body">
+              <h5 class="card-title">Chritsmas Cakes</h5>
+              <p class="card-text"></p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-sm-4 ">
-        <div class="card h-100">
-          <img src="../../assets/sample-1.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Hand picked Thanksgiving Brunches</h5>
-            <p class="card-text"></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <div class="col-sm-4 ">
+          <div class="card h-100">
+            <img src="../../assets/sample-1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Hand picked Thanksgiving Brunches</h5>
+              <p class="card-text"></p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
 
-      <div class="col-sm-4 ">
-        <div class="card h-100">
-          <img src="../../assets/sample-1.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text"></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-  </div>
-</div>
-
-
-
-
-<hr>
-
-<div class="container">
-  <div class="row">
-
-
-    <h4 class=" mx-auto ah-font">
-      <strong>Your recent favorites</strong></h4>
-    <br />
-    <br />
-    <div class="card-deck h-100">
-      <div class="col-sm-4 ">
-
-        <div class="card h-100">
-
-          <img src="../../assets/sample-2.jpg" class="card-img-top " alt="...">
-
-          <div class="card-body">
-            <h5 class="card-title">Paneer Makhni</h5>
-            <p class="card-text"></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4 ">
-        <div class="card h-100">
-          <img src="../../assets/sample-2.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Sambar</h5>
-            <p class="card-text"></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <div class="col-sm-4 ">
+          <div class="card h-100">
+            <img src="../../assets/sample-1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text"></p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
 
     </div>
-
-
   </div>
+
+</div>
+
+<div *ngIf="user!==null && user.type==='MODERATOR'">
+  <hr>
+
+  <div class="container">
+    <div class="row">
+
+
+      <h4 class=" mx-auto ah-font">
+        <strong>Recipes from your collections</strong></h4>
+      <br/>
+      <br/>
+      <div class="card-deck h-100">
+        <div class="col-sm-4 ">
+
+          <div class="card h-100">
+
+            <img src="../../assets/sample-1.jpg" class="card-img-top " alt="...">
+
+            <div class="card-body">
+              <h5 class="card-title">Chritsmas Cakes</h5>
+              <p class="card-text"></p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4 ">
+          <div class="card h-100">
+            <img src="../../assets/sample-1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Hand picked Thanksgiving Brunches</h5>
+              <p class="card-text"></p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-sm-4 ">
+          <div class="card h-100">
+            <img src="../../assets/sample-1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text"></p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
 </div>
 
 
 
+<div *ngIf="user!==null && user.type==='NORMAL'">
+
+  <hr>
+
+  <div class="container">
+    <div class="row">
+
+
+      <h4 class=" mx-auto ah-font">
+        <strong>Your recent favorites</strong></h4>
+      <br/>
+      <br/>
+      <div class="card-deck h-100">
+        <div class="col-sm-4 ">
+
+          <div class="card h-100">
+
+            <img src="../../assets/sample-2.jpg" class="card-img-top " alt="...">
+
+            <div class="card-body">
+              <h5 class="card-title">Paneer Makhni</h5>
+              <p class="card-text"></p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4 ">
+          <div class="card h-100">
+            <img src="../../assets/sample-2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Sambar</h5>
+              <p class="card-text"></p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
 
 <hr>
 
@@ -152,8 +224,8 @@
 
     <h4 class=" mx-auto ah-font">
       <strong>Explore Recipes</strong></h4>
-    <br />
-    <br />
+    <br/>
+    <br/>
     <div class="card-deck h-100">
       <div class="col-sm-4 mt-3">
 
@@ -164,7 +236,9 @@
           <div class="card-body">
             <h5 class="card-title">Paneer Makhni</h5>
             <p class="card-text"></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
           </div>
         </div>
       </div>
@@ -175,7 +249,9 @@
           <div class="card-body">
             <h5 class="card-title">Sambar</h5>
             <p class="card-text"></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
           </div>
         </div>
       </div>
@@ -186,7 +262,9 @@
           <div class="card-body">
             <h5 class="card-title">Sambar</h5>
             <p class="card-text"></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
           </div>
         </div>
       </div>
@@ -197,7 +275,9 @@
           <div class="card-body">
             <h5 class="card-title">Sambar</h5>
             <p class="card-text"></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
           </div>
         </div>
       </div>
@@ -208,12 +288,12 @@
           <div class="card-body">
             <h5 class="card-title">Sambar</h5>
             <p class="card-text"></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
           </div>
         </div>
       </div>
-
-
 
 
     </div>
