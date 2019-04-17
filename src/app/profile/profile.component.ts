@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserServiceClient} from '../services/UserServiceClient';
 import {ActivatedRoute} from '@angular/router';
 import {FollowServiceClient} from '../services/FollowServiceClient';
+import { RecipeCollection } from '../models/recipe-collection.model.client';
 
 @Component({
   selector: 'app-profile',
@@ -25,7 +26,8 @@ export class ProfileComponent implements OnInit {
   isFollowing;
 
   //Collection attributes:
-  newCollImgSrc: String = "";
+  newCollection : RecipeCollection;
+  //newCollImgSrc: String = "";
 
   tabOptions: string[] = ['Personal', 'Saved Recipes', 'Recipe lists', 'Following', 'Followers'];
   recipes: [{
@@ -125,7 +127,16 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
 
-    this.newCollImgSrc = "https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60";
+    this.newCollection = {
+      id: 0,
+      name: "",
+      imageURL : "https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60",
+      recipes : []
+
+    }
+  
+    console.log(this.newCollection);
+   // this.newCollImgSrc = "https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60";
 
   }
 
@@ -157,6 +168,12 @@ export class ProfileComponent implements OnInit {
           });
       });
 
+  }
+
+
+  createCollection(){
+console.log("inside create coleectionnn");
+console.log(this.newCollection);
   }
 
   confirmDeleteCollection(collec) {
