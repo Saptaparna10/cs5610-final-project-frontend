@@ -31,55 +31,58 @@
     <div class="col-md-6">
       <h4> {{firstName}} {{lastName}}</h4>
 
-      <div *ngIf="role==='MODERATOR' && !enableEdit" >
-        <div *ngIf="!isFollowing; else templateName" >
-            <button  class="btn btn-primary" name="follow" id="follow" (click)='follow()'> <i class="fa fa-plus-square ah-icon-pr"></i>  Follow</button>
+      <div *ngIf="role==='MODERATOR' && !enableEdit">
+        <div *ngIf="!isFollowing; else templateName">
+          <button class="btn btn-primary" name="follow" id="follow" (click)='follow()'> <i
+              class="fa fa-plus-square ah-icon-pr"></i> Follow</button>
         </div>
 
         <ng-template #templateName>
-          <button  class="btn btn-info" name="unfollow" id="unfollow" (click)='unfollow()'> <i class="fa fa-plus-square ah-icon-pr"></i>  Unfollow </button>
+          <button class="btn btn-info" name="unfollow" id="unfollow" (click)='unfollow()'> <i
+              class="fa fa-plus-square ah-icon-pr"></i> Unfollow </button>
         </ng-template>
       </div>
-                   
-           <br/>
-             
-      
+
+      <br />
+
+
       <br />
 
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li *ngFor="let option of tabOptions" class="nav-item">
           <div *ngIf="!(!enableEdit && option ==='Personal')">
-          <div *ngIf="(role==='MODERATOR' && (option!=='Following' && option !== 'Saved Recipes')
+            <div *ngIf="(role==='MODERATOR' && (option!=='Following' && option !== 'Saved Recipes')
                                 || (role==='NORMAL' && (option!=='Followers' && option !== 'Recipe lists')))">
-          <a (click)="selectedTabOption = option" [class.active]="selectedTabOption === option" class="nav-link active"
-            id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">{{option}}</a>
+              <a (click)="selectedTabOption = option" [class.active]="selectedTabOption === option"
+                class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home"
+                aria-selected="true">{{option}}</a>
+            </div>
           </div>
-        </div>
         </li>
 
-      
+
       </ul>
       <div class="tab-content" id="myTabContent">
         <div *ngIf="enableEdit && selectedTabOption === tabOptions[0]" class="tab-pane active" id="home" role="tabpanel"
           aria-labelledby="home-tab">
-          
+
           <br />
           <form>
 
-              <div class="form-group row">
-                  <label class="col-sm-4 col-form-label"></label>
-                  <div class="col-sm-8">
-                    <div class="row">
-                      <div class="col-6">
-                        </div>
-                      <div class="col-6" *ngIf="enableEdit">
-                        <a routerLink="/" class="btn btn-block btn-dark">Edit</a>
-                      </div>
-                    </div>
-    
-    
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label"></label>
+              <div class="col-sm-8">
+                <div class="row">
+                  <div class="col-6">
+                  </div>
+                  <div class="col-6" *ngIf="enableEdit">
+                    <a routerLink="/" class="btn btn-block btn-dark">Edit</a>
                   </div>
                 </div>
+
+
+              </div>
+            </div>
 
             <div class="form-group row">
               <label for="firstname" class="col-sm-4 col-form-label">
@@ -92,7 +95,8 @@
               <label for="lastname" class="col-sm-4 col-form-label">
                 Last name </label>
               <div class="col-sm-8">
-                <input class="form-control" id="lastname" [(ngModel)]="lastName" name="lastName" placeholder="Wonderland">
+                <input class="form-control" id="lastname" [(ngModel)]="lastName" name="lastName"
+                  placeholder="Wonderland">
               </div>
             </div>
 
@@ -108,7 +112,8 @@
               <label for="password" class="col-sm-4 col-form-label">
                 Password </label>
               <div class="col-sm-8">
-                <input type="password" class="form-control wbdv-password-fld" [(ngModel)]="password" name="password" id="password"  placeholder="123qwe#$%">
+                <input type="password" class="form-control wbdv-password-fld" [(ngModel)]="password" name="password"
+                  id="password" placeholder="123qwe#$%">
               </div>
             </div>
 
@@ -116,7 +121,8 @@
               <label for="password2" class="col-sm-4 col-form-label">
                 Confirm Password </label>
               <div class="col-sm-8">
-                <input type="password" class="form-control wbdv-password-fld" id="password2" name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="123qwe#$%">
+                <input type="password" class="form-control wbdv-password-fld" id="password2" name="confirmPassword"
+                  [(ngModel)]="confirmPassword" placeholder="123qwe#$%">
               </div>
             </div>
             <div class="form-group row">
@@ -146,29 +152,11 @@
 
             <br />
 
-          
+
           </form>
         </div>
         <div *ngIf="selectedTabOption === tabOptions[1]" class="tab-pane active" id="profile" role="tabpanel"
           aria-labelledby="profile-tab">
-          <div *ngFor="let recipe of recipes">
-              <div>
-                <div class="row">
-                  <div class="card-header border-0 col-3">
-                    <img class="img-fluid" src={{recipe.image_url}} alt="recipe image">                 
-                  </div>
-        
-                  <div class="card-body col-9">
-                    <h5 class="card-title">{{recipe.title}}</h5>
-                    <p class="card-text">{{recipe.description.substring(0,200)}}...</p>
-                    <a routerLink="/" class="btn-block btn btn-primary">View</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div *ngIf="selectedTabOption === tabOptions[2]" class="tab-pane active" id="recipelist" role="tabpanel"
-             aria-labelledby="profile-tab">
           <div *ngFor="let recipe of recipes">
             <div>
               <div class="row">
@@ -184,6 +172,75 @@
               </div>
             </div>
           </div>
+        </div>
+        <div *ngIf="selectedTabOption === tabOptions[2]" class="tab-pane active" id="recipelist" role="tabpanel"
+          aria-labelledby="profile-tab">
+          <br />
+          <div *ngFor="let recipe of recipes">
+            <div>
+              <div class="row">
+                <div class="card-header border-0 col-3">
+                  <img class="img-fluid" src={{recipe.image_url}} alt="recipe image">
+                </div>
+
+                <div class="card-body col-9">
+                  <h5 class="card-title">{{recipe.title}}</h5>
+                  <p class="card-text">{{recipe.description.substring(0,200)}}...</p>
+                  <a routerLink="/" class="btn-block btn btn-primary">View</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          
+       <!-- Button trigger modal -->
+<button type="button" class="btn-block btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+  Create New Collection
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> Create New Collection</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body row ah-img-wrapper">
+          <div *ngIf="1===1" class="alert alert-danger alert-dismissible fade show" role="alert">
+              Title and Display Picture URL are mandatory.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        <form #postEventForm="ngForm">
+          <div class="form-group">
+            <label for="collection-title" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" id="collection-title" placeholder="Best Thanksgiving Brunch Recipes" required>
+          </div>
+          <div class="form-group ">
+            <label for="collection-img" class="col-form-label">Display Picture URL:</label>
+            <input type="text" [(ngModel)]="newCollImgSrc" placeholder="Image URL" class="form-control" id="collection-img" name="collection-img" >
+           <div class="mt-2">
+            <img src="{{newCollImgSrc}}" alt="image preview" width="300px" style=" border-radius:5%"/>
+
+           </div>
+           
+          </div>
+         
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
         </div>
         <div *ngIf="selectedTabOption === tabOptions[3]" class="tab-pane active" id="follwoing" role="tabpanel"
           aria-labelledby="contact-tab">
@@ -210,7 +267,7 @@
 
         </div>
         <div *ngIf="selectedTabOption === tabOptions[4]" class="tab-pane active" id="followers" role="tabpanel"
-             aria-labelledby="contact-tab">
+          aria-labelledby="contact-tab">
           <br />
           <section>
             <div *ngFor="let user of followers">
@@ -231,7 +288,7 @@
               </div>
             </div>
           </section>
-      </div>
+        </div>
       </div>
 
     </div>

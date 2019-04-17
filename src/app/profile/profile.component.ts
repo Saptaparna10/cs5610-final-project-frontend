@@ -24,6 +24,9 @@ export class ProfileComponent implements OnInit {
   following = [];
   isFollowing;
 
+  //Collection attributes:
+  newCollImgSrc: String = "";
+
   tabOptions: string[] = ['Personal', 'Saved Recipes', 'Recipe lists', 'Following', 'Followers'];
   recipes: [{
     image_url: 'https://assets.epicurious.com/photos/5c8fc9eb1808bd2c8ed6ca7b/16:9/w_1280%2Cc_limit/Cook-This-Now-Torn-Tofu-Hero-Alt-05032019.jpg',
@@ -46,6 +49,9 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.newCollImgSrc = "https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60";
+
     this.userService.profile().then((res) => {
       this.loggedInUserId = res.id;
       if (this.loggedInUserId == this.userId) {
