@@ -153,5 +153,12 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  confirmDeleteCollection(collec) {
+    var affirm = confirm("Are you sure you want to delete this collection?");
+    if (affirm) {
+      //delete collection
+    }
+  }
+
 
 }
