@@ -3,6 +3,7 @@ import { UserServiceClient } from '../services/UserServiceClient';
 import { ActivatedRoute } from '@angular/router';
 import { FollowServiceClient } from '../services/FollowServiceClient';
 import { RecipeCollection } from '../models/recipe-collection.model.client';
+import { CollectionServiceClient } from '../services/CollectionServiceClient';
 
 @Component({
   selector: 'app-profile',
@@ -27,7 +28,7 @@ export class ProfileComponent implements OnInit {
 
   //Collection attributes:
   newCollection: RecipeCollection;
-  //newCollImgSrc: String = "";
+ 
 
   tabOptions: string[] = ['Personal', 'Saved Recipes', 'Recipe lists', 'Following', 'Followers'];
   recipes: [{
@@ -37,7 +38,10 @@ export class ProfileComponent implements OnInit {
   }]
   selectedTabOption = this.tabOptions[0];
 
-  constructor(private route: ActivatedRoute, private userService: UserServiceClient, private followService: FollowServiceClient) {
+  constructor(private route: ActivatedRoute, 
+    private userService: UserServiceClient, 
+    private followService: FollowServiceClient,
+    private collectionService : CollectionServiceClient) {
     this.route.params.subscribe(
       params => {
         this.userId = params.userId;
@@ -132,11 +136,7 @@ export class ProfileComponent implements OnInit {
       name: "",
       imageURL: "https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60",
       recipes: []
-
     }
-
-    console.log(this.newCollection);
-    // this.newCollImgSrc = "https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60";
 
   }
 
@@ -174,6 +174,12 @@ export class ProfileComponent implements OnInit {
   createCollection() {
     console.log("inside create coleectionnn");
     console.log(this.newCollection);
+    this.collectionService.createCollection(this.newCollection)
+    .then((res)=>{
+      console.log(res);
+      //fetch all collections and reload
+    })   
+
   }
 
   confirmDeleteCollection(collec) {
