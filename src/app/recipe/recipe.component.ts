@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {CommentServiceClient} from '../services/CommentServiceClient';
-import {SaveServiceClient} from '../services/SaveServiceClient';
-import {UserServiceClient} from '../services/UserServiceClient';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CommentServiceClient } from '../services/CommentServiceClient';
+import { SaveServiceClient } from '../services/SaveServiceClient';
+import { UserServiceClient } from '../services/UserServiceClient';
+import { YummlyServiceClient } from '../services/YummlyServiceClient';
+import { Recipe } from '../models/recipe.model.client';
 
 @Component({
   selector: 'app-recipe',
@@ -11,47 +13,85 @@ import {UserServiceClient} from '../services/UserServiceClient';
 })
 export class RecipeComponent implements OnInit {
 
-  userId;
+  userId : Number;
   recipeId;
   comments = [];
   content: String;
   saves = [];
   savesByCurrUser = [];
   saveId;
+  recipe: Recipe;
 
-  constructor(private route: ActivatedRoute, private commentService: CommentServiceClient,
-              private saveService: SaveServiceClient, private userService: UserServiceClient) {
-    this.route.params.subscribe(
-      params => this.recipeId = params.recipeId);
+  constructor(private route: ActivatedRoute,
+    private commentService: CommentServiceClient,
+    private saveService: SaveServiceClient,
+    private userService: UserServiceClient,
+    private yummlyService: YummlyServiceClient) {
+
+
+    this.route.params.subscribe(params => this.recipeId = params.recipeId);
+    this.loadRecipe();
+    this.initVariables();
   }
 
   ngOnInit() {
     this.userService.profile()
       .then((usr) => {
-        console.log('user id' + usr.id);
-        this.userId = usr.id;
+        this.userId = (usr===null) ? 0 : usr.id; 
+        this.saveService.getSavesByUser(this.userId, this.recipeId)
+          .then((c) => {
+            this.savesByCurrUser = (c===null) ? this.savesByCurrUser: c;
+            if (c!=null && c.length > 0) {
+              this.saveId = c[0].id;
+            }
+          });     
+        
       })
       .then(() => {
         this.commentService.getComments(this.recipeId)
           .then((c) => {
-            this.comments = c;
-          });
-        })
-      .then(() => {
-        this.saveService.getSaves(this.recipeId)
-          .then((c) => {
-            this.saves = c;
+            console.log(c);
+            this.comments = (c===null) ? this.comments : c;
           });
       })
       .then(() => {
-        this.saveService.getSavesByUser(this.userId, this.recipeId)
-        .then((c) => {
-          this.savesByCurrUser = c;
-          if(c.length > 0) {
-            this.saveId = c[0].id;
-          }
-        });
+        this.saveService.getSaves(this.recipeId)
+          .then((c) => {
+            console.log(c);
+            this.saves = (c===null) ? this.saves : c;
+          });
+      })    
+
+  }
+
+  loadRecipe() {
+    console.log("Loading recipe" + this.recipeId);
+    this.yummlyService.fetchRecipe(this.recipeId).then((recipe) => {
+      this.mapToRecipeModel(recipe);
+
     });
+  }
+
+  initVariables(){
+    this.saves = [];
+    this.comments = [];
+    this.userId = 0;
+    this.savesByCurrUser = [];
+  }
+  mapToRecipeModel(yRecipe) {
+
+    this.recipe = {
+      id: yRecipe.id,
+      name: yRecipe.name,
+      images: yRecipe.images[0].hostedLargeUrl,
+      sourceRecipeUrl: yRecipe.source.sourceRecipeUrl,
+      sourceDisplayName: yRecipe.source.sourceDisplayName,
+      ingredientLines: yRecipe.ingredientLines,
+      totalTime: yRecipe.totalTime,
+      numberOfServings: yRecipe.numberOfServings,
+      cuisines: (yRecipe.attributes.cuisine === undefined) ? [] : yRecipe.attributes.cuisine
+    }
+    console.log(this.recipe);
 
   }
 
@@ -64,7 +104,7 @@ export class RecipeComponent implements OnInit {
     this.commentService.addComment(this.userId, this.recipeId, comment)
       .then((res) => {
         this.comments.push(res);
-    });
+      });
 
   }
 
@@ -74,7 +114,7 @@ export class RecipeComponent implements OnInit {
       .then((res) => {
         this.commentService.getComments(this.recipeId)
           .then((c) => {
-            this.comments=c;
+            this.comments = c;
           });
       });
 
@@ -98,9 +138,9 @@ export class RecipeComponent implements OnInit {
       .then((res) => {
         this.saveService.getSaves(this.recipeId)
           .then((c) => {
-            console.log('---'+c)
-            this.saves=c;
-            this.savesByCurrUser=[];
+            console.log('---' + c)
+            this.saves = c;
+            this.savesByCurrUser = [];
           });
       });
 
