@@ -56,8 +56,12 @@ export class UserServiceClient {
     fetch
     (this.SERVER_API_URL + '/api/profile',{
       credentials: 'include'
-    })
-      .then(response => response.json())
+    }).then(response => {
+      
+      if (response.headers.get("content-type") === null) return null;
+      else return response.json()
+  })
+      //.then(response => response.json())
 
   getUserById = (userId) =>
     fetch
