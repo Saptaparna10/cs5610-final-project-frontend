@@ -18,6 +18,7 @@ import { YummlyServiceClient } from './services/YummlyServiceClient';
 import {SaveServiceClient} from './services/SaveServiceClient';
 import {FollowServiceClient} from './services/FollowServiceClient';
 import { RecipeCollectionComponent } from './recipe-collection/recipe-collection.component';
+import { CollectionServiceClient } from './services/CollectionServiceClient';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { RecipeCollectionComponent } from './recipe-collection/recipe-collection
 
   providers: [UserServiceClient, CommentServiceClient, SaveServiceClient, FollowServiceClient,
     Constants,
-    YummlyServiceClient  ],
+    YummlyServiceClient,
+    CollectionServiceClient  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
