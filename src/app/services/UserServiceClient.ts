@@ -69,4 +69,12 @@ export class UserServiceClient {
       credentials: 'include'
     })
       .then(response => response.json())
+
+  getAllModerators = () =>
+    fetch
+    (this.SERVER_API_URL + `/api/moderators`, {
+      credentials: 'include'
+    })
+      .then(response => response.json());
+
 }

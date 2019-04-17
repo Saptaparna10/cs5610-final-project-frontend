@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { YummlyServiceClient } from '../services/YummlyServiceClient';
 import { Router } from '@angular/router';
+import {UserServiceClient} from '../services/UserServiceClient';
 
 @Component({
   selector: 'app-home',
@@ -10,15 +11,20 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   searchTerm: String;
-  constructor(private router: Router, private yummlyService: YummlyServiceClient) { }
+  experts = [];
+
+  constructor(private router: Router, private yummlyService: YummlyServiceClient, private userService: UserServiceClient) { }
 
   ngOnInit() {
+
+    this.userService.getAllModerators()
+      .then((mods) => this.experts = mods);
   }
 
   search(): void {
-   
+
     this.router.navigate(['/search/results/'+this.searchTerm ]);
-    
+
 
   }
 
