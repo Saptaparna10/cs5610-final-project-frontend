@@ -20,10 +20,12 @@ export class HomeComponent implements OnInit {
   savedRecipes: Recipe[] = [];
   recipesFromExperts: Recipe[] = [];
   collections = [];
+  featuredRecipes = [];
 
   constructor(private router: Router, private yummlyService: YummlyServiceClient, private userService: UserServiceClient, private saveService: SaveServiceClient, private recipeService: RecipeServiceClient, private collectionService: CollectionServiceClient) { }
 
   ngOnInit() {
+
     this.userService.profile()
       .then((res) => {
         this.user = res;
@@ -35,13 +37,15 @@ export class HomeComponent implements OnInit {
                 this.recipesFromExperts = recipesFromExpert;
                 this.collectionService.findRecipeListByModerator(this.user.id)
                   .then((colls) => {
-                    console.log('last!!!');
-                    console.log(colls);
                     this.collections = colls;
                   });
               });
           });
       })
+    this.collectionService.findRecipesByCollection(82)
+      .then((featuredRecipes) => {
+        this.featuredRecipes = featuredRecipes;
+      });
     this.userService.getAllModerators()
       .then((mods) => this.experts = mods);
   }

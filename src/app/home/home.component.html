@@ -157,82 +157,29 @@
 
 
     <h4 class=" mx-auto ah-font">
-      <strong>Explore Recipes</strong></h4>
+      <strong>Featured Recipes</strong></h4>
     <br/>
     <br/>
     <div class="card-deck h-100">
-      <div class="col-sm-4 mt-3">
+      <div *ngFor="let recipe of featuredRecipes; let i=index" class="col-sm-4 ">
+        <div *ngIf="i<6">
+          <div class="card h-100">
 
-        <div class="card h-100">
+            <img src={{recipe.images}} class="card-img-top " alt="...">
 
-          <img src="../../assets/sample-2.jpg" class="card-img-top " alt="...">
-
-          <div class="card-body">
-            <h5 class="card-title">Paneer Makhni</h5>
-            <p class="card-text"></p>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
+            <div class="card-body">
+              <h5 class="card-title">{{recipe.name}}</h5>
+              <p class="card-text"></p>
+              <p class="card-text">
+                <button class="btn-secondary"><a routerLink="/recipe/{{recipe.id}}"
+                                                 class=" btn btn-secondary ">View</a></button>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="col-sm-4 mt-3">
-        <div class="card h-100">
-          <img src="../../assets/sample-2.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Sambar</h5>
-            <p class="card-text"></p>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4 mt-3">
-        <div class="card h-100">
-          <img src="../../assets/sample-2.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Sambar</h5>
-            <p class="card-text"></p>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4 mt-3">
-        <div class="card h-100 ">
-          <img src="../../assets/sample-2.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Sambar</h5>
-            <p class="card-text"></p>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4 mt-3">
-        <div class="card h-100 ">
-          <img src="../../assets/sample-2.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Sambar</h5>
-            <p class="card-text"></p>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
-          </div>
-        </div>
-      </div>
-
 
     </div>
-
-
   </div>
 </div>
 <hr>
@@ -247,18 +194,21 @@
     <br/>
 
     <div class="card-deck h-100">
-      <div *ngFor="let mod of experts" class="col-sm-4 mt-3">
+      <div *ngFor="let mod of experts; let i=index" class="col-sm-4 mt-3">
+        <div *ngIf="i<6">
+          <div class="card h-100">
 
-        <div class="card h-100">
+            <img src="../../assets/sample-2.jpg" class="card-img-top " alt="...">
 
-          <img src="../../assets/sample-2.jpg" class="card-img-top " alt="...">
-
-          <div class="card-body">
-            <a routerLink="/profile/{{mod.id}}">
-              <h5 class="card-title">@{{mod.username}}</h5></a>
-            <p class="card-text"></p>
+            <div class="card-body">
+              <a routerLink="/profile/{{mod.id}}">
+                <h5 class="card-title">@{{mod.username}}</h5></a>
+              <p class="card-text"></p>
+            </div>
           </div>
         </div>
+
+
       </div>
 
     </div>
@@ -266,6 +216,7 @@
 
   </div>
 </div>
+
 
 <footer class="py-3 mt-5 bg-dark">
   <div class="container">
