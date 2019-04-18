@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
 
   //Collection attributes:
   newCollection: RecipeCollection;
+  recipeCollections : RecipeCollection[] = [];
  
 
   tabOptions: string[] = ['Personal', 'Saved Recipes', 'Recipe lists', 'Following', 'Followers'];
@@ -113,6 +114,10 @@ export class ProfileComponent implements OnInit {
                   console.log('followers ' + res.length);
                   this.followers = res;
                 });
+                this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols)=>{
+                  console.log(cols);
+                  this.recipeCollections = cols;
+                })
             } else {
               this.selectedTabOption = this.tabOptions[1];
               console.log('I am user..user id ' + this.userId);
@@ -174,9 +179,14 @@ export class ProfileComponent implements OnInit {
   createCollection() {
     console.log("inside create coleectionnn");
     console.log(this.newCollection);
-    this.collectionService.createCollection(this.newCollection)
+    this.collectionService.createCollection(this.newCollection, this.loggedInUserId)
     .then((res)=>{
       console.log(res);
+      this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols)=>{
+        console.log(cols);
+        this.recipeCollections = cols;
+      })
+      
       //fetch all collections and reload
     })   
 

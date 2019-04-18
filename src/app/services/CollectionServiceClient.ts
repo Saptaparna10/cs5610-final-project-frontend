@@ -8,8 +8,8 @@ export class CollectionServiceClient {
   SERVER_API_URL = this.constants.SERVER_API_URL;
 
 
-  createCollection = collection =>
-    fetch(this.SERVER_API_URL + '/api/recipelist', {
+  createCollection = (collection, modId) =>
+    fetch(this.SERVER_API_URL + '/api/recipelist/'+ modId, {
       method: 'post',
       body: JSON.stringify(collection),
       headers: {
