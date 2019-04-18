@@ -43,7 +43,7 @@ import {RecipeServiceClient} from './services/RecipeServiceClient';
     RecipeServiceClient,
     Constants,
     YummlyServiceClient,
-    CollectionServiceClient  ],
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
