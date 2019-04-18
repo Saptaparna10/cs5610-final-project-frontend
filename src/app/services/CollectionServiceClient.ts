@@ -1,14 +1,11 @@
-
 import { Injectable } from '@angular/core';
 import { Constants } from './Constants';
-
 @Injectable()
 export class CollectionServiceClient {
 
   constructor(private constants: Constants) { }
 
   SERVER_API_URL = this.constants.SERVER_API_URL;
-
 
 
   createCollection = collection =>
@@ -24,7 +21,31 @@ export class CollectionServiceClient {
         else return response.json()
       }
     );
+  findRecipeforModerator = (mid, rid) =>
+    fetch(this.SERVER_API_URL + `/api/moderator/${mid}/recipe/${rid}`)
+      .then(response => {
+          if (response.headers.get('content-type') === null) {
+            return null;
+          } else { return response.json(); }
+        }
+      )
 
-  
+  addRecipeToList = (listId, rid) =>
+    fetch(this.SERVER_API_URL + `/api/recipelist/${listId}/recipe/${rid}`,{
+      method: 'put',
+    }).then(response => {
+        if (response.headers.get("content-type") === null) return null;
+        else return response.json()
+      }
+    );
+
+  findRecipeListByModerator = (mid) =>
+    fetch(this.SERVER_API_URL + `/api/moderator/${mid}/recipelist`)
+      .then(response => {
+          if (response.headers.get('content-type') === null) {
+            return null;
+          } else { return response.json(); }
+        }
+      )
 
 }

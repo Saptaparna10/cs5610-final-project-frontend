@@ -5,6 +5,8 @@ import { SaveServiceClient } from '../services/SaveServiceClient';
 import { UserServiceClient } from '../services/UserServiceClient';
 import { YummlyServiceClient } from '../services/YummlyServiceClient';
 import { Recipe } from '../models/recipe.model.client';
+import {CollectionServiceClient} from '../services/CollectionServiceClient';
+import {RecipeServiceClient} from "../services/RecipeServiceClient";
 
 @Component({
   selector: 'app-recipe',
@@ -15,7 +17,11 @@ export class RecipeComponent implements OnInit {
 
   userId: Number;
   userType: String;
+  recipeListId: Number;
+  recipeListName: String;
+  recipeLists = []
   recipeId;
+  addToCollectionType: Boolean;
   comments = [];
   content: String;
   saves = [];
@@ -27,7 +33,9 @@ export class RecipeComponent implements OnInit {
               private commentService: CommentServiceClient,
               private saveService: SaveServiceClient,
               private userService: UserServiceClient,
-              private yummlyService: YummlyServiceClient) {
+              private yummlyService: YummlyServiceClient,
+              private collectionServiceClient: CollectionServiceClient,
+              private recipeServiceClient: RecipeServiceClient) {
 
 
     this.route.params.subscribe(params => this.recipeId = params.recipeId);
@@ -36,10 +44,10 @@ export class RecipeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadRecipe();
     this.userService.profile()
       .then((usr) => {
         this.userType = (usr === null) ? 'ANON' : usr.type;
+        this.loadRecipe(usr)
         this.userId = (usr === null) ? 0 : usr.id;
         this.saveService.getSavesByUser(this.userId, this.recipeId)
           .then((c) => {
@@ -66,12 +74,30 @@ export class RecipeComponent implements OnInit {
       });
   }
 
-  loadRecipe() {
+  loadRecipe(usr) {
     console.log("Loading recipe" + this.recipeId);
     this.yummlyService.fetchRecipe(this.recipeId).then((recipe) => {
       this.mapToRecipeModel(recipe);
-
+      if (usr.type === 'MODERATOR') {
+        console.log('1');
+        this.collectionServiceClient.findRecipeListByModerator(usr.id).then(
+          recipes => this.recipeLists = recipes
+        );
+        console.log('2');
+        this.collectionServiceClient.findRecipeforModerator(usr.id, recipe.id).then(
+          ans => {
+            this.addToCollectionType = ans;
+            console.log(ans);
+          }
+        );
+      }
     });
+  }
+
+  addToCollection = (recipeList) => {
+    this.collectionServiceClient.addRecipeToList(recipeList.id, this.recipeId).then(
+      collection => alert('Recipe added to'+recipeList.name)
+    );
   }
 
   initVariables(){
@@ -110,6 +136,7 @@ export class RecipeComponent implements OnInit {
 
   }
 
+
   deleteComment(commendId): void {
 
     this.commentService.deleteComment(commendId)
@@ -126,12 +153,27 @@ export class RecipeComponent implements OnInit {
 
     const favorite = {
     }
-    this.saveService.saveRecipe(this.userId, this.recipeId, favorite)
-      .then((res) => {
-        this.saves.push(res);
-        this.savesByCurrUser.push(res);
-      });
-
+    this.recipeServiceClient.findRecipeById(this.recipeId).then(
+      recipe => {
+        if (recipe === null) {
+          this.recipeServiceClient.addRecipe(this.recipe).then(
+            recipe1 => {
+              this.saveService.saveRecipe(this.userId, this.recipeId, favorite)
+                .then((res) => {
+                  this.saves.push(res);
+                  this.savesByCurrUser.push(res);
+                });
+            }
+          );
+        } else {
+          this.saveService.saveRecipe(this.userId, this.recipeId, favorite)
+            .then((res) => {
+              this.saves.push(res);
+              this.savesByCurrUser.push(res);
+            });
+        }
+      }
+    );
   }
 
   undoSaveRecipe(saveId): void {

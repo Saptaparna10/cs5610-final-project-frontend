@@ -17,8 +17,13 @@ import {CommentServiceClient} from './services/CommentServiceClient';
 import { YummlyServiceClient } from './services/YummlyServiceClient';
 import {SaveServiceClient} from './services/SaveServiceClient';
 import {FollowServiceClient} from './services/FollowServiceClient';
+<<<<<<< HEAD
 import { RecipeCollectionComponent } from './recipe-collection/recipe-collection.component';
 import { CollectionServiceClient } from './services/CollectionServiceClient';
+=======
+import {CollectionServiceClient} from './services/CollectionServiceClient'
+import {RecipeServiceClient} from "./services/RecipeServiceClient";
+>>>>>>> recipe
 
 @NgModule({
   declarations: [
@@ -38,7 +43,8 @@ import { CollectionServiceClient } from './services/CollectionServiceClient';
     FormsModule
   ],
 
-  providers: [UserServiceClient, CommentServiceClient, SaveServiceClient, FollowServiceClient,
+  providers: [UserServiceClient, CommentServiceClient, SaveServiceClient, CollectionServiceClient, FollowServiceClient,
+    RecipeServiceClient,
     Constants,
     YummlyServiceClient,
     CollectionServiceClient  ],
