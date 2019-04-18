@@ -21,10 +21,12 @@ export class ProfileComponent implements OnInit {
   role: String;
   userId;
   loggedInUserId;
+  loggedInUserRole;
   enableEdit: Boolean;
   followers = [];
   following = [];
   isFollowing;
+  disableFollow;
 
   //Collection attributes:
   newCollection: RecipeCollection;
@@ -61,6 +63,7 @@ export class ProfileComponent implements OnInit {
   loadProfile() {
     this.userService.profile().then((res) => {
       this.loggedInUserId = res.id;
+      this.loggedInUserRole = res.type;
       if (this.loggedInUserId == this.userId) {
         this.userId = null;
       }
@@ -112,6 +115,9 @@ export class ProfileComponent implements OnInit {
                 .then((res) => {
                   console.log('button!!!!!!! ' + res);
                   this.isFollowing = res;
+                  if (this.role == this.loggedInUserRole) {
+                    this.disableFollow = true;
+                  }
                 });
               this.followService.getFollowers(this.userId)
                 .then((res) => {

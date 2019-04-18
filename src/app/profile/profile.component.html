@@ -31,7 +31,7 @@
     <div class="col-md-6">
       <h4> {{firstName}} {{lastName}}</h4>
 
-      <div *ngIf="role==='MODERATOR' && !enableEdit">
+      <div *ngIf="role==='MODERATOR' && !enableEdit && !disableFollow">
         <div *ngIf="!isFollowing; else templateName">
           <button class="btn btn-primary" name="follow" id="follow" (click)='follow()'> <i
               class="fa fa-plus-square ah-icon-pr"></i> Follow</button>
