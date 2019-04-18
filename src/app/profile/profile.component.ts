@@ -4,6 +4,8 @@ import {ActivatedRoute} from '@angular/router';
 import {FollowServiceClient} from '../services/FollowServiceClient';
 import {RecipeCollection} from '../models/recipe-collection.model.client';
 import {CollectionServiceClient} from '../services/CollectionServiceClient';
+import {Recipe} from '../models/recipe.model.client';
+import {SaveServiceClient} from '../services/SaveServiceClient';
 
 @Component({
   selector: 'app-profile',
@@ -34,6 +36,8 @@ export class ProfileComponent implements OnInit {
   newCollection: RecipeCollection;
   recipeCollections: RecipeCollection[] = [];
 
+  savedRecipes: Recipe[] = [];
+
 
   tabOptions: string[] = ['Personal', 'Saved Recipes', 'Recipe lists', 'Following', 'Followers'];
   recipes: [{
@@ -46,7 +50,8 @@ export class ProfileComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private userService: UserServiceClient,
               private followService: FollowServiceClient,
-              private collectionService: CollectionServiceClient) {
+              private collectionService: CollectionServiceClient,
+              private saveService: SaveServiceClient) {
     this.route.params.subscribe(
       params => {
         this.userId = params.userId;
@@ -98,7 +103,16 @@ export class ProfileComponent implements OnInit {
           } else {
             console.log('I am user..user id ' + this.loggedInUserId);
             this.followService.getFollowing(this.loggedInUserId)
-              .then((res) => this.following = res);
+              .then((res) => {
+                this.following = res;
+                this.saveService.getAllSavedRecipesByUser(this.loggedInUserId)
+                  .then((savedRecipes) => {
+                    console.log('saved recipes!!');
+                    console.log(savedRecipes);
+                    this.savedRecipes = savedRecipes;
+                  });
+
+              });
           }
         });
       } else {
@@ -141,6 +155,8 @@ export class ProfileComponent implements OnInit {
                 .then((res) => {
                   console.log('following ' + res.length);
                   this.following = res;
+                  this.saveService.getAllSavedRecipesByUser(this.userId)
+                    .then((savedRecipes) => this.savedRecipes = savedRecipes);
                 });
             }
           });

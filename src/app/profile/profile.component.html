@@ -164,17 +164,16 @@
         </div>
         <div *ngIf="selectedTabOption === tabOptions[1]" class="tab-pane active" id="profile" role="tabpanel"
           aria-labelledby="profile-tab">
-          <div *ngFor="let recipe of recipes">
+          <div *ngFor="let recipe of savedRecipes">
             <div>
               <div class="row">
                 <div class="card-header border-0 col-3">
-                  <img class="img-fluid" src={{recipe.image_url}} alt="recipe image">
+                  <img class="img-fluid" src={{recipe.images}} alt="recipe image">
                 </div>
 
                 <div class="card-body col-9">
-                  <h5 class="card-title">{{recipe.title}}</h5>
-                  <p class="card-text">{{recipe.description.substring(0,200)}}...</p>
-                  <a routerLink="/" class="btn-block btn btn-primary">View</a>
+                  <h5 class="card-title">{{recipe.name}}</h5>
+                  <a routerLink="/recipe/{{recipe.id}}}" class="btn btn-secondary btn-block">View</a>
                 </div>
               </div>
             </div>
