@@ -13,7 +13,7 @@
 
   </ul>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -24,7 +24,8 @@
   <div class="row">
     <div class="col-md-4">
       <div class="profile-img">
-        <img src="{{image}}" alt="Not Found" onerror="this.src='../../assets/camera-icon.png'" style="width:200px;height:200px;" />
+        <img src="{{image}}" alt="Not Found" onerror="this.src='../../assets/camera-icon.png'"
+             style="width:200px;height:200px;"/>
       </div>
     </div>
 
@@ -33,20 +34,22 @@
 
       <div *ngIf="role==='MODERATOR' && !enableEdit && !disableFollow">
         <div *ngIf="!isFollowing; else templateName">
-          <button class="btn btn-primary" name="follow" id="follow" (click)='follow()'> <i
-              class="fa fa-plus-square ah-icon-pr"></i> Follow</button>
+          <button class="btn btn-primary" name="follow" id="follow" (click)='follow()'><i
+            class="fa fa-plus-square ah-icon-pr"></i> Follow
+          </button>
         </div>
 
         <ng-template #templateName>
-          <button class="btn btn-info" name="unfollow" id="unfollow" (click)='unfollow()'> <i
-              class="fa fa-plus-square ah-icon-pr"></i> Unfollow </button>
+          <button class="btn btn-info" name="unfollow" id="unfollow" (click)='unfollow()'><i
+            class="fa fa-plus-square ah-icon-pr"></i> Unfollow
+          </button>
         </ng-template>
       </div>
 
-      <br />
+      <br/>
 
 
-      <br />
+      <br/>
 
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li *ngFor="let option of tabOptions" class="nav-item">
@@ -54,8 +57,8 @@
             <div *ngIf="(role==='MODERATOR' && (option!=='Following' && option !== 'Saved Recipes')
                                 || (role==='NORMAL' && (option!=='Followers' && option !== 'Recipe lists')))">
               <a (click)="selectedTabOption = option" [class.active]="selectedTabOption === option"
-                class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home"
-                aria-selected="true">{{option}}</a>
+                 class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home"
+                 aria-selected="true">{{option}}</a>
             </div>
           </div>
         </li>
@@ -64,9 +67,9 @@
       </ul>
       <div class="tab-content" id="myTabContent">
         <div *ngIf="enableEdit && selectedTabOption === tabOptions[0]" class="tab-pane active" id="home" role="tabpanel"
-          aria-labelledby="home-tab">
+             aria-labelledby="home-tab">
 
-          <br />
+          <br/>
           <form>
 
             <div class="form-group row">
@@ -96,7 +99,7 @@
                 Last name </label>
               <div class="col-sm-8">
                 <input class="form-control" id="lastname" [(ngModel)]="lastName" name="lastName"
-                  placeholder="Wonderland">
+                       placeholder="Wonderland">
               </div>
             </div>
 
@@ -105,7 +108,8 @@
               <label for="username" class="col-sm-4 col-form-label">
                 Username </label>
               <div class="col-sm-8">
-                <input class="form-control" disabled id="username" [(ngModel)]="username" name="username" placeholder="alice">
+                <input class="form-control" disabled id="username" [(ngModel)]="username" name="username"
+                       placeholder="alice">
               </div>
             </div>
             <div class="form-group row">
@@ -113,7 +117,7 @@
                 Password </label>
               <div class="col-sm-8">
                 <input type="password" class="form-control wbdv-password-fld" [(ngModel)]="password" name="password"
-                  id="password" placeholder="123qwe#$%">
+                       id="password" placeholder="123qwe#$%">
               </div>
             </div>
 
@@ -122,7 +126,7 @@
                 Confirm Password </label>
               <div class="col-sm-8">
                 <input type="password" class="form-control wbdv-password-fld" id="password2" name="confirmPassword"
-                  [(ngModel)]="confirmPassword" placeholder="123qwe#$%">
+                       [(ngModel)]="confirmPassword" placeholder="123qwe#$%">
               </div>
             </div>
             <div class="form-group row">
@@ -137,7 +141,8 @@
               <label for="image" class="col-sm-4 col-form-label">
                 Profile image url </label>
               <div class="col-sm-8">
-                <input class="form-control" id="image" [(ngModel)]="image" name="image" placeholder="https://images.unsplash.com/photo-1488406016221-ec4788beab3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
+                <input class="form-control" id="image" [(ngModel)]="image" name="image"
+                       placeholder="https://images.unsplash.com/photo-1488406016221-ec4788beab3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
               </div>
             </div>
 
@@ -157,13 +162,13 @@
               </div>
             </div>
 
-            <br />
+            <br/>
 
 
           </form>
         </div>
         <div *ngIf="selectedTabOption === tabOptions[1]" class="tab-pane active" id="profile" role="tabpanel"
-          aria-labelledby="profile-tab">
+             aria-labelledby="profile-tab">
           <div *ngFor="let recipe of savedRecipes">
             <div>
               <div class="row">
@@ -180,8 +185,8 @@
           </div>
         </div>
         <div *ngIf="selectedTabOption === tabOptions[2]" class="tab-pane active" id="recipelist" role="tabpanel"
-          aria-labelledby="profile-tab">
-          <br />
+             aria-labelledby="profile-tab">
+          <br/>
           <div *ngFor="let col of recipeCollections">
             <div>
               <div class="row">
@@ -195,25 +200,32 @@
 
                   <a routerLink="/" class="btn btn-primary">View</a>
 
+                  <div *ngIf="enableEdit">
                   <span class="btn-group float-right">
-                    <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-secondary" (click)="populate(col.id)">Edit</button>
-                    <button type="button" (click)="confirmDeleteCollection(collec)" class="btn btn-danger">Delete </button>
+                    <button type="button" data-toggle="modal" data-target="#exampleModalCenter"
+                            class="btn btn-secondary" (click)="populate(col.id)">Edit</button>
+                    <button type="button" (click)="confirmDeleteCollection(collec)"
+                            class="btn btn-danger">Delete </button>
                   </span>
+                  </div>
 
                 </div>
               </div>
             </div>
           </div>
-          <br />
+          <br/>
 
-          <!-- Button trigger modal -->
-          <button type="button" class="btn-block btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-            Create New Collection
-          </button>
+          <div *ngIf="enableEdit">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn-block btn btn-success" data-toggle="modal"
+                    data-target="#exampleModalCenter">
+              Create New Collection
+            </button>
+          </div>
 
           <!-- Modal -->
           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+               aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -232,15 +244,18 @@
                   <form #postEventForm="ngForm">
                     <div class="form-group">
                       <label for="collection-title" class="col-form-label">Title:</label>
-                      <input type="text" [(ngModel)]="newCollection.name" class="form-control" id="collection-title" name="collection-title"
-                        placeholder="Best Thanksgiving Brunch Recipes" required>
+                      <input type="text" [(ngModel)]="newCollection.name" class="form-control" id="collection-title"
+                             name="collection-title"
+                             placeholder="Best Thanksgiving Brunch Recipes" required>
                     </div>
                     <div class="form-group ">
                       <label for="collection-img" class="col-form-label">Display Picture URL:</label>
-                      <input type="text" [(ngModel)]="newCollection.imageURL" placeholder="Image URL" class="form-control"
-                        id="collection-img" name="collection-img">
+                      <input type="text" [(ngModel)]="newCollection.imageURL" placeholder="Image URL"
+                             class="form-control"
+                             id="collection-img" name="collection-img">
                       <div class="mt-2">
-                        <img src="{{newCollection.imageURL}}" alt="image preview" width="300px" style=" border-radius:5%" />
+                        <img src="{{newCollection.imageURL}}" alt="image preview" width="300px"
+                             style=" border-radius:5%"/>
 
                       </div>
 
@@ -250,7 +265,9 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="button" (click)="createCollection(newCollection.id)" class="btn btn-primary" data-dismiss="modal">Save</button>
+                  <button type="button" (click)="createCollection(newCollection.id)" class="btn btn-primary"
+                          data-dismiss="modal">Save
+                  </button>
                 </div>
               </div>
             </div>
@@ -259,8 +276,8 @@
 
         </div>
         <div *ngIf="selectedTabOption === tabOptions[3]" class="tab-pane active" id="follwoing" role="tabpanel"
-          aria-labelledby="contact-tab">
-          <br />
+             aria-labelledby="contact-tab">
+          <br/>
           <section>
             <div *ngFor="let user of following">
               <div>
@@ -284,8 +301,8 @@
 
         </div>
         <div *ngIf="selectedTabOption === tabOptions[4]" class="tab-pane active" id="followers" role="tabpanel"
-          aria-labelledby="contact-tab">
-          <br />
+             aria-labelledby="contact-tab">
+          <br/>
           <section>
             <div *ngFor="let user of followers">
               <div>

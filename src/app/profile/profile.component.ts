@@ -107,8 +107,6 @@ export class ProfileComponent implements OnInit {
                 this.following = res;
                 this.saveService.getAllSavedRecipesByUser(this.loggedInUserId)
                   .then((savedRecipes) => {
-                    console.log('saved recipes!!');
-                    console.log(savedRecipes);
                     this.savedRecipes = savedRecipes;
                   });
 
@@ -146,6 +144,10 @@ export class ProfileComponent implements OnInit {
                 .then((res) => {
                   console.log('followers ' + res.length);
                   this.followers = res;
+                  this.collectionService.findRecipeListByModerator(this.userId).then((cols) => {
+                    console.log(cols);
+                    this.recipeCollections = cols;
+                  });
                 });
 
             } else {
