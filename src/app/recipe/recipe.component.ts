@@ -96,7 +96,10 @@ export class RecipeComponent implements OnInit {
 
   addToCollection = (recipeList) => {
     this.collectionServiceClient.addRecipeToList(recipeList.id, this.recipeId).then(
-      collection => alert('Recipe added to'+recipeList.name)
+      collection => {
+        alert('Recipe added to ' + recipeList.name);
+        this.addToCollectionType = true;
+      }
     );
   }
 
