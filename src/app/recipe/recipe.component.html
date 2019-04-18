@@ -133,12 +133,12 @@
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add To Collection
             <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <button (click)="addToCollection(recipeList)" *ngFor="let recipeList of recipeLists">{{recipeList.name}}</button>
+            <li *ngFor="let recipeList of recipeLists">
+              <button class="btn-primary" (click)="addToCollection(recipeList)">{{recipeList.name}}</button>
+            </li>
             <li><a href="#">Add new Collection</a></li>
           </ul>
         </div>
-
-
 
     </div>
   </div>
