@@ -25,6 +25,19 @@ export class UserServiceClient {
       }
     );
 
+  logout = () =>
+    fetch(this.SERVER_API_URL + '/api/logout', {
+      method: 'post',
+      headers: {
+        'content-type': 'application/json',
+      },
+      credentials: 'include'
+    }).then(response => {
+        if (response.headers.get("content-type") === null) return null;
+        else return response.json()
+      }
+    );
+
   registerUser = user =>
     fetch(this.SERVER_API_URL + '/api/registeredUser/register', {
       method: 'post',

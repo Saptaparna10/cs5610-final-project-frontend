@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserServiceClient} from '../services/UserServiceClient';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FollowServiceClient} from '../services/FollowServiceClient';
 import {RecipeCollection} from '../models/recipe-collection.model.client';
 import {CollectionServiceClient} from '../services/CollectionServiceClient';
@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit {
   selectedTabOption = this.tabOptions[0];
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private userService: UserServiceClient,
               private followService: FollowServiceClient,
               private collectionService: CollectionServiceClient,
@@ -172,6 +173,13 @@ export class ProfileComponent implements OnInit {
 
     this.clearCollectionFields();
 
+  }
+
+  logout(): void {
+    this.userService.logout()
+      .then(() => {
+        this.router.navigate(['/login']);
+      });
   }
 
   clearCollectionFields(): void {
