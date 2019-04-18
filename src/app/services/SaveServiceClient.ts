@@ -57,4 +57,13 @@ export class SaveServiceClient {
         }
       )
 
+  getAllSavedRecipesByUser = (userId) =>
+    fetch(this.SERVER_API_URL + `/api/favorite/user/${userId}`)
+      .then(response => {
+          if (response.headers.get('content-type') === null) {
+            return null;
+          } else { return response.json(); }
+        }
+      )
+
 }
