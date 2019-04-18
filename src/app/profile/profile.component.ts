@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   phoneNum: Number;
   role: String;
   image: String;
+  email: String;
   userId;
   loggedInUserId;
   loggedInUserRole;
@@ -78,8 +79,11 @@ export class ProfileComponent implements OnInit {
           this.confirmPassword = loggedInUser.password;
           this.role = loggedInUser.type;
           this.phoneNum = loggedInUser.phoneNumber;
+          this.email = loggedInUser.email;
           this.image = loggedInUser.imgurl;
           this.enableEdit = true;
+
+          console.log('image '+this.image)
 
         }).then(() => {
           if (this.role === 'MODERATOR') {
@@ -106,6 +110,7 @@ export class ProfileComponent implements OnInit {
           this.confirmPassword = usr.password;
           this.role = usr.type;
           this.phoneNum = usr.phoneNumber;
+          this.email = usr.email;
           this.image = usr.imgurl;
           this.enableEdit = false;
 
@@ -242,6 +247,25 @@ export class ProfileComponent implements OnInit {
         };
       });
 
+  }
+
+  updateProfile() {
+    const user = {
+      username: this.username,
+      password: this.password,
+      email: this.email,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      phoneNumber: this.phoneNum,
+      imgurl: this.image,
+      type: this.role
+    }
+    this.userService.updateUser(this.loggedInUserId, user)
+      .then((res) => {
+        console.log('updated profile!');
+        console.log(res);
+        this.loadProfile();
+      });
   }
 
 

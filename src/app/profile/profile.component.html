@@ -24,7 +24,6 @@
   <div class="row">
     <div class="col-md-4">
       <div class="profile-img">
-        <!--<img src="{{image}}" alt="" style="width:200px;height:200px;" />-->
         <img src="{{image}}" alt="Not Found" onerror="this.src='../../assets/camera-icon.png'" style="width:200px;height:200px;" />
       </div>
     </div>
@@ -77,7 +76,7 @@
                   <div class="col-6">
                   </div>
                   <div class="col-6" *ngIf="enableEdit">
-                    <a routerLink="/" class="btn btn-block btn-dark">Edit</a>
+                    <button (click)="updateProfile()" class="btn btn-dark btn-dark">Update profile</button>
                   </div>
                 </div>
 
@@ -106,7 +105,7 @@
               <label for="username" class="col-sm-4 col-form-label">
                 Username </label>
               <div class="col-sm-8">
-                <input class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="alice">
+                <input class="form-control" disabled id="username" [(ngModel)]="username" name="username" placeholder="alice">
               </div>
             </div>
             <div class="form-group row">
@@ -138,7 +137,7 @@
               <label for="image" class="col-sm-4 col-form-label">
                 Profile image url </label>
               <div class="col-sm-8">
-                <input class="form-control" id="image" [(ngModel)]="image" name="username" placeholder="https://images.unsplash.com/photo-1488406016221-ec4788beab3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
+                <input class="form-control" id="image" [(ngModel)]="image" name="image" placeholder="https://images.unsplash.com/photo-1488406016221-ec4788beab3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
               </div>
             </div>
 

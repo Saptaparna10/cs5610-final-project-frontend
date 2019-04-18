@@ -77,4 +77,19 @@ export class UserServiceClient {
     })
       .then(response => response.json());
 
+
+  updateUser = (id, user) =>
+    fetch(this.SERVER_API_URL + `/api/user/${id}`, {
+      method: 'put',
+      body: JSON.stringify(user),
+      headers: {
+        'content-type': 'application/json',
+      },
+      credentials: 'include'
+    }).then(response => {
+        if (response.headers.get("content-type") === null) return null;
+        else return response.json()
+      }
+    );
+
 }
