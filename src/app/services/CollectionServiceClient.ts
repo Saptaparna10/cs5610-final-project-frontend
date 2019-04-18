@@ -16,19 +16,6 @@ export class CollectionServiceClient {
           } else { return response.json(); }
         }
       )
-  createRecipeList = (recipeList) =>
-    fetch(this.SERVER_API_URL + '/api/recipelist', {
-      method: 'post',
-      body: JSON.stringify(recipeList),
-      headers: {
-        'content-type': 'application/json',
-      },
-      credentials: 'include'
-    }).then(response => {
-        if (response.headers.get("content-type") === null) return null;
-        else return response.json()
-      }
-    );
 
   addRecipeToList = (listId, rid) =>
     fetch(this.SERVER_API_URL + `/api/recipelist/${listId}/recipe/${rid}`,{
@@ -46,15 +33,6 @@ export class CollectionServiceClient {
       )
   findRecipeListByModerator = (mid) =>
     fetch(this.SERVER_API_URL + `/api/moderator/${mid}/recipelist`)
-      .then(response => {
-          if (response.headers.get('content-type') === null) {
-            return null;
-          } else { return response.json(); }
-        }
-      )
-
-  findRecipeListByModandName = (mid, name) =>
-    fetch(this.SERVER_API_URL + `/api/moderator/${mid}/recipelist/${name}`)
       .then(response => {
           if (response.headers.get('content-type') === null) {
             return null;
