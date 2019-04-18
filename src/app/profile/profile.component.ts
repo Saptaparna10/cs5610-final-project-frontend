@@ -63,6 +63,7 @@ export class ProfileComponent implements OnInit {
   }
 
   loadProfile() {
+    console.log('Load profile!');
     this.userService.profile().then((res) => {
       this.loggedInUserId = res.id;
       this.loggedInUserRole = res.type;
@@ -264,6 +265,7 @@ export class ProfileComponent implements OnInit {
       .then((res) => {
         console.log('updated profile!');
         console.log(res);
+        console.log('Loading profile!');
         this.loadProfile();
       });
   }

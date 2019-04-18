@@ -58,7 +58,8 @@ export class RegisterComponent implements OnInit {
         });
       }
       else{
-        this.userService.registerUser(user).catch(
+        this.userService.registerUser(user)
+          .catch(
           error => {
             console.log(error);
             alert('Something went wrong, please try again!')
@@ -71,6 +72,7 @@ export class RegisterComponent implements OnInit {
 
         });
       }
+      this.router.navigate(['/login']);
     }
 
   }
