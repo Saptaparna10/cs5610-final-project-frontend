@@ -40,7 +40,7 @@
 
 
 </div>
-<div *ngIf="user!==null && user.type==='NORMAL'">
+<div *ngIf="user!=null && user!==null && user.type==='NORMAL'">
   <hr>
 
   <div class="container">
@@ -102,7 +102,7 @@
 
 </div>
 
-<div *ngIf="user!==null && user.type==='MODERATOR'">
+<div *ngIf="user!=null && user!==null && user.type==='MODERATOR'">
   <hr>
 
   <div class="container">
@@ -166,7 +166,7 @@
 
 
 
-<div *ngIf="user!==null && user.type==='NORMAL'">
+<div *ngIf="user!=null && user!==null && user.type==='NORMAL'">
 
   <hr>
 
@@ -178,7 +178,7 @@
         <strong>Your recent favorites</strong></h4>
       <br/>
       <br/>
-      <div class="card-deck h-100">
+      <div *ngFor="let recipe of savedRecipes" class="card-deck h-100">
         <div class="col-sm-4 ">
 
           <div class="card h-100">
@@ -186,7 +186,7 @@
             <img src="../../assets/sample-2.jpg" class="card-img-top " alt="...">
 
             <div class="card-body">
-              <h5 class="card-title">Paneer Makhni</h5>
+              <h5 class="card-title">{{recipe.name}}</h5>
               <p class="card-text"></p>
               <p class="card-text">
                 <small class="text-muted">Last updated 3 mins ago</small>
@@ -194,21 +194,6 @@
             </div>
           </div>
         </div>
-
-        <div class="col-sm-4 ">
-          <div class="card h-100">
-            <img src="../../assets/sample-2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Sambar</h5>
-              <p class="card-text"></p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-          </div>
-        </div>
-
-
       </div>
 
 
@@ -312,8 +297,8 @@
     <br/>
     <br/>
 
-    <div *ngFor="let mod of experts" class="card-deck h-100">
-      <div class="col-sm-4 mt-3">
+    <div class="card-deck h-100">
+      <div *ngFor="let mod of experts" class="col-sm-4 mt-3">
 
         <div class="card h-100">
 

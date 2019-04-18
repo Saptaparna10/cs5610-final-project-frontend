@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { YummlyServiceClient } from '../services/YummlyServiceClient';
 import { Router } from '@angular/router';
 import {UserServiceClient} from '../services/UserServiceClient';
+import {SaveServiceClient} from '../services/SaveServiceClient';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +14,20 @@ export class HomeComponent implements OnInit {
   searchTerm: String;
   experts = [];
   user;
+  savedRecipes = [];
 
-  constructor(private router: Router, private yummlyService: YummlyServiceClient, private userService: UserServiceClient) { }
+  constructor(private router: Router, private yummlyService: YummlyServiceClient, private userService: UserServiceClient, private saveService: SaveServiceClient) { }
 
   ngOnInit() {
     this.userService.profile()
-      .then((res) => this.user = res)
+      .then((res) => {
+        this.user = res;
+        this.saveService.getAllSavedRecipesByUser(this.user.id)
+          .then((recipes) => {
+            this.savedRecipes = recipes;
+            console.log('savedRecipes '+ this.savedRecipes)
+          });
+      })
     this.userService.getAllModerators()
       .then((mods) => this.experts = mods);
   }
