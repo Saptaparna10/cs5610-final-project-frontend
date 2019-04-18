@@ -30,4 +30,15 @@ export class RecipeServiceClient {
           } else { return response.json(); }
         }
       )
+
+  getRecipesFromExpertsCollections = (userId) =>
+    fetch(this.SERVER_API_URL + `/api/user/${userId}/moderator/recipes`)
+      .then(response => {
+          if (response.headers.get('content-type') === null) {
+            return null;
+          } else {
+            return response.json();
+          }
+        }
+      )
 }

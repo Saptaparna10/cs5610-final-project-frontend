@@ -52,45 +52,20 @@
       <br/>
       <br/>
       <div class="card-deck h-100">
-        <div class="col-sm-4 ">
+        <div *ngFor="let recipe of recipesFromExperts; let i=index" class="col-sm-4 ">
+          <div *ngIf="i<6">
+            <div class="card h-100">
 
-          <div class="card h-100">
+              <img src={{recipe.images}} class="card-img-top " alt="...">
 
-            <img src="../../assets/sample-1.jpg" class="card-img-top " alt="...">
-
-            <div class="card-body">
-              <h5 class="card-title">Chritsmas Cakes</h5>
-              <p class="card-text"></p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-4 ">
-          <div class="card h-100">
-            <img src="../../assets/sample-1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Hand picked Thanksgiving Brunches</h5>
-              <p class="card-text"></p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-sm-4 ">
-          <div class="card h-100">
-            <img src="../../assets/sample-1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text"></p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
+              <div class="card-body">
+                <h5 class="card-title">{{recipe.name}}</h5>
+                <p class="card-text"></p>
+                <p class="card-text">
+                  <button class="btn-secondary"><a routerLink="/recipe/{{recipe.id}}"
+                                                   class=" btn btn-secondary ">View</a></button>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -110,55 +85,28 @@
 
 
       <h4 class=" mx-auto ah-font">
-        <strong>Recipes from your collections</strong></h4>
+        <strong>Your collections</strong></h4>
       <br/>
       <br/>
       <div class="card-deck h-100">
-        <div class="col-sm-4 ">
+        <div *ngFor="let collection of collections; let i=index" class="col-sm-4 ">
+          <div *ngIf="i<6">
+            <div class="card h-100">
 
-          <div class="card h-100">
+              <img src={{collection.imageURL}} class="card-img-top " alt="...">
 
-            <img src="../../assets/sample-1.jpg" class="card-img-top " alt="...">
-
-            <div class="card-body">
-              <h5 class="card-title">Chritsmas Cakes</h5>
-              <p class="card-text"></p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-4 ">
-          <div class="card h-100">
-            <img src="../../assets/sample-1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Hand picked Thanksgiving Brunches</h5>
-              <p class="card-text"></p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-sm-4 ">
-          <div class="card h-100">
-            <img src="../../assets/sample-1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text"></p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
+              <div class="card-body">
+                <h5 class="card-title">{{collection.name}}</h5>
+                <p class="card-text"></p>
+                <p class="card-text">
+                  <button class="btn-secondary"><a routerLink="/collection/{{collection.id}}"
+                                                   class=" btn btn-secondary ">View</a></button>
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-
     </div>
   </div>
 
@@ -188,7 +136,8 @@
                 <h5 class="card-title">{{recipe.name}}</h5>
                 <p class="card-text"></p>
                 <p class="card-text">
-                  <button class="btn-secondary"><a routerLink="/recipe/{{recipe.id}}" class=" btn btn-secondary ">View</a></button>
+                  <button class="btn-secondary"><a routerLink="/recipe/{{recipe.id}}"
+                                                   class=" btn btn-secondary ">View</a></button>
                 </p>
               </div>
             </div>
