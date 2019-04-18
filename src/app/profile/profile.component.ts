@@ -28,8 +28,8 @@ export class ProfileComponent implements OnInit {
 
   //Collection attributes:
   newCollection: RecipeCollection;
-  recipeCollections : RecipeCollection[] = [];
- 
+  recipeCollections: RecipeCollection[] = [];
+
 
   tabOptions: string[] = ['Personal', 'Saved Recipes', 'Recipe lists', 'Following', 'Followers'];
   recipes: [{
@@ -39,10 +39,10 @@ export class ProfileComponent implements OnInit {
   }]
   selectedTabOption = this.tabOptions[0];
 
-  constructor(private route: ActivatedRoute, 
-    private userService: UserServiceClient, 
+  constructor(private route: ActivatedRoute,
+    private userService: UserServiceClient,
     private followService: FollowServiceClient,
-    private collectionService : CollectionServiceClient) {
+    private collectionService: CollectionServiceClient) {
     this.route.params.subscribe(
       params => {
         this.userId = params.userId;
@@ -81,6 +81,10 @@ export class ProfileComponent implements OnInit {
             console.log('I am mod..user id ' + this.loggedInUserId);
             this.followService.getFollowers(this.loggedInUserId)
               .then((res) => this.followers = res);
+            this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols) => {
+              console.log(cols);
+              this.recipeCollections = cols;
+            })
           } else {
             console.log('I am user..user id ' + this.loggedInUserId);
             this.followService.getFollowing(this.loggedInUserId)
@@ -114,10 +118,7 @@ export class ProfileComponent implements OnInit {
                   console.log('followers ' + res.length);
                   this.followers = res;
                 });
-                this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols)=>{
-                  console.log(cols);
-                  this.recipeCollections = cols;
-                })
+
             } else {
               this.selectedTabOption = this.tabOptions[1];
               console.log('I am user..user id ' + this.userId);
@@ -180,15 +181,15 @@ export class ProfileComponent implements OnInit {
     console.log("inside create coleectionnn");
     console.log(this.newCollection);
     this.collectionService.createCollection(this.newCollection, this.loggedInUserId)
-    .then((res)=>{
-      console.log(res);
-      this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols)=>{
-        console.log(cols);
-        this.recipeCollections = cols;
+      .then((res) => {
+        console.log(res);
+        this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols) => {
+          console.log(cols);
+          this.recipeCollections = cols;
+        })
+
+        //fetch all collections and reload
       })
-      
-      //fetch all collections and reload
-    })   
 
   }
 
