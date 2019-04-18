@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { UserServiceClient } from '../services/UserServiceClient';
-import { ActivatedRoute } from '@angular/router';
-import { FollowServiceClient } from '../services/FollowServiceClient';
-import { RecipeCollection } from '../models/recipe-collection.model.client';
-import { CollectionServiceClient } from '../services/CollectionServiceClient';
+import {Component, OnInit} from '@angular/core';
+import {UserServiceClient} from '../services/UserServiceClient';
+import {ActivatedRoute} from '@angular/router';
+import {FollowServiceClient} from '../services/FollowServiceClient';
+import {RecipeCollection} from '../models/recipe-collection.model.client';
+import {CollectionServiceClient} from '../services/CollectionServiceClient';
 
 @Component({
   selector: 'app-profile',
@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit {
   disableFollow;
 
   //Collection attributes:
+  collectionId: Number;
   newCollection: RecipeCollection;
   recipeCollections: RecipeCollection[] = [];
 
@@ -38,13 +39,13 @@ export class ProfileComponent implements OnInit {
     image_url: 'https://assets.epicurious.com/photos/5c8fc9eb1808bd2c8ed6ca7b/16:9/w_1280%2Cc_limit/Cook-This-Now-Torn-Tofu-Hero-Alt-05032019.jpg',
     title: 'Chicken Tikka Masala',
     description: 'This authentic Indian dish is served with ...',
-  }]
+  }];
   selectedTabOption = this.tabOptions[0];
 
   constructor(private route: ActivatedRoute,
-    private userService: UserServiceClient,
-    private followService: FollowServiceClient,
-    private collectionService: CollectionServiceClient) {
+              private userService: UserServiceClient,
+              private followService: FollowServiceClient,
+              private collectionService: CollectionServiceClient) {
     this.route.params.subscribe(
       params => {
         this.userId = params.userId;
@@ -56,7 +57,7 @@ export class ProfileComponent implements OnInit {
       image_url: 'https://assets.epicurious.com/photos/5c8fc9eb1808bd2c8ed6ca7b/16:9/w_1280%2Cc_limit/Cook-This-Now-Torn-Tofu-Hero-Alt-05032019.jpg',
       title: 'Chicken Tikka Masala',
       description: 'This authentic Indian dish is served with ...',
-    }]
+    }];
 
   }
 
@@ -68,7 +69,7 @@ export class ProfileComponent implements OnInit {
         this.userId = null;
       }
       if (this.userId == null) {
-        console.log('HERE!!')
+        console.log('HERE!!');
         this.userService.profile().then((loggedInUser) => {
           this.firstName = loggedInUser.firstName;
           this.lastName = loggedInUser.lastName;
@@ -87,7 +88,7 @@ export class ProfileComponent implements OnInit {
             this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols) => {
               console.log(cols);
               this.recipeCollections = cols;
-            })
+            });
           } else {
             console.log('I am user..user id ' + this.loggedInUserId);
             this.followService.getFollowing(this.loggedInUserId)
@@ -143,13 +144,17 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
 
+    this.clearCollectionFields();
+
+  }
+
+  clearCollectionFields(): void {
     this.newCollection = {
       id: 0,
-      name: "",
-      imageURL: "https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60",
+      name: '',
+      imageURL: 'https://images.unsplash.com/photo-1553639766-450abeeaf06d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60',
       recipes: []
-    }
-
+    };
   }
 
   follow(): void {
@@ -183,27 +188,58 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  createCollection() {
-    console.log("inside create coleectionnn");
+  createCollection(id) {
+    console.log('inside create coleectionnn ' + id);
     console.log(this.newCollection);
-    this.collectionService.createCollection(this.newCollection, this.loggedInUserId)
-      .then((res) => {
-        console.log(res);
-        this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols) => {
-          console.log(cols);
-          this.recipeCollections = cols;
-        })
+    if (id === 0) {
+      console.log('create new ' + id);
+      this.collectionService.createCollection(this.newCollection, this.loggedInUserId)
+        .then((res) => {
+          console.log(res);
+          this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols) => {
+            console.log(cols);
+            this.recipeCollections = cols;
+          });
 
-        //fetch all collections and reload
-      })
+          // fetch all collections and reload
+        });
+    } else {
+      console.log('update existing ' + id);
+      this.collectionService.updateCollection(this.newCollection, id)
+        .then((res) => {
+          console.log(res);
+          this.collectionService.findRecipeListByModerator(this.loggedInUserId)
+            .then((cols) => {
+              console.log(cols);
+              this.recipeCollections = cols;
+              this.clearCollectionFields();
+            });
+        });
+    }
+
 
   }
 
   confirmDeleteCollection(collec) {
-    var affirm = confirm("Are you sure you want to delete this collection?");
+    var affirm = confirm('Are you sure you want to delete this collection?');
     if (affirm) {
       //delete collection
     }
+  }
+
+  populate(cid) {
+    this.collectionService.findRecipeListById(cid)
+      .then((collection) => {
+        console.log('editing collection!!');
+        console.log(collection);
+        this.newCollection = {
+          id: collection.id,
+          name: collection.name,
+          imageURL: collection.imageURL,
+          recipes: collection.recipes
+        };
+      });
+
   }
 
 

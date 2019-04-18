@@ -21,6 +21,22 @@ export class CollectionServiceClient {
         else return response.json()
       }
     );
+
+  updateCollection = (collection, cid) =>
+    fetch(this.SERVER_API_URL + `/api/recipelist/${cid}`, {
+      method: 'put',
+      body: JSON.stringify(collection),
+      headers: {
+        'content-type': 'application/json',
+      },
+      credentials: 'include'
+    }).then(response => {
+        if (response.headers.get("content-type") === null) return null;
+        else return response.json()
+      }
+    );
+
+
   findRecipeforModerator = (mid, rid) =>
     fetch(this.SERVER_API_URL + `/api/moderator/${mid}/recipe/${rid}`)
       .then(response => {
@@ -41,6 +57,15 @@ export class CollectionServiceClient {
 
   findRecipeListByModerator = (mid) =>
     fetch(this.SERVER_API_URL + `/api/moderator/${mid}/recipelist`)
+      .then(response => {
+          if (response.headers.get('content-type') === null) {
+            return null;
+          } else { return response.json(); }
+        }
+      )
+
+  findRecipeListById = (cid) =>
+    fetch(this.SERVER_API_URL + `/api/recipelist/${cid}`)
       .then(response => {
           if (response.headers.get('content-type') === null) {
             return null;
