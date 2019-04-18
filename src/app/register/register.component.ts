@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   firstName: String;
   lastName: String;
   phoneNumber: Number;
+  image: String;
   role: String;
 
   constructor(private router: Router, private userService: UserServiceClient) { }
@@ -39,6 +40,7 @@ export class RegisterComponent implements OnInit {
         firstName: this.firstName,
         lastName: this.lastName,
         phoneNumber: this.phoneNumber,
+        imgurl: this.image,
         type: this.role
       }
       console.log(user);

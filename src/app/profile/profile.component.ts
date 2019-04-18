@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   confirmPassword: String;
   phoneNum: Number;
   role: String;
+  image: String;
   userId;
   loggedInUserId;
   loggedInUserRole;
@@ -29,7 +30,6 @@ export class ProfileComponent implements OnInit {
   disableFollow;
 
   //Collection attributes:
-  collectionId: Number;
   newCollection: RecipeCollection;
   recipeCollections: RecipeCollection[] = [];
 
@@ -78,6 +78,7 @@ export class ProfileComponent implements OnInit {
           this.confirmPassword = loggedInUser.password;
           this.role = loggedInUser.type;
           this.phoneNum = loggedInUser.phoneNumber;
+          this.image = loggedInUser.imgurl;
           this.enableEdit = true;
 
         }).then(() => {
@@ -105,6 +106,7 @@ export class ProfileComponent implements OnInit {
           this.confirmPassword = usr.password;
           this.role = usr.type;
           this.phoneNum = usr.phoneNumber;
+          this.image = usr.imgurl;
           this.enableEdit = false;
 
         })
