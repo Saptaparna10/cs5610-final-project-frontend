@@ -246,10 +246,16 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  confirmDeleteCollection(collec) {
-    var affirm = confirm('Are you sure you want to delete this collection?');
+  confirmDeleteCollection(cid) {
+    const affirm = confirm('Are you sure you want to delete this collection?');
     if (affirm) {
-      //delete collection
+      this.collectionService.deleteCollection(cid)
+        .then(() => {
+          this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols) => {
+            console.log(cols);
+            this.recipeCollections = cols;
+          });
+        });
     }
   }
 

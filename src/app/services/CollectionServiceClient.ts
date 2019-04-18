@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Constants } from './Constants';
+import {Injectable} from '@angular/core';
+import {Constants} from './Constants';
+
 @Injectable()
 export class CollectionServiceClient {
 
-  constructor(private constants: Constants) { }
+  constructor(private constants: Constants) {
+  }
 
   SERVER_API_URL = this.constants.SERVER_API_URL;
 
 
   createCollection = (collection, modId) =>
-    fetch(this.SERVER_API_URL + '/api/recipelist/'+ modId, {
+    fetch(this.SERVER_API_URL + '/api/recipelist/' + modId, {
       method: 'post',
       body: JSON.stringify(collection),
       headers: {
@@ -17,8 +19,8 @@ export class CollectionServiceClient {
       },
       credentials: 'include'
     }).then(response => {
-        if (response.headers.get("content-type") === null) return null;
-        else return response.json()
+        if (response.headers.get('content-type') === null) return null;
+        else return response.json();
       }
     );
 
@@ -31,8 +33,21 @@ export class CollectionServiceClient {
       },
       credentials: 'include'
     }).then(response => {
-        if (response.headers.get("content-type") === null) return null;
-        else return response.json()
+        if (response.headers.get('content-type') === null) return null;
+        else return response.json();
+      }
+    );
+
+  deleteCollection = (cId) =>
+    fetch(this.SERVER_API_URL + `/api/recipelist/${cId}`,{
+      method: 'delete',
+      headers: {
+        'content-type': 'application/json',
+      },
+      credentials: 'include'
+    }).then(response => {
+        if (response.headers.get('content-type') === null) return null;
+        else return response.json();
       }
     );
 
@@ -42,16 +57,18 @@ export class CollectionServiceClient {
       .then(response => {
           if (response.headers.get('content-type') === null) {
             return null;
-          } else { return response.json(); }
+          } else {
+            return response.json();
+          }
         }
-      )
+      );
 
   addRecipeToList = (listId, rid) =>
-    fetch(this.SERVER_API_URL + `/api/recipelist/${listId}/recipe/${rid}`,{
+    fetch(this.SERVER_API_URL + `/api/recipelist/${listId}/recipe/${rid}`, {
       method: 'put',
     }).then(response => {
-        if (response.headers.get("content-type") === null) return null;
-        else return response.json()
+        if (response.headers.get('content-type') === null) return null;
+        else return response.json();
       }
     );
 
@@ -60,25 +77,31 @@ export class CollectionServiceClient {
       .then(response => {
           if (response.headers.get('content-type') === null) {
             return null;
-          } else { return response.json(); }
+          } else {
+            return response.json();
+          }
         }
-      )
+      );
 
   findRecipeListById = (cid) =>
     fetch(this.SERVER_API_URL + `/api/recipelist/${cid}`)
       .then(response => {
           if (response.headers.get('content-type') === null) {
             return null;
-          } else { return response.json(); }
+          } else {
+            return response.json();
+          }
         }
-      )
+      );
 
   findRecipesByCollection = (cid) =>
     fetch(this.SERVER_API_URL + `/api/recipelist/${cid}/recipes`)
       .then(response => {
           if (response.headers.get('content-type') === null) {
             return null;
-          } else { return response.json(); }
+          } else {
+            return response.json();
+          }
         }
-      )
+      );
 }
