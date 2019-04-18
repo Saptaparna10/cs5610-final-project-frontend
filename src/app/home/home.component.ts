@@ -3,6 +3,7 @@ import { YummlyServiceClient } from '../services/YummlyServiceClient';
 import { Router } from '@angular/router';
 import {UserServiceClient} from '../services/UserServiceClient';
 import {SaveServiceClient} from '../services/SaveServiceClient';
+import {Recipe} from '../models/recipe.model.client';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   searchTerm: String;
   experts = [];
   user;
-  savedRecipes = [];
+  savedRecipes: Recipe[] = [];
 
   constructor(private router: Router, private yummlyService: YummlyServiceClient, private userService: UserServiceClient, private saveService: SaveServiceClient) { }
 
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
         this.saveService.getAllSavedRecipesByUser(this.user.id)
           .then((recipes) => {
             this.savedRecipes = recipes;
-            console.log('savedRecipes '+ this.savedRecipes)
+            console.log(recipes);
           });
       })
     this.userService.getAllModerators()

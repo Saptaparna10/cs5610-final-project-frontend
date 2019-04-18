@@ -165,7 +165,6 @@
 </div>
 
 
-
 <div *ngIf="user!=null && user!==null && user.type==='NORMAL'">
 
   <hr>
@@ -178,19 +177,20 @@
         <strong>Your recent favorites</strong></h4>
       <br/>
       <br/>
-      <div *ngFor="let recipe of savedRecipes" class="card-deck h-100">
-        <div class="col-sm-4 ">
+      <div class="card-deck h-100">
+        <div *ngFor="let recipe of savedRecipes; let i=index" class="col-sm-4 ">
+          <div *ngIf="i<6">
+            <div class="card h-100">
 
-          <div class="card h-100">
+              <img src={{recipe.images}} class="card-img-top " alt="...">
 
-            <img src="../../assets/sample-2.jpg" class="card-img-top " alt="...">
-
-            <div class="card-body">
-              <h5 class="card-title">{{recipe.name}}</h5>
-              <p class="card-text"></p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
+              <div class="card-body">
+                <h5 class="card-title">{{recipe.name}}</h5>
+                <p class="card-text"></p>
+                <p class="card-text">
+                  <button class="btn-secondary"><a routerLink="/recipe/{{recipe.id}}" class=" btn btn-secondary ">View</a></button>
+                </p>
+              </div>
             </div>
           </div>
         </div>
