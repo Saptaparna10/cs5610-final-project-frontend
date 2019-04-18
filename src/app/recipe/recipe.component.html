@@ -129,9 +129,17 @@
       </div>
 
       <div *ngIf="userType==='MODERATOR'" class="row d-flex d-flex justify-content-start mt-2">
-        <button class="btn btn-success" name="follow" id="follow"> <i class="fa fa-plus-square ah-icon-pr"></i>
-          Add To Collection</button>
-      </div>
+        <div *ngIf="!addToCollectionType" class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add To Collection
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <button (click)="addToCollection(recipeList)" *ngFor="let recipeList of recipeLists">{{recipeList.name}}</button>
+            <li><a href="#">Add new Collection</a></li>
+          </ul>
+        </div>
+
+
+
     </div>
   </div>
 </div>
