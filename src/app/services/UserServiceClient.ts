@@ -70,10 +70,13 @@ export class UserServiceClient {
     (this.SERVER_API_URL + '/api/profile',{
       credentials: 'include'
     }).then(response => {
-      
-      if (response.headers.get("content-type") === null) return null;
-      else return response.json()
-  })
+
+      if (response.headers.get('content-type') === null) { return null; }
+      else { return response.json(); }
+  }).catch((err) => {
+      console.log(err);
+      return null;
+    })
       //.then(response => response.json())
 
   getUserById = (userId) =>

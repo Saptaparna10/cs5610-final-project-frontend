@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { YummlyServiceClient } from '../services/YummlyServiceClient';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {YummlyServiceClient} from '../services/YummlyServiceClient';
+import {Router} from '@angular/router';
 import {UserServiceClient} from '../services/UserServiceClient';
 import {SaveServiceClient} from '../services/SaveServiceClient';
 import {Recipe} from '../models/recipe.model.client';
@@ -22,26 +22,36 @@ export class HomeComponent implements OnInit {
   collections = [];
   featuredRecipes = [];
 
-  constructor(private router: Router, private yummlyService: YummlyServiceClient, private userService: UserServiceClient, private saveService: SaveServiceClient, private recipeService: RecipeServiceClient, private collectionService: CollectionServiceClient) { }
+  constructor(private router: Router,
+              private yummlyService: YummlyServiceClient,
+              private userService: UserServiceClient,
+              private saveService: SaveServiceClient,
+              private recipeService: RecipeServiceClient,
+              private collectionService: CollectionServiceClient) {
+  }
 
   ngOnInit() {
 
     this.userService.profile()
       .then((res) => {
-        this.user = res;
-        this.saveService.getAllSavedRecipesByUser(this.user.id)
-          .then((recipes) => {
-            this.savedRecipes = recipes;
-            this.recipeService.getRecipesFromExpertsCollections(this.user.id)
-              .then((recipesFromExpert) => {
-                this.recipesFromExperts = recipesFromExpert;
-                this.collectionService.findRecipeListByModerator(this.user.id)
-                  .then((colls) => {
-                    this.collections = colls;
-                  });
-              });
-          });
-      })
+        console.log('profile');
+        console.log(res);
+        if (res !== null) {
+          this.user = res;
+          this.saveService.getAllSavedRecipesByUser(this.user.id)
+            .then((recipes) => {
+              this.savedRecipes = recipes;
+              this.recipeService.getRecipesFromExpertsCollections(this.user.id)
+                .then((recipesFromExpert) => {
+                  this.recipesFromExperts = recipesFromExpert;
+                  this.collectionService.findRecipeListByModerator(this.user.id)
+                    .then((colls) => {
+                      this.collections = colls;
+                    });
+                });
+            });
+        }
+      });
     this.collectionService.findRecipesByCollection(82)
       .then((featuredRecipes) => {
         this.featuredRecipes = featuredRecipes;
@@ -52,7 +62,7 @@ export class HomeComponent implements OnInit {
 
   search(): void {
 
-    this.router.navigate(['/search/results/'+this.searchTerm ]);
+    this.router.navigate(['/search/results/' + this.searchTerm]);
 
 
   }

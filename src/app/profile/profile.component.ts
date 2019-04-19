@@ -73,6 +73,8 @@ export class ProfileComponent implements OnInit {
     this.userService.profile().then((res) => {
       this.loggedInUserId = res.id;
       this.loggedInUserRole = res.type;
+      if (this.loggedInUserId == null)
+        this.disableFollow = true;
       if (this.loggedInUserId == this.userId) {
         this.userId = null;
       }
