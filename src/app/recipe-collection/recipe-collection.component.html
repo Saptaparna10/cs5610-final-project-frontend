@@ -27,26 +27,25 @@
 
     <div class="col-md-2">
         <div class="profile-img">
-            <img src="../../assets/home-img.jpg" alt="" style="width:100px;height:100px;" />
+            <img src={{mod.imgurl}} alt="" style="width:100px;height:100px;" />
           </div>
-          <h5>Compiled By @Username</h5>
+      <h5>Compiled By <a routerLink="/profile/{{mod.id}}">@{{mod.username}}</a></h5>
 
     </div>
     <div class="col-md-8">
 
-      <h3>The Best Thanksgiving Lunches</h3>
+      <h3>{{collection.name}}</h3>
      
 
       <div *ngFor="let recipe of recipes">
         <div>
           <div class="row">
             <div class="card-header border-0 col-3">
-              <img class="img-fluid" src={{recipe.image_url}} alt="recipe image">
+              <img class="img-fluid" src={{recipe.images}} alt="recipe image">
             </div>
 
             <div class="card-body col-9">
-              <h5 class="card-title">{{recipe.title}}</h5>
-              <p class="card-text">{{recipe.description.substring(0,200)}}...</p>
+              <h5 class="card-title">{{recipe.name}}</h5>
               <span class="btn-group ">
                   <a routerLink="/recipe/{{recipe.id}}" class="btn btn-primary">View</a>
                   <button type="button" (click)="confirmDeleteRecipe(recipe)" class="btn btn-danger">Remove </button>
