@@ -28,13 +28,12 @@
 
 }
 .hero {
-  background-image: url('../../assets/login-bkg.jpg') !important;
-  background-size: cover;
-  background-position: center center;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-
+  background-image: url('../../assets/login-bkg.jpg') ;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /*background-position: center center;*/
+  min-height: 100%;
+  /*width: 100%;*/
 }
 .ah-icon-pr{
   padding-right: 5px;

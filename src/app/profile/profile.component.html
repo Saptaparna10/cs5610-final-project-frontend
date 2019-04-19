@@ -184,8 +184,8 @@
         </div>
         <div *ngIf="selectedTabOption === tabOptions[1]" class="tab-pane active" id="profile" role="tabpanel"
              aria-labelledby="profile-tab">
-          <div *ngFor="let recipe of savedRecipes; let i=index">
-            <div *ngIf="i<5">
+          <div *ngFor="let recipe of savedRecipes">
+            <div>
               <div class="row">
                 <div class="card-header border-0 col-3">
                   <img class="img-fluid" src={{recipe.images}} alt="recipe image">
@@ -193,7 +193,7 @@
 
                 <div class="card-body col-9">
                   <h5 class="card-title">{{recipe.name}}</h5>
-                  <a routerLink="/recipe/{{recipe.id}}}" class="btn btn-secondary btn-block">View</a>
+                  <a routerLink="/recipe/{{recipe.id}}}" class="btn btn-dark btn-block">View</a>
                 </div>
               </div>
             </div>
@@ -202,8 +202,8 @@
         <div *ngIf="selectedTabOption === tabOptions[2]" class="tab-pane active" id="recipelist" role="tabpanel"
              aria-labelledby="profile-tab">
           <br/>
-          <div *ngFor="let col of recipeCollections; let i=index">
-            <div *ngIf="i<2">
+          <div *ngFor="let col of recipeCollections">
+            <div >
               <div class="row">
                 <div class="card-header border-0 col-3">
                   <img class="img-fluid" src={{col.imageURL}} alt="recipe image">
