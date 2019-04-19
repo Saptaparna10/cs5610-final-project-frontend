@@ -27,7 +27,15 @@
   justify-content: center;
 
 }
+.hero {
+  background-image: url('../../assets/login-bkg.jpg') !important;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 
+}
 .ah-icon-pr{
   padding-right: 5px;
 }
@@ -46,3 +54,4 @@
   border-bottom: 2px solid #efefef;
   margin-top:25px;
 }
+

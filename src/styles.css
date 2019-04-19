@@ -4,3 +4,8 @@ body, html {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
   }
+
+.logo {
+  height: 100px;
+  width: 150px;
+}

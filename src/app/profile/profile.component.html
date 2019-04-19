@@ -1,44 +1,50 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<header>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
 
-  <div class="text-center navbar-brand ">
-    <h4 class=" mx-auto ah-font">
-      <strong>Hello {{firstName}}!</strong></h4>
-  </div>
+    <button class="btn btn-danger" (click)="logout()">
+      <i class="fa fa-power-off" aria-hidden="true"></i>
+    </button>
+    <div class="ml-auto navbar-brand ">
+      <!--<h4 class=" mx-auto ah-font">-->
+      <!--<strong>Always Hungry</strong></h4>-->
+      <img src='../../assets/logo.png' class="logo " alt="...">
+    </div>
 
-  <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto">
 
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/profile">Profile</a>
-    </li>
-    <li class="nav-item">
-      <button class="btn btn-danger" (click)="logout()">
-        <i class="fa fa-power-off" aria-hidden="true"></i>
-      </button>
-    </li>
+      <li class="nav-item">
+        <strong><a class="nav-link" routerLink="/">Home</a></strong>
+      </li>
+      <li class="nav-item">
+        <strong><a class="nav-link" routerLink="/profile">Profile</a></strong>
+      </li>
 
-  </ul>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-</nav>
+    </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="container ah-profile-container">
+  </nav>
+</header>
+
+<div class="ah-profile-container hero">
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-3">
       <div class="profile-img">
         <img src="{{image}}" alt="Not Found" onerror="this.src='../../assets/camera-icon.png'"
              style="width:200px;height:200px;"/>
       </div>
+      <h4> <strong><i>@{{username}}</i></strong></h4>
     </div>
 
     <div class="col-md-6">
-      <h4> {{firstName}} {{lastName}}</h4>
+
 
       <div *ngIf="role==='MODERATOR' && !enableEdit && !disableFollow">
         <div *ngIf="!isFollowing; else templateName">
@@ -80,20 +86,7 @@
           <br/>
           <form>
 
-            <div class="form-group row">
-              <label class="col-sm-4 col-form-label"></label>
-              <div class="col-sm-8">
-                <div class="row">
-                  <div class="col-6">
-                  </div>
-                  <div class="col-6" *ngIf="enableEdit">
-                    <button (click)="updateProfile()" class="btn btn-dark btn-dark">Update profile</button>
-                  </div>
-                </div>
 
-
-              </div>
-            </div>
 
             <div class="form-group row">
               <label for="firstname" class="col-sm-4 col-form-label">
@@ -169,6 +162,20 @@
                 </select>
               </div>
             </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label"></label>
+              <div class="col-sm-8">
+                <div class="row">
+                  <div class="col-6">
+                  </div>
+                  <div class="col-6" *ngIf="enableEdit">
+                    <button (click)="updateProfile()" class="btn btn-dark btn-dark">Update profile</button>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
 
             <br/>
 
@@ -177,8 +184,8 @@
         </div>
         <div *ngIf="selectedTabOption === tabOptions[1]" class="tab-pane active" id="profile" role="tabpanel"
              aria-labelledby="profile-tab">
-          <div *ngFor="let recipe of savedRecipes">
-            <div>
+          <div *ngFor="let recipe of savedRecipes; let i=index">
+            <div *ngIf="i<5">
               <div class="row">
                 <div class="card-header border-0 col-3">
                   <img class="img-fluid" src={{recipe.images}} alt="recipe image">
@@ -195,8 +202,8 @@
         <div *ngIf="selectedTabOption === tabOptions[2]" class="tab-pane active" id="recipelist" role="tabpanel"
              aria-labelledby="profile-tab">
           <br/>
-          <div *ngFor="let col of recipeCollections">
-            <div>
+          <div *ngFor="let col of recipeCollections; let i=index">
+            <div *ngIf="i<2">
               <div class="row">
                 <div class="card-header border-0 col-3">
                   <img class="img-fluid" src={{col.imageURL}} alt="recipe image">
