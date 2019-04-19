@@ -72,6 +72,15 @@ export class CollectionServiceClient {
       }
     );
 
+  removeRecipeFromList = (listId, rid) =>
+    fetch(this.SERVER_API_URL + `/api/recipelist/${listId}/recipe/${rid}`, {
+      method: 'delete',
+    }).then(response => {
+        if (response.headers.get('content-type') === null) return null;
+        else return response.json();
+      }
+    );
+
   findRecipeListByModerator = (mid) =>
     fetch(this.SERVER_API_URL + `/api/moderator/${mid}/recipelist`)
       .then(response => {

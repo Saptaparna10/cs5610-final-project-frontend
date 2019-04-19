@@ -41,13 +41,23 @@ export class RecipeCollectionComponent implements OnInit {
       });
   }
 
-
-
-  confirmDeleteRecipe(recipe) {
-    var affirm = confirm('Are you sure you want to remove this recipe?');
-    if (affirm) {
-      //delete collection
-    }
+  removeRecipeFromList(listId, recipeId) {
+    this.collectionService.removeRecipeFromList(listId, recipeId)
+      .then(() => {
+          this.collectionService.findRecipesByCollection(this.collectionId)
+            .then((recipes) => {
+              this.recipes = recipes;
+            });
+        }
+      );
   }
 
-}
+
+    confirmDeleteRecipe(listId, recipeId) {
+      const affirm = confirm('Are you sure you want to remove this recipe?');
+      if (affirm) {
+        this.removeRecipeFromList(listId, recipeId);
+      }
+    }
+
+  }

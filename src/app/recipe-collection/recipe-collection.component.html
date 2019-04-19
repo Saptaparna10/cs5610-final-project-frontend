@@ -48,7 +48,7 @@
               <h5 class="card-title">{{recipe.name}}</h5>
               <span class="btn-group ">
                   <a routerLink="/recipe/{{recipe.id}}" class="btn btn-primary">View</a>
-                  <button type="button" (click)="confirmDeleteRecipe(recipe)" class="btn btn-danger">Remove </button>
+                  <button type="button" (click)="confirmDeleteRecipe(collectionId, recipe.id)" class="btn btn-danger">Remove </button>
                   
               </span>
             </div>
