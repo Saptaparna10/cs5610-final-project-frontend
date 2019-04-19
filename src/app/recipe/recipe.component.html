@@ -27,7 +27,7 @@
 
       <div class="row">
         <button type="button" class="btn btn-warning">
-           <span class="badge badge-light ah-icon-pl">{{saves.length}} </span> people saved this.
+          <span class="badge badge-light ah-icon-pl">{{saves.length}} </span> people saved this.
           <span class="sr-only">unread messages</span>
         </button>
       </div>
@@ -90,7 +90,8 @@
               <div class="mr-5">
                 <div class="row"> <img src="../../assets/sample-2.jpg" alt="" class="ah-fit-img-comment">
                 </div>
-                <div class="row d-flex align-items-end"> <strong class="text-success">@{{comment.user.username}}</strong></div>
+                <div class="row d-flex align-items-end"> <strong
+                    class="text-success">@{{comment.user.username}}</strong></div>
               </div>
               <div class="media-body">
                 <span class="text-muted d-flex justify-content-end">
@@ -100,11 +101,12 @@
 
                 {{comment.content}}
                 <div *ngIf="comment.user.id===userId">
-                  <button style="float:right" type="button" class="btn btn-danger" (click)='deleteComment(comment.id)'>Delete</button>
-              </div>
+                  <button style="float:right" type="button" class="btn btn-danger"
+                    (click)='deleteComment(comment.id)'>Delete</button>
+                </div>
               </div>
             </li>
-         
+
           </ul>
 
 
@@ -117,33 +119,37 @@
 
       <div *ngIf="userType==='NORMAL'" class="row d-flex d-flex justify-content-start mt-2">
         <div *ngIf="savesByCurrUser.length===0; else templateName">
-          <button class="btn btn-primary" name="undoSave" id="undoSave" (click)="saveRecipe()" > <i class="fas fa-bookmark ah-icon-pr"></i>
+          <button class="btn btn-primary" name="undoSave" id="undoSave" (click)="saveRecipe()"> <i
+              class="fas fa-bookmark ah-icon-pr"></i>
             Save</button>
         </div>
 
         <ng-template #templateName>
-          <button class="btn btn-info" name="save" id="save" (click)="undoSaveRecipe(saveId)" > <i class="fas fa-bookmark ah-icon-pr"></i>
-          Undo Save</button>
+          <button class="btn btn-info" name="save" id="save" (click)="undoSaveRecipe(saveId)"> <i
+              class="fas fa-bookmark ah-icon-pr"></i>
+            Undo Save</button>
         </ng-template>
 
       </div>
 
       <div *ngIf="userType==='MODERATOR'" class="row d-flex d-flex justify-content-start mt-2">
-        <div *ngIf="!addToCollectionType" class="dropdown">
+        <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add To Collection
             <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li *ngFor="let recipeList of recipeLists">
-              <button class="btn-primary" (click)="addToCollection(recipeList)">{{recipeList.name}}</button>
-            </li>
-            <li><a href="#">Add new Collection</a></li>
-          </ul>
+          <div class="dropdown-menu">
+
+            <button *ngFor="let recipeList of recipeLists" class="dropdown-item"
+              (click)="addToCollection(recipeList)">{{recipeList.name}}</button>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item " href="#">Create New Collection</a>
+          </div>
         </div>
 
+      </div>
     </div>
   </div>
 </div>
-
 <footer class="py-3 mt-5 bg-dark">
   <div class="container">
     <p class="m-0 text-white text-center ">Created by <i>Always Hungry Team 2019 </i></p>
