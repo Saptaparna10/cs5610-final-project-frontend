@@ -1,5 +1,5 @@
 <header>
-<nav class="navbar navbar-expand-md header-bg">
+<nav class="navbar navbar-expand-md header-bg ah-font-nav">
 
   <button class="btn btn-danger" (click)="logout()">
     <i class="fa fa-power-off" aria-hidden="true"></i>
@@ -54,16 +54,16 @@
 <br/>
 <div *ngIf="user!=null && user!==null && user.type==='NORMAL' && recipesFromExperts.length>0">
 
-  <div class="container">
+  <div class="container ah-font">
     <div class="row">
 
 
-      <h4 class=" mx-auto ah-font">
+      <h4 class=" mx-auto ah-font-h">
         <strong>Collections from experts you follow</strong></h4>
       <br/>
       <br/>
       <div class="card-deck h-100">
-        <div *ngFor="let recipe of recipesFromExperts; let i=index" class="col-sm-4 ">
+        <div *ngFor="let recipe of recipesFromExperts; let i=index" class="col-sm-4 mt-3">
           <div *ngIf="i<6">
             <div class="card h-100">
 
@@ -73,8 +73,8 @@
                 <h5 class="card-title">{{recipe.name}}</h5>
                 <p class="card-text"></p>
                 <p class="card-text">
-                  <button class="btn-secondary"><a routerLink="/recipe/{{recipe.id}}"
-                                                   class=" btn btn-secondary ">View</a></button>
+                  <a routerLink="/recipe/{{recipe.id}}"
+                                                   class=" btn btn-secondary ">View</a>
                 </p>
               </div>
             </div>
@@ -95,12 +95,12 @@
   <div class="container">
     <div class="row">
 
-      <h4 class=" mx-auto ah-font">
+      <h4 class=" mx-auto ah-font-h">
         <strong>Your collections</strong></h4>
       <br/>
       <br/>
       <div class="card-deck h-100">
-        <div *ngFor="let collection of collections; let i=index" class="col-sm-4 ">
+        <div *ngFor="let collection of collections; let i=index" class="col-sm-4  mt-3">
           <div *ngIf="i<6">
             <div class="card h-100">
 
@@ -110,8 +110,8 @@
                 <h5 class="card-title">{{collection.name}}</h5>
                 <p class="card-text"></p>
                 <p class="card-text">
-                  <button class="btn-secondary"><a routerLink="/collection/{{collection.id}}"
-                                                   class=" btn btn-secondary ">View</a></button>
+                 <a routerLink="/collection/{{collection.id}}"
+                                                   class=" btn btn-secondary ">View</a>
                 </p>
               </div>
             </div>
@@ -134,12 +134,12 @@
     <div class="row">
 
 
-      <h4 class=" mx-auto ah-font">
+      <h4 class=" mx-auto ah-font-h">
         <strong>Your recent favorites</strong></h4>
       <br/>
       <br/>
       <div class="card-deck h-100">
-        <div *ngFor="let recipe of savedRecipes; let i=index" class="col-sm-4 ">
+        <div *ngFor="let recipe of savedRecipes; let i=index" class="col-sm-4 mt-3">
           <div *ngIf="i<6">
             <div class="card h-100">
 
@@ -149,8 +149,8 @@
                 <h5 class="card-title">{{recipe.name}}</h5>
                 <p class="card-text"></p>
                 <p class="card-text">
-                  <button class="btn-secondary"><a routerLink="/recipe/{{recipe.id}}"
-                                                   class=" btn btn-secondary ">View</a></button>
+                  <a routerLink="/recipe/{{recipe.id}}"
+                                                   class=" btn btn-secondary ">View</a>
                 </p>
               </div>
             </div>
@@ -173,12 +173,12 @@
     <div class="row">
 
 
-      <h4 class=" mx-auto ah-font">
+      <h4 class=" mx-auto ah-font-h">
         <strong>Featured Recipes</strong></h4>
       <br/>
       <br/>
       <div class="card-deck h-100">
-        <div *ngFor="let recipe of featuredRecipes; let i=index" class="col-sm-4 ">
+        <div *ngFor="let recipe of featuredRecipes; let i=index" class="col-sm-4 mt-3 ">
           <div *ngIf="i<6">
             <div class="card h-100">
 
@@ -188,8 +188,8 @@
                 <h5 class="card-title">{{recipe.name}}</h5>
                 <p class="card-text"></p>
                 <p class="card-text">
-                  <button class="btn-secondary"><a routerLink="/recipe/{{recipe.id}}"
-                                                   class=" btn btn-secondary ">View</a></button>
+                  <a routerLink="/recipe/{{recipe.id}}"
+                                                   class=" btn btn-secondary ">View</a>
                 </p>
               </div>
             </div>
@@ -211,7 +211,7 @@
     <div class="row">
 
 
-      <h4 class=" mx-auto ah-font">
+      <h4 class=" mx-auto ah-font-h">
         <strong>Meet our experts</strong></h4>
       <br/>
       <br/>

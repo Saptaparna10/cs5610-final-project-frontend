@@ -33,11 +33,22 @@
     object-fit: cover;
  }
 
- .ah-font{
+ .ah-font-h{
     font-size: 28px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
     color: black
  }
+ .ah-font-nav{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+ }
+
+ .ah-font{ 
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+  color: black
+}
+
+ 
 
 .header-bg {
   background-color: white;
