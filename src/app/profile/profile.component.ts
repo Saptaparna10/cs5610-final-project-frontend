@@ -75,8 +75,11 @@ export class ProfileComponent implements OnInit {
       if (res == null && this.userId == null) {
         this.router.navigate(['/login']);
       }
-      this.loggedInUserId = res.id;
-      this.loggedInUserRole = res.type;
+      if (res !== null) {
+        this.loggedInUserId = res.id;
+        this.loggedInUserRole = res.type;
+      }
+
       if (this.loggedInUserId == null)
         this.disableFollow = true;
       if (this.loggedInUserId == this.userId) {
