@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CollectionServiceClient} from '../services/CollectionServiceClient';
+import {UserServiceClient} from '../services/UserServiceClient';
 
 @Component({
   selector: 'app-recipe-collection',
@@ -13,12 +14,13 @@ export class RecipeCollectionComponent implements OnInit {
   mod;
   collection;
   recipes: [];
+  enableRemove: Boolean;
 
 
   constructor(private route: ActivatedRoute,
-              private collectionService: CollectionServiceClient) {
+              private collectionService: CollectionServiceClient,
+              private userService: UserServiceClient) {
     this.recipes = [];
-
 
   }
 
@@ -35,6 +37,12 @@ export class RecipeCollectionComponent implements OnInit {
                 this.collectionService.findRecipeListById(this.collectionId)
                   .then((coll) => {
                     this.collection = coll;
+                    this.userService.profile()
+                      .then((loggedInUser) => {
+                        if (loggedInUser !== null && loggedInUser.id === this.mod.id) {
+                          this.enableRemove = true;
+                        }
+                      });
                   });
               });
           });

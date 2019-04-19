@@ -5,7 +5,6 @@
       <strong>Always Hungry</strong></h4>
   </a>
 
- 
 
   <ul class="navbar-nav ml-auto">
 
@@ -15,7 +14,7 @@
 
   </ul>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -26,16 +25,16 @@
   <div class="row">
 
     <div class="col-md-2">
-        <div class="profile-img">
-            <img src={{mod.imgurl}} alt="" style="width:100px;height:100px;" />
-          </div>
+      <div class="profile-img">
+        <img src={{mod.imgurl}} alt="" style="width:100px;height:100px;"/>
+      </div>
       <h5>Compiled By <a routerLink="/profile/{{mod.id}}">@{{mod.username}}</a></h5>
 
     </div>
     <div class="col-md-8">
 
       <h3>{{collection.name}}</h3>
-     
+
 
       <div *ngFor="let recipe of recipes">
         <div>
@@ -48,8 +47,9 @@
               <h5 class="card-title">{{recipe.name}}</h5>
               <span class="btn-group ">
                   <a routerLink="/recipe/{{recipe.id}}" class="btn btn-primary">View</a>
+                <div *ngIf="enableRemove">
                   <button type="button" (click)="confirmDeleteRecipe(collectionId, recipe.id)" class="btn btn-danger">Remove </button>
-                  
+                </div>
               </span>
             </div>
           </div>
@@ -57,16 +57,14 @@
       </div>
 
       <div *ngIf="recipes.length===0" class="row  ah-bg-gray mt-3">
-       
+
 
         <div class="card-body col-9">
           <h5 class="card-title">No Recipes in this collection!</h5>
-                
+
         </div>
       </div>
 
-    
-     
 
     </div>
 
