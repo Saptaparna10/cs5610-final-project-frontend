@@ -1,38 +1,39 @@
 .hero {
-    background-image: url('../../assets/login-bkg.jpg') !important;
-    background-size: cover;
-    background-position: center center;
-    height: 100%;
-    width: 100%;   
-    text-align:center; 
-  }
+  background-image: url('../../assets/login-bkg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /*background-position: center center;*/
+  min-height: 100%;
+  /*width: 100%;*/
+}
 
-  .container {
-  
-    /* background-color: #f7f9fb; */
-    /* background: rgba(241, 245, 241, 0.3); */
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 60%;
-    height: 80%;
-    transform: translate(-50%, -50%);
-    text-align:left; 
-   
-  }
+.container {
 
-  .ah-font{
-    font-size: 28px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
-    color: black
- }
+  /* background-color: #f7f9fb; */
+  /* background: rgba(241, 245, 241, 0.3); */
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  text-align: left;
 
- .ah-font-sm{
-    font-size: 20px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
-    color: black
- }
- label{
-    padding-right:10px;
+}
+
+.ah-font {
+  font-size: 28px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black
+}
+
+.ah-font-sm {
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black
+}
+
+label {
+  padding-right: 10px;
 }
