@@ -36,11 +36,13 @@
 
     </div>
     <div class="col-md-3">
-      <div class="profile-img">
+      <div class="polaroid">
         <img src="{{image}}" alt="Not Found" onerror="this.src='../../assets/camera-icon.png'"
-             style="width:200px;height:200px;"/>
+             style="width:100%"/>
+        <div class="name">
+          <h4> <strong><i>@{{username}}</i></strong></h4>
+        </div>
       </div>
-      <h4> <strong><i>@{{username}}</i></strong></h4>
     </div>
 
     <div class="col-md-6">
@@ -213,7 +215,7 @@
                   <h5 class="card-title">{{col.name}}</h5>
                   <p class="card-text">optional desciprtion...</p>
 
-                  <a routerLink="/" class="btn btn-primary">View</a>
+                  <a routerLink="/collection/{{col.id}}" class="btn btn-primary">View</a>
 
                   <div *ngIf="enableEdit">
                   <span class="btn-group float-right">

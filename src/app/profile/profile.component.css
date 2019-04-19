@@ -54,3 +54,24 @@
   margin-top:25px;
 }
 
+div.polaroid {
+  width: 80%;
+  background-color: #fff3cd;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  border-radius: 8px;
+}
+
+div.name {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+

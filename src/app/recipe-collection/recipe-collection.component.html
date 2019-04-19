@@ -48,7 +48,7 @@
               <h5 class="card-title">{{recipe.title}}</h5>
               <p class="card-text">{{recipe.description.substring(0,200)}}...</p>
               <span class="btn-group ">
-                  <a routerLink="/" class="btn btn-primary">View</a>
+                  <a routerLink="/recipe/{{recipe.id}}" class="btn btn-primary">View</a>
                   <button type="button" (click)="confirmDeleteRecipe(recipe)" class="btn btn-danger">Remove </button>
                   
               </span>

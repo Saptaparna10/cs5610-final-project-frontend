@@ -71,6 +71,10 @@ export class ProfileComponent implements OnInit {
   loadProfile() {
     console.log('Load profile!');
     this.userService.profile().then((res) => {
+      /* anonymous check */
+      if (res == null && this.userId == null) {
+        this.router.navigate(['/login']);
+      }
       this.loggedInUserId = res.id;
       this.loggedInUserRole = res.type;
       if (this.loggedInUserId == null)
