@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CollectionServiceClient} from '../services/CollectionServiceClient';
 import {UserServiceClient} from '../services/UserServiceClient';
+import {Recipe} from '../models/recipe.model.client';
 
 @Component({
   selector: 'app-recipe-collection',
@@ -13,15 +14,21 @@ export class RecipeCollectionComponent implements OnInit {
   collectionId;
   mod;
   collection;
-  recipes: [];
+  recipes: Recipe[] = [];
   enableRemove: Boolean;
 
 
   constructor(private route: ActivatedRoute,
               private collectionService: CollectionServiceClient,
               private userService: UserServiceClient) {
-    this.recipes = [];
-
+    this.mod = {
+      id: String,
+      username: String,
+      name: String
+    };
+    this.collection = {
+      name: String
+    };
   }
 
   ngOnInit() {
