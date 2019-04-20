@@ -31,6 +31,15 @@ export class RecipeCollectionComponent implements OnInit {
     this.collection = {
       name: String
     };
+
+    this.userService.profile()
+      .then((loggededInUser) => {
+        if (loggededInUser == null) {
+          this.router.navigate(['/login']);
+        }
+        this.loggedInUser = loggededInUser;
+      });
+
   }
 
   ngOnInit() {
