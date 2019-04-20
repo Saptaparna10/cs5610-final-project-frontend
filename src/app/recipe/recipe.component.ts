@@ -30,6 +30,7 @@ export class RecipeComponent implements OnInit {
   recipe: Recipe;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private commentService: CommentServiceClient,
               private saveService: SaveServiceClient,
               private userService: UserServiceClient,
@@ -223,6 +224,13 @@ export class RecipeComponent implements OnInit {
           });
       });
 
+  }
+
+  logout(): void {
+    this.userService.logout()
+      .then(() => {
+        this.router.navigate(['/login']);
+      });
   }
 
 }
