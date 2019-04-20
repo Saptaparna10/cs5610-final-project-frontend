@@ -207,7 +207,7 @@
                 </div>
 
                 <div class="card-body col-9">
-                  <h5 class="card-title">{{recipe.name}}</h5>
+                  <h4 class="card-title">{{recipe.name}}</h4>
                   <a routerLink="/recipe/{{recipe.id}}}" class="btn btn-dark btn-block">View</a>
                 </div>
               </div>
@@ -221,12 +221,11 @@
             <div >
               <div class="row">
                 <div class="card-header border-0 col-3">
-                  <img class="img-fluid" src={{col.imageURL}} alt="recipe image">
+                  <img class="collection-img" src={{col.imageURL}} alt="recipe image">
                 </div>
 
                 <div class="card-body col-9">
-                  <h5 class="card-title">{{col.name}}</h5>
-                  <p class="card-text">optional desciprtion...</p>
+                  <h4 class="card-title">{{col.name}}</h4>
 
                   <a routerLink="/collection/{{col.id}}" class="btn btn-primary">View</a>
 
@@ -314,7 +313,7 @@
                 <div class="row">
                   <div class="card-header border-0 col-3">
                     <img src="{{user.imgurl}}}" alt="Not Found" onerror="this.src='../../assets/camera-icon.png'"
-                         class="card-img-top "/>
+                         class="ah-fit-img-comment "/>
                   </div>
 
                   <div class="card-body col-9">
@@ -339,7 +338,7 @@
                 <div class="row">
                   <div class="card-header border-0 col-3">
                     <img src="{{user.imgurl}}}" alt="Not Found" onerror="this.src='../../assets/camera-icon.png'"
-                         class="card-img-top "/>
+                         class="ah-fit-img-comment "/>
                   </div>
 
                   <div class="card-body col-9">

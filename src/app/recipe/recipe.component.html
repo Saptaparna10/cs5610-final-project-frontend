@@ -104,10 +104,11 @@
             <li class="media" *ngFor="let comment of comments">
 
               <div class="mr-5">
-                <div class="row"> <img src="../../assets/sample-2.jpg" alt="" class="ah-fit-img-comment">
+                <div class="row"> <img src="{{comment.user.imgurl}}" alt="" class="ah-fit-img-comment">
                 </div>
-                <div class="row d-flex align-items-end"> <strong
-                    class="text-success">@{{comment.user.username}}</strong></div>
+                <div class="row d-flex align-items-end">
+                  <a routerLink="/profile/{{comment.user.id}}" >
+                    <strong class="text-success">@{{comment.user.username}}</strong></a></div>
               </div>
               <div class="media-body">
                 <span class="text-muted d-flex justify-content-end">
