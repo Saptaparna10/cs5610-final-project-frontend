@@ -25,11 +25,11 @@
             Profile
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a *ngIf="user == null" class="dropdown-item" routerLink="/login">Login</a>
-            <a *ngIf="user == null" class="dropdown-item" routerLink="/register">Register</a>
-            <a *ngIf="user != null" class="dropdown-item" routerLink="/profile">My Profile</a>
-            <div *ngIf="user != null" class="dropdown-divider"></div>
-            <button *ngIf="user != null" class="dropdown-item" (click)="logout()">Logout</button>
+            <a *ngIf="loggedInUser == null" class="dropdown-item" routerLink="/login">Login</a>
+            <a *ngIf="loggedInUser == null" class="dropdown-item" routerLink="/register">Register</a>
+            <a *ngIf="loggedInUser != null" class="dropdown-item" routerLink="/profile">My Profile</a>
+            <div *ngIf="loggedInUser != null" class="dropdown-divider"></div>
+            <button *ngIf="loggedInUser != null" class="dropdown-item" (click)="logout()">Logout</button>
           </div>
         </li>
   
