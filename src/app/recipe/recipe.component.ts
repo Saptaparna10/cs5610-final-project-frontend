@@ -95,13 +95,29 @@ export class RecipeComponent implements OnInit {
   }
 
   addToCollection = (recipeList) => {
-    this.collectionServiceClient.addRecipeToList(recipeList.id, this.recipeId).then(
-      collection => {
-        alert('Recipe added to ' + recipeList.name);
-        this.addToCollectionType = true;
-      }
-    );
-  };
+    this.recipeServiceClient.findRecipeById(this.recipeId)
+      .then((recipe) => {
+        if (recipe == null) {
+          this.recipeServiceClient.addRecipe(this.recipe)
+            .then((addedRecipe) => {
+              this.recipe = addedRecipe;
+              this.collectionServiceClient.addRecipeToList(recipeList.id, this.recipeId).then(
+                collection => {
+                  alert('Recipe added to ' + recipeList.name);
+                  this.addToCollectionType = true;
+                }
+              );
+            });
+        } else {
+          this.collectionServiceClient.addRecipeToList(recipeList.id, this.recipeId).then(
+            collection => {
+              alert('Recipe added to ' + recipeList.name);
+              this.addToCollectionType = true;
+            }
+          );
+        }
+      });
+  }
 
   initVariables() {
     this.saves = [];
