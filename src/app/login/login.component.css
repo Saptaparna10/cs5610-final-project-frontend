@@ -27,6 +27,15 @@
     color: black
  }
 
+ .ah-font-nav{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  color: black;
+ }
+ .nav-link{
+  color: black;
+}
+
  .ah-font-sm{
     font-size: 18px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
