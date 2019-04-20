@@ -3,10 +3,6 @@
     border-color: black;
 }
 
-.ah-mt-10{
-    margin-top: 100px;
-}
-
 .ah-font{
     
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
@@ -24,8 +20,16 @@
 
  .ah-h-100{
     height: 100%;
-    /* width: 100%; */
-    /* margin-left: 0px;
-    margin-right: 0px; */
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
 
+}
+
+.hero {
+  background-image: url('../../assets/login-bkg.jpg') !important;
+  background-position: center center;
+  min-height: 100%;
+  width: 100%;
+  background-size: cover;
 }
