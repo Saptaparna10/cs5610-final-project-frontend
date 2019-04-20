@@ -1,17 +1,18 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light bg-light ">
-
+      <a routerLink="/"> <img src='../../assets/logo.png' class="logo" style=" height: 35px; width: 150px;" alt="..."></a>
+  
     <div class="ml-auto navbar-brand text-center">
       <!--<h4 class=" mx-auto ah-font">-->
       <!--<strong>Always Hungry</strong></h4>-->
-      <img src='../../assets/ah-logo.jpeg' class="logo " alt="...">
+     
     </div>
 
     <ul class="navbar-nav ml-auto">
 
-      <li class="nav-item">
-        <h5><strong class="ah-font"><a class="nav-link" routerLink="/">Home</a></strong></h5>
-      </li>
+        <li class="nav-item">
+            <h5><strong class="ah-font-nav"><a class="nav-link" routerLink="/login">Login</a></strong></h5>
+          </li>
 
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -118,7 +119,7 @@
               Normal
             </option>
             <option value="MODERATOR">
-              Moderator
+              Expert (may require additional background check)
             </option>
 
           </select>
