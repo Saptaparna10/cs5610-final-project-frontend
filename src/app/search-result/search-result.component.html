@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <ul class="navbar-nav ml-auto">
+  <ul class="navbar-nav ml-auto ">
 
       <li class="nav-item dropdown">
           <a class="btn  btn-outline-secondary dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -56,7 +56,7 @@
     <div class="col-md-8">
 
 
-        <div class="row  ah-bg-gray mt-3" *ngFor="let recipe of results">
+        <div class="row  ah-bg-gray mt-3" *ngFor="let recipe of results  | paginate: { itemsPerPage: 10, currentPage: pageNumber, totalItems: totalResultCount }">
             <div class="card-header border-0 col-3">
               <img class="img-fluid ah-img-thumbnail" src={{recipe.imageUrlsBySize[90]}} alt="recipe image">
             </div>
@@ -68,6 +68,7 @@
             </div>
           </div>
 
+
       <div *ngIf="results.length===0" class="row  ah-bg-gray mt-3">
        
 
@@ -78,8 +79,9 @@
         </div>
       </div>
 
+      <br/>
     
-     
+     <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
 
     </div>
 

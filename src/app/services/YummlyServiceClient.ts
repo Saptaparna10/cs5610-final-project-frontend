@@ -9,16 +9,19 @@ export class YummlyServiceClient {
     Y_BASE_SEARCH_URL = 'http://api.yummly.com/v1/api/recipes?_app_id=' + this.constants.YUMMLY_APP_ID +
         '&_app_key=' + this.constants.YUMMLY_APP_KEY + '&';
 
+    Y_REQUIRE_PICS = '&requirePictures=true';
+    Y_PAGI_MAX_RESULT = '&maxResult=10';
+    Y_PAGI_RESULT_START = '&start=';
     Y_BASE_GET_RECIPE_BEGIN = 'http://api.yummly.com/v1/api/recipe/';
 
     Y_BASE_GET_RECIPE_END = '?_app_id=' + this.constants.YUMMLY_APP_ID + '&_app_key=' + this.constants.YUMMLY_APP_KEY;
 
 
     //EXAMPLE: http://api.yummly.com/v1/api/recipes?_app_id=YOUR_ID&_app_key=YOUR_APP_KEY&q=onion+soup
-    searchRecipeByTerm = searchTerm =>
+    searchRecipeByTerm = (searchTerm, newStartIndex) =>
 
-        // 'q=onion+soup'
-        fetch(this.Y_BASE_SEARCH_URL + 'q=' + searchTerm).then(response => {
+
+        fetch(this.Y_BASE_SEARCH_URL + 'q=' + searchTerm + this.Y_REQUIRE_PICS + this.Y_PAGI_MAX_RESULT + this.Y_PAGI_RESULT_START + newStartIndex).then(response => {
             console.log(response);
             if (response.headers.get("content-type") === null) return null;
             else return response.json()

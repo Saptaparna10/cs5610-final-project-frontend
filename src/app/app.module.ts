@@ -20,6 +20,7 @@ import {FollowServiceClient} from './services/FollowServiceClient';
 import { RecipeCollectionComponent } from './recipe-collection/recipe-collection.component';
 import { CollectionServiceClient } from './services/CollectionServiceClient';
 import {RecipeServiceClient} from './services/RecipeServiceClient';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {RecipeServiceClient} from './services/RecipeServiceClient';
     BrowserModule,
     AppRoutingModule,
     routing,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
 
   providers: [UserServiceClient, CommentServiceClient, SaveServiceClient, CollectionServiceClient, FollowServiceClient,

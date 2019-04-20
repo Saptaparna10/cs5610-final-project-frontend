@@ -13,6 +13,9 @@ export class SearchResultComponent implements OnInit {
   searchTerm: String;
   results: [];
   loggedInUser;
+  pageNumber: number = 1;
+  totalResultCount: number = 0;
+  resultStartIndex : number = 0;
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -36,16 +39,25 @@ export class SearchResultComponent implements OnInit {
 
   search(): void {
 
-    this.yummlyService.searchRecipeByTerm(this.searchTerm).then((searchResult) => {
+    this.yummlyService.searchRecipeByTerm(this.searchTerm, this.resultStartIndex).then((searchResult) => {
 
       if (searchResult != null && searchResult.matches != null) {
         this.results = searchResult.matches;
-        console.log(this.results);
+        this.totalResultCount = searchResult.totalMatchCount;
+        console.log(searchResult);
       }
 
     });
 
 
+  }
+
+  pageChanged(newPageNumber){
+
+    console.log(newPageNumber);
+    this.resultStartIndex = (newPageNumber-1)*10;
+    this.pageNumber = newPageNumber;
+    this.search();
   }
 
   logout(): void {
