@@ -51,3 +51,12 @@
 .dropdown-menu :hover  { 
     background-color: rgba(194, 194, 194, 0.555); 
 }
+
+.hero {
+  background-image: url('../../assets/login-bkg.jpg') !important;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+  text-align:center;
+}
