@@ -91,7 +91,7 @@
         <hr>
         <div class="ah-comments-div">
 
-          <div *ngIf="userType==='ANON'"> Please login to view of post comments. </div>
+          <div *ngIf="userType==='ANON'"> Please login to view or post comments. </div>
 
           <textarea *ngIf="userType==='NORMAL'" class="form-control" id='comment' name="comment" [(ngModel)]="content"
             placeholder="Write a comment..." rows="3"></textarea>
