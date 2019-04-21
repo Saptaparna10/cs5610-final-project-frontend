@@ -58,12 +58,15 @@
   <div class="container ah-font">
     <div class="row">
 
-
-      <h4 class=" mx-auto ah-font-h">
-        <strong>Collections from experts you follow</strong></h4>
+        <div class="container text-center"> 
+          <h4 class=" mx-auto ah-font-h">
+            <strong>Collections from experts you follow</strong>
+          </h4>
+           </div>
+     
       <br />
       <br />
-      <div class="card-deck h-100">
+      <div class="container card-deck h-100">
         <div *ngFor="let recipe of recipesFromExperts; let i=index" class="col-sm-4 mt-3">
           <div *ngIf="i<6">
             <div class="card h-100">
@@ -97,11 +100,15 @@
   <div class="container">
     <div class="row">
 
-      <h4 class=" mx-auto ah-font-h">
-        <strong>Your collections</strong></h4>
+        <div class="container text-center"> 
+            <h4 class=" mx-auto ah-font-h">
+              <strong>Your collections</strong>
+            </h4>
+             </div>
+     
       <br />
       <br />
-      <div class="card-deck h-100">
+      <div class="container card-deck h-100">
         <div *ngFor="let collection of collections; let i=index" class="col-sm-4  mt-3">
           <div *ngIf="i<6">
             <div class="card h-100">
@@ -136,12 +143,13 @@
   <div class="container">
     <div class="row">
 
-
-      <h4 class=" mx-auto ah-font-h">
-        <strong>Your recent favorites</strong></h4>
+        <div class="container text-center"> <h4 class=" mx-auto ah-font-h">
+            <strong>Your recent favorites</strong></h4>
+           </div>
+     
       <br />
       <br />
-      <div class="card-deck h-100">
+      <div class="container card-deck h-100">
         <div *ngFor="let recipe of savedRecipes; let i=index" class="col-sm-4 mt-3">
           <div *ngIf="i<6">
             <div class="card h-100">
@@ -178,13 +186,16 @@
 
   <div class="container" *ngIf="featuredRecipes.length>0">
     <div class="row">
+        <div class="container text-center"> 
+            <h4 class=" mx-auto ah-font-h">
+              <strong>Featured Recipes</strong>
+            </h4>
+             </div>
 
-
-      <h4 class=" mx-auto ah-font-h">
-        <strong>Featured Recipes</strong></h4>
+      
       <br />
       <br />
-      <div class="card-deck h-100">
+      <div class="container card-deck h-100">
         <div *ngFor="let recipe of featuredRecipes; let i=index" class="col-sm-4 mt-3 ">
           <div *ngIf="i<6">
             <div class="card h-100">
@@ -215,14 +226,17 @@
 
   <div class="container">
     <div class="row">
+        <div class="container text-center"> 
+            <h4 class=" mx-auto ah-font-h">
+              <strong>Meet our experts</strong>
+            </h4>
+             </div>
 
-
-      <h4 class=" mx-auto ah-font-h">
-        <strong>Meet our experts</strong></h4>
+    
       <br />
       <br />
 
-      <div class="card-deck h-100">
+      <div class="container card-deck h-100">
         <div *ngFor="let mod of experts; let i=index" class="col-sm-4 mt-3">
           <div *ngIf="i<6">
             <div class="card h-100">
