@@ -39,7 +39,11 @@ export class RecipeComponent implements OnInit {
               private recipeServiceClient: RecipeServiceClient) {
 
 
-    this.route.params.subscribe(params => this.recipeId = params.recipeId);
+                
+    this.route.params.subscribe(params =>{
+      console.log(params.recipeId);
+      this.recipeId = params.recipeId;
+    });
     //this.loadRecipe();
     this.initVariables();
   }

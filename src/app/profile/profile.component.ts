@@ -168,7 +168,7 @@ export class ProfileComponent implements OnInit {
                   console.log('following ' + res.length);
                   this.following = res;
                   this.saveService.getAllSavedRecipesByUser(this.userId)
-                    .then((savedRecipes) => this.savedRecipes = savedRecipes);
+                    .then((savedRecipes) =>{console.log(savedRecipes); this.savedRecipes = savedRecipes});
                 });
             }
           });

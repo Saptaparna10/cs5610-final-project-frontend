@@ -80,7 +80,7 @@
         </div>
         <hr>
         <div class="ah-directions-div">
-          Check out the directions for this recipe <a [href]="recipe.sourceRecipeUrl">{{recipe.sourceDisplayName}}</a>
+          Check out the directions for this recipe at <a [href]="recipe.sourceRecipeUrl">{{recipe.sourceDisplayName}}</a>
         </div>
       </section>
 
@@ -90,6 +90,8 @@
         </div>
         <hr>
         <div class="ah-comments-div">
+
+          <div *ngIf="userType==='ANON'"> Please login to view of post comments. </div>
 
           <textarea *ngIf="userType==='NORMAL'" class="form-control" id='comment' name="comment" [(ngModel)]="content"
             placeholder="Write a comment..." rows="3"></textarea>
@@ -104,7 +106,7 @@
             <li class="media" *ngFor="let comment of comments">
 
               <div class="mr-5">
-                <div class="row"> <img src="{{comment.user.imgurl}}" alt="" class="ah-fit-img-comment">
+                <div class="row"> <img src="{{comment.user.imgurl}}" style=" border-radius:50%" alt="" class="ah-fit-img-comment">
                 </div>
                 <div class="row d-flex align-items-end">
                   <a routerLink="/profile/{{comment.user.id}}" >
