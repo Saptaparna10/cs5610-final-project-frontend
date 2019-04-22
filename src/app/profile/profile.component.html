@@ -201,7 +201,7 @@
              aria-labelledby="profile-tab">
           <div *ngFor="let recipe of savedRecipes">
             <div>
-              <div class="row">
+              <div class="row mt-3">
                 <div class="card-header border-0 col-3">
                   <img class="img-fluid" src={{recipe.images}} alt="recipe image">
                 </div>
@@ -219,7 +219,7 @@
           <br/>
           <div *ngFor="let col of recipeCollections">
             <div >
-              <div class="row">
+              <div class="row mt-3">
                 <div class="card-header border-0 col-3">
                   <img class="collection-img" src={{col.imageURL}} alt="recipe image">
                 </div>
@@ -311,7 +311,7 @@
           <section>
             <div *ngFor="let user of following">
               <div>
-                <div class="row">
+                <div class="row mt-3">
                   <div class="card-header border-0 col-3">
                     <img src="{{user.imgurl}}}" alt="Not Found" onerror="this.src='../../assets/camera-icon.png'"
                          class="ah-fit-img-comment "/>
@@ -336,7 +336,7 @@
           <section>
             <div *ngFor="let user of followers">
               <div>
-                <div class="row">
+                <div class="row mt-3">
                   <div class="card-header border-0 col-3">
                     <img src="{{user.imgurl}}}" alt="Not Found" onerror="this.src='../../assets/camera-icon.png'"
                          class="ah-fit-img-comment "/>

@@ -52,7 +52,10 @@
   color: black
 }
 
- 
+ .ah-font-tagline{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+  color:whitesmoke;
+ }
 
 .header-bg {
   background-color: white;
