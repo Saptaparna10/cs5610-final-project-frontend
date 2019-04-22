@@ -1,28 +1,40 @@
-# ProjectAngular
+CS5610 
+This repository is for Northeastern's coursework CS5610 - Web Development
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+The repository belongs to Team PRS
 
-## Development server
+Members of team are as follows:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Preyank Jain
+Ritika Nair
+Saptaparna Das
 
-## Code scaffolding
+The important links for the project are as follows:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[Github repo for client](https://github.com/Saptaparna10/cs5610-final-project-frontend)
+[Github repo for server](https://github.com/Saptaparna10/cs5610-final-project-backend)
+[Application link]()
+[Deployed server link](https://alwayshungry.herokuapp.com/)
+[Demo video]()
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Instructions to run
+Download the project as zip or tar file
+Unzip it
+mvn clean install (run this command on directory where the pom file is)
+mvn spring-boot:run (run this command on directory where the pom file is)
+Goto http://localhost:4200/
 
-## Running unit tests
+The team is building the project utilizing:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+AngularJs
+Boostrap
+Spring Data JPA
+Java
+MySQL
+Spring boot
 
-## Running end-to-end tests
+Project
+The team is building an application to browse, save recipes and get experts' suggestions.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-# cs5610-final-project-frontend
+Checkout the wiki pages for more info.
