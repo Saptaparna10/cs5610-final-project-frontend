@@ -11,11 +11,11 @@
 
 # The important links for the project are as follows:
 
-# [Github repo for client](https://github.com/Saptaparna10/cs5610-final-project-frontend)
-# [Github repo for server](https://github.com/Saptaparna10/cs5610-final-project-backend)
-# [Application link]()
-# [Deployed server link](https://alwayshungry.herokuapp.com/)
-# [Demo video]()
+* [Github repo for client](https://github.com/Saptaparna10/cs5610-final-project-frontend)
+* [Github repo for server](https://github.com/Saptaparna10/cs5610-final-project-backend)
+* [Application link]()
+* [Deployed server link](https://alwayshungry.herokuapp.com/)
+* [Demo video]()
 
 
 # Instructions to run
@@ -25,14 +25,14 @@
 * mvn spring-boot:run (run this command on directory where the pom file is)
 * Goto http://localhost:4200/
 
-* The team is building the project utilizing:
+# The team is building the project utilizing:
 
-# AngularJs
-# Boostrap
-# Spring Data JPA
-# Java
-# MySQL
-# Spring boot
+* AngularJs
+* Boostrap
+* Spring Data JPA
+* Java
+* MySQL
+* Spring boot
 
 # Project
 * The team is building an application to browse, save recipes and get experts' suggestions.
