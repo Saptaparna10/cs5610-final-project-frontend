@@ -209,14 +209,16 @@ export class RecipeComponent implements OnInit {
   }
 
   deleteComment(commendId): void {
-
-    this.commentService.deleteComment(commendId)
-      .then((res) => {
-        this.commentService.getComments(this.recipeId)
-          .then((c) => {
-            this.comments = c;
-          });
-      });
+    const affirm = confirm('Are you sure you want to remove this comment?');
+    if (affirm) {
+      this.commentService.deleteComment(commendId)
+        .then((res) => {
+          this.commentService.getComments(this.recipeId)
+            .then((c) => {
+              this.comments = c;
+            });
+        });
+    }
 
   }
 
