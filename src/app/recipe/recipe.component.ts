@@ -42,11 +42,11 @@ export class RecipeComponent implements OnInit {
 
 
 
-    this.route.params.subscribe(params =>{
+    this.route.params.subscribe(params => {
       console.log(params.recipeId);
       this.recipeId = params.recipeId;
     });
-    //this.loadRecipe();
+    // this.loadRecipe();
     this.initVariables();
   }
 
@@ -152,9 +152,8 @@ export class RecipeComponent implements OnInit {
   }
 
   addComment(): void {
-
     const comment = {
-      content: this.content,
+      content: this.content
     };
     console.log(comment);
 
