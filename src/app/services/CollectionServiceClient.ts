@@ -125,4 +125,15 @@ export class CollectionServiceClient {
         }
       );
 
+  findRecipListByName = (name) =>
+    fetch(this.SERVER_API_URL + `/api/recipelist/name/${name}`)
+      .then(response => {
+          if (response.headers.get('content-type') === null) {
+            return null;
+          } else {
+            return response.json();
+          }
+        }
+      )
+
 }

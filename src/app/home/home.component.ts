@@ -52,7 +52,8 @@ export class HomeComponent implements OnInit {
             });
         }
       });
-    this.collectionService.findRecipesByCollection(82)
+
+    this.collectionService.findRecipListByName('Featured recipes')
       .then((featuredRecipes) => {
         this.featuredRecipes = featuredRecipes;
       });
