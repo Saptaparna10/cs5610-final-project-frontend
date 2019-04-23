@@ -48,4 +48,19 @@ export class CommentServiceClient {
       }
     )
 
+  editComment = (comment) =>
+    fetch(this.SERVER_API_URL + `/api/comment/${comment.id}`, {
+      method: 'put',
+      body: JSON.stringify(comment),
+      headers: {
+        'content-type': 'application/json',
+      },
+      credentials: 'include'
+    }).then(response => {
+        console.log(response)
+        if (response.headers.get('content-type') === null) {
+          return null;
+        } else { return response.json(); }
+      }
+    )
 }

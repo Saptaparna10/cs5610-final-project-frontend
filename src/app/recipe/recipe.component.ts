@@ -19,6 +19,7 @@ export class RecipeComponent implements OnInit {
   userType: String;
   recipeListId: Number;
   recipeListName: String;
+  editContent: String;
   recipeLists = [];
   recipeId;
   addToCollectionType: Boolean;
@@ -26,6 +27,7 @@ export class RecipeComponent implements OnInit {
   content: String;
   saves = [];
   savesByCurrUser = [];
+  edittingId: number;
   saveId;
   recipe: Recipe;
 
@@ -39,7 +41,7 @@ export class RecipeComponent implements OnInit {
               private recipeServiceClient: RecipeServiceClient) {
 
 
-                
+
     this.route.params.subscribe(params =>{
       console.log(params.recipeId);
       this.recipeId = params.recipeId;
@@ -49,6 +51,7 @@ export class RecipeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.edittingId = -1;
     this.userService.profile()
       .then((usr) => {
         this.userType = (usr === null) ? 'ANON' : usr.type;
@@ -177,6 +180,26 @@ export class RecipeComponent implements OnInit {
       });
   }
 
+  editComment = (comment) => {
+    this.edittingId = comment.id;
+    this.editContent = comment.content;
+  }
+
+  saveEdit = (comment) => {
+    this.commentService.editComment({
+      id: comment.id,
+      content: this.editContent
+    }).then(
+      comment1 => {
+        this.comments.find(c => c.id === comment.id).content = this.editContent;
+        this.edittingId = -1;
+        this.editContent = '';
+      }
+    );
+  }
+  cancelEdit = (comment) => {
+    this.edittingId = -1;
+  }
 
   deleteComment(commendId): void {
 

@@ -112,18 +112,28 @@
                   <a routerLink="/profile/{{comment.user.id}}" >
                     <strong class="text-success">@{{comment.user.username}}</strong></a></div>
               </div>
-              <div class="media-body">
+              <div *ngIf="edittingId == comment.id; else normalComment">
+                <textarea class="form-control" id='commentEdit' name="commentEdit" [(ngModel)]="editContent"
+                          placeholder="Editting" rows="3"></textarea>
+                <button style="float:right" type="button" class="btn btn-danger"
+                        (click)='cancelEdit(comment)'>Cancel</button>
+                <button style="float:right" type="button" class="btn btn-primary"
+                        (click)='saveEdit(comment)'>Save</button>
+              </div>
+              <ng-template #normalComment>
+                <div class="media-body">
                 <span class="text-muted d-flex justify-content-end">
                   <small class="text-muted">04/01/2019</small>
                 </span>
-
-
-                {{comment.content}}
-                <div *ngIf="comment.user.id===userId">
-                  <button style="float:right" type="button" class="btn btn-danger"
-                    (click)='deleteComment(comment.id)'>Delete</button>
+                  {{comment.content}}
+                  <div *ngIf="comment.user.id===userId">
+                    <button style="float:right" type="button" class="btn btn-danger"
+                            (click)='deleteComment(comment.id)'>Delete</button>
+                    <button style="float:right" type="button" class="btn btn-primary"
+                            (click)='editComment(comment)'>Edit</button>
+                  </div>
                 </div>
-              </div>
+              </ng-template>
             </li>
 
           </ul>
