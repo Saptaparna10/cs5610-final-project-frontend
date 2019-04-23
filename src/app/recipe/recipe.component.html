@@ -37,7 +37,7 @@
 
 <div class="container mt-4 ah-font-recipe">
 
-  <div class="row">
+  <div *ngIf="recipe" class="row">
 
     <div class="col-md-2">
 
@@ -67,7 +67,7 @@
           <h4>Ingredients</h4>
         </div>
         <hr>
-        <div class=" ah-ingredients-div">
+        <div *ngIf="recipe" class=" ah-ingredients-div">
           <ul>
             <li *ngFor="let line of recipe.ingredientLines">{{line}}</li>
           </ul>
