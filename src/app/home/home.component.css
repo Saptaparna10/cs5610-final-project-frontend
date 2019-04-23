@@ -57,6 +57,11 @@
   color:whitesmoke;
  }
 
+.ah-font-tagline-small{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color:whitesmoke;
+}
+
 .header-bg {
   background-color: white;
 }
