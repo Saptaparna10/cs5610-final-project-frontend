@@ -6,13 +6,13 @@ export class YummlyServiceClient {
 
     constructor(private constants: Constants) { }
 
-    Y_BASE_SEARCH_URL = 'http://api.yummly.com/v1/api/recipes?_app_id=' + this.constants.YUMMLY_APP_ID +
+    Y_BASE_SEARCH_URL = 'https://api.yummly.com/v1/api/recipes?_app_id=' + this.constants.YUMMLY_APP_ID +
         '&_app_key=' + this.constants.YUMMLY_APP_KEY + '&';
 
     Y_REQUIRE_PICS = '&requirePictures=true';
     Y_PAGI_MAX_RESULT = '&maxResult=10';
     Y_PAGI_RESULT_START = '&start=';
-    Y_BASE_GET_RECIPE_BEGIN = 'http://api.yummly.com/v1/api/recipe/';
+    Y_BASE_GET_RECIPE_BEGIN = 'https://api.yummly.com/v1/api/recipe/';
 
     Y_BASE_GET_RECIPE_END = '?_app_id=' + this.constants.YUMMLY_APP_ID + '&_app_key=' + this.constants.YUMMLY_APP_KEY;
 
