@@ -209,7 +209,7 @@ export class RecipeComponent implements OnInit {
   }
 
   deleteComment(commendId): void {
-    const affirm = confirm('Are you sure you want to remove this comment?');
+    const affirm = confirm('Are you sure you want to delete this comment?');
     if (affirm) {
       this.commentService.deleteComment(commendId)
         .then((res) => {
