@@ -71,6 +71,11 @@ export class RecipeComponent implements OnInit {
           .then((c) => {
             console.log(c);
             this.comments = (c === null) ? this.comments : c;
+            this.comments.forEach(c1 => {
+              if (c1.dateCreated !== null) {
+                c1.dateCreated = c1.dateCreated.substring(0, 10);
+              }
+            });
           });
       })
       .then(() => {
@@ -101,6 +106,8 @@ export class RecipeComponent implements OnInit {
       }
     });
   }
+  formatDate = (date) =>
+    date.substring(0, 10)
 
   addToCollection = (recipeList) => {
     this.recipeServiceClient.findRecipeById(this.recipeId)
@@ -191,6 +198,7 @@ export class RecipeComponent implements OnInit {
     }).then(
       comment1 => {
         this.comments.find(c => c.id === comment.id).content = this.editContent;
+        this.comments.find(c => c.id === comment.id).dateCreated = comment1.dateCreated.substring(0, 10);
         this.edittingId = -1;
         this.editContent = '';
       }
