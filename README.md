@@ -37,4 +37,4 @@
 # Project
 * The team is building an application to browse, save recipes and get experts' suggestions.
 
-* Checkout the wiki pages for more info.
+# Checkout the wiki pages for more info.
