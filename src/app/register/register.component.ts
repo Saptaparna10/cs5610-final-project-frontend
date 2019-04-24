@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-    console.log(this.username, this.password, this.firstName, this.role);
+    
     if (this.username === undefined || this.email === undefined
       || this.password === undefined || this.firstName === undefined || this.role === undefined) {
       alert('Please fill out the mandatory fields!');
@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
         imgurl: this.image,
         type: this.role
       }
-      console.log(user);
+     
       if (user.type === 'MODERATOR') {
         this.userService.registerModerator(user).catch(
           error => {
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
             alert('Something went wrong! Please try again!');
           }
         ).then((loggedInUser) => {
-          console.log(loggedInUser);
+       
           if (loggedInUser === null) {
             alert('Username already exists!');
           }
@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
             alert('Something went wrong, please try again!')
           }
         ).then((loggedInUser) => {
-          console.log(loggedInUser);
+         
           if (loggedInUser === null) {
             alert('Username already exists!');
           }

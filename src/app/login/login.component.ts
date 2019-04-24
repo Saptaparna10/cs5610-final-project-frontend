@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password
     }
-    console.log(user);
+   
     this.userService.logInUser(user).then((loggedInUser) => {
       if (loggedInUser === null) {
         alert('Invalid Credentials!');

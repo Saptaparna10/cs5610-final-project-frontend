@@ -43,7 +43,7 @@ export class RecipeComponent implements OnInit {
 
 
     this.route.params.subscribe(params => {
-      console.log(params.recipeId);
+    
       this.recipeId = params.recipeId;
     });
     // this.loadRecipe();
@@ -69,7 +69,7 @@ export class RecipeComponent implements OnInit {
       .then(() => {
         this.commentService.getComments(this.recipeId)
           .then((c) => {
-            console.log(c);
+           
             this.comments = (c === null) ? this.comments : c;
             this.comments.forEach(c1 => {
               if (c1.dateCreated !== null) {
@@ -81,7 +81,7 @@ export class RecipeComponent implements OnInit {
       .then(() => {
         this.saveService.getSaves(this.recipeId)
           .then((c) => {
-            console.log(c);
+           
             this.saves = (c === null) ? this.saves : c;
           });
       });
@@ -92,15 +92,15 @@ export class RecipeComponent implements OnInit {
     this.yummlyService.fetchRecipe(this.recipeId).then((recipe) => {
       this.mapToRecipeModel(recipe);
       if (usr.type === 'MODERATOR') {
-        console.log('1');
+      
         this.collectionServiceClient.findRecipeListByModerator(usr.id).then(
           recipes => this.recipeLists = recipes
         );
-        console.log('2');
+       
         this.collectionServiceClient.findRecipeforModerator(usr.id, recipe.id).then(
           ans => {
             this.addToCollectionType = ans;
-            console.log(ans);
+           
           }
         );
       }
@@ -154,7 +154,7 @@ export class RecipeComponent implements OnInit {
       numberOfServings: yRecipe.numberOfServings,
       cuisines: (yRecipe.attributes.cuisine === undefined) ? [] : yRecipe.attributes.cuisine
     };
-    console.log(this.recipe);
+   
 
   }
 
@@ -162,7 +162,7 @@ export class RecipeComponent implements OnInit {
     const comment = {
       content: this.content
     };
-    console.log(comment);
+   
 
     this.recipeServiceClient.findRecipeById(this.recipeId)
       .then((recipe) => {
@@ -254,7 +254,7 @@ export class RecipeComponent implements OnInit {
       .then((res) => {
         this.saveService.getSaves(this.recipeId)
           .then((c) => {
-            console.log('---' + c);
+           
             this.saves = c;
             this.savesByCurrUser = [];
           });
