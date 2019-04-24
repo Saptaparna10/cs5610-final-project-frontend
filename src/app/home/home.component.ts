@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
         }
       });
 
-    this.collectionService.findRecipsByCollectionName('Featured recipes')
+    this.collectionService.findRecipsByCollectionName('FeaturedRecipes')
       .then((featuredRecipes) => {
         console.log('featured recipes');
         console.log(featuredRecipes);
