@@ -13,9 +13,9 @@
 
 * [Github repo for client](https://github.com/Saptaparna10/cs5610-final-project-frontend)
 * [Github repo for server](https://github.com/Saptaparna10/cs5610-final-project-backend)
-* [Application link]()
+* [Application link](https://prsalwayshungry.herokuapp.com/)
 * [Deployed server link](https://alwayshungry.herokuapp.com/)
-* [Demo video]()
+* [Demo video](https://youtu.be/5KQeh7-UMBw)
 
 
 # Instructions to run
