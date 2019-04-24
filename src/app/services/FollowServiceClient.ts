@@ -17,7 +17,7 @@ export class FollowServiceClient {
       },
       credentials: 'include'
     }).then(response => {
-        console.log(response)
+      
         if (response.headers.get('content-type') === null) {
           return null;
         } else {
@@ -34,7 +34,7 @@ export class FollowServiceClient {
       },
       credentials: 'include'
     }).then(response => {
-        console.log(response)
+      
         if (response.headers.get('content-type') === null) {
           return null;
         } else {
@@ -46,7 +46,7 @@ export class FollowServiceClient {
     getFollowers = (modId) =>
       fetch(this.SERVER_API_URL + `/api/moderator/registereduser/follower/${modId}`)
         .then(response => {
-            console.log(response)
+         
             if (response.headers.get('content-type') === null) {
               return null;
             } else {
@@ -58,7 +58,7 @@ export class FollowServiceClient {
   getFollowing = (userId) =>
     fetch(this.SERVER_API_URL + `/api/registereduser/${userId}/following`)
       .then(response => {
-          console.log(response)
+         
           if (response.headers.get('content-type') === null) {
             return null;
           } else {
@@ -70,7 +70,7 @@ export class FollowServiceClient {
   getIfUserFollowingMod = (userId, moderatorId) =>
     fetch(this.SERVER_API_URL + `/api/follow/${userId}/${moderatorId}`)
       .then(response => {
-          console.log('getIfUserFollowingMod'+ response)
+         
           if (response.headers.get('content-type') === null) {
             return null;
           } else {

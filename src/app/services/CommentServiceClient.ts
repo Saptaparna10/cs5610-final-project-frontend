@@ -17,7 +17,7 @@ export class CommentServiceClient {
       },
       credentials: 'include'
     }).then(response => {
-        console.log(response)
+      
         if (response.headers.get('content-type') === null) {
           return null;
         } else { return response.json(); }
@@ -32,7 +32,7 @@ export class CommentServiceClient {
       },
       credentials: 'include'
     }).then(response => {
-        console.log(response)
+      
         if (response.headers.get('content-type') === null) {
           return null;
         } else { return response.json(); }
@@ -57,7 +57,7 @@ export class CommentServiceClient {
       },
       credentials: 'include'
     }).then(response => {
-        console.log(response)
+      
         if (response.headers.get('content-type') === null) {
           return null;
         } else { return response.json(); }

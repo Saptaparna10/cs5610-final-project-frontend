@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit {
 
     this.userService.profile()
       .then((res) => {
-        console.log('profile');
-        console.log(res);
+       
+        
         if (res !== null) {
           this.user = res;
           this.saveService.getAllSavedRecipesByUser(this.user.id)
@@ -55,8 +55,8 @@ export class HomeComponent implements OnInit {
 
     this.collectionService.findRecipsByCollectionName('FeaturedRecipes')
       .then((featuredRecipes) => {
-        console.log('featured recipes');
-        console.log(featuredRecipes);
+       
+       
         this.featuredRecipes = featuredRecipes;
       });
     this.userService.getAllModerators()

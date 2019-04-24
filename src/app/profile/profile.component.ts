@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit {
     console.log('Load profile!');
     this.userService.profile().then((res) => {
       /* anonymous check */
-      console.log(res);
+    
       if (res == null && this.userId == null) {
         this.router.navigate(['/login']);
       }
@@ -87,9 +87,9 @@ export class ProfileComponent implements OnInit {
         this.userId = null;
       }
       if (this.userId == null) {
-        console.log('HERE!!');
+       
         this.userService.profile().then((loggedInUser) => {
-          console.log(loggedInUser);
+        
           this.firstName = loggedInUser.firstName;
           this.lastName = loggedInUser.lastName;
           this.username = loggedInUser.username;
@@ -101,19 +101,19 @@ export class ProfileComponent implements OnInit {
           this.image = loggedInUser.imgurl;
           this.enableEdit = true;
 
-          console.log('image '+this.image)
+       
 
         }).then(() => {
           if (this.role === 'MODERATOR') {
-            console.log('I am mod..user id ' + this.loggedInUserId);
+          
             this.followService.getFollowers(this.loggedInUserId)
               .then((res) => this.followers = res);
             this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols) => {
-              console.log(cols);
+             
               this.recipeCollections = cols;
             });
           } else {
-            console.log('I am user..user id ' + this.loggedInUserId);
+          
             this.followService.getFollowing(this.loggedInUserId)
               .then((res) => {
                 this.following = res;
@@ -127,7 +127,7 @@ export class ProfileComponent implements OnInit {
         });
       } else {
         this.userService.getUserById(this.userId).then((usr) => {
-          console.log('RESPONSE ' + usr.type);
+         
           this.firstName = usr.firstName;
           this.lastName = usr.lastName;
           this.username = usr.username;
@@ -143,10 +143,10 @@ export class ProfileComponent implements OnInit {
           .then(() => {
             if (this.role === 'MODERATOR') {
               this.selectedTabOption = this.tabOptions[2];
-              console.log('I am mod..user id ' + this.userId);
+            
               this.followService.getIfUserFollowingMod(this.loggedInUserId, this.userId)
                 .then((res) => {
-                  console.log('button!!!!!!! ' + res);
+                
                   this.isFollowing = res;
                   if (this.role == this.loggedInUserRole) {
                     this.disableFollow = true;
@@ -154,23 +154,23 @@ export class ProfileComponent implements OnInit {
                 });
               this.followService.getFollowers(this.userId)
                 .then((res) => {
-                  console.log('followers ' + res.length);
+               
                   this.followers = res;
                   this.collectionService.findRecipeListByModerator(this.userId).then((cols) => {
-                    console.log(cols);
+                   
                     this.recipeCollections = cols;
                   });
                 });
 
             } else {
               this.selectedTabOption = this.tabOptions[1];
-              console.log('I am user..user id ' + this.userId);
+           
               this.followService.getFollowing(this.userId)
                 .then((res) => {
-                  console.log('following ' + res.length);
+                
                   this.following = res;
                   this.saveService.getAllSavedRecipesByUser(this.userId)
-                    .then((savedRecipes) =>{console.log(savedRecipes); this.savedRecipes = savedRecipes});
+                    .then((savedRecipes) =>{ this.savedRecipes = savedRecipes});
                 });
             }
           });
@@ -234,15 +234,14 @@ export class ProfileComponent implements OnInit {
 
 
   createCollection(id) {
-    console.log('inside create coleectionnn ' + id);
-    console.log(this.newCollection);
+ 
     if (id === 0) {
-      console.log('create new ' + id);
+   
       this.collectionService.createCollection(this.newCollection, this.loggedInUserId)
         .then((res) => {
-          console.log(res);
+       
           this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols) => {
-            console.log(cols);
+          
             this.recipeCollections = cols;
             this.clearCollectionFields();
           });
@@ -250,13 +249,13 @@ export class ProfileComponent implements OnInit {
           // fetch all collections and reload
         });
     } else {
-      console.log('update existing ' + id);
+   
       this.collectionService.updateCollection(this.newCollection, id)
         .then((res) => {
-          console.log(res);
+        
           this.collectionService.findRecipeListByModerator(this.loggedInUserId)
             .then((cols) => {
-              console.log(cols);
+            
               this.recipeCollections = cols;
               this.clearCollectionFields();
             });
@@ -272,7 +271,7 @@ export class ProfileComponent implements OnInit {
       this.collectionService.deleteCollection(cid)
         .then(() => {
           this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols) => {
-            console.log(cols);
+         
             this.recipeCollections = cols;
           });
         });
@@ -282,8 +281,7 @@ export class ProfileComponent implements OnInit {
   populate(cid) {
     this.collectionService.findRecipeListById(cid)
       .then((collection) => {
-        console.log('editing collection!!');
-        console.log(collection);
+       
         this.newCollection = {
           id: collection.id,
           name: collection.name,
@@ -307,9 +305,7 @@ export class ProfileComponent implements OnInit {
     }
     this.userService.updateUser(this.loggedInUserId, user)
       .then((res) => {
-        console.log('updated profile!');
-        console.log(res);
-        console.log('Loading profile!');
+      
         this.loadProfile();
       });
   }

@@ -22,7 +22,7 @@ export class YummlyServiceClient {
 
 
         fetch(this.Y_BASE_SEARCH_URL + 'q=' + searchTerm + this.Y_REQUIRE_PICS + this.Y_PAGI_MAX_RESULT + this.Y_PAGI_RESULT_START + newStartIndex).then(response => {
-            console.log(response);
+         
             if (response.headers.get("content-type") === null) return null;
             else return response.json()
         });
@@ -33,7 +33,7 @@ export class YummlyServiceClient {
 
 
         fetch(this.Y_BASE_GET_RECIPE_BEGIN + recipeId + this.Y_BASE_GET_RECIPE_END).then(response => {
-            console.log(response);
+         
             if (response.headers.get("content-type") === null) return null;
             else return response.json()
         });

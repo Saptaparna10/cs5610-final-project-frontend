@@ -44,7 +44,7 @@ export class SearchResultComponent implements OnInit {
       if (searchResult != null && searchResult.matches != null) {
         this.results = searchResult.matches;
         this.totalResultCount = searchResult.totalMatchCount;
-        console.log(searchResult);
+      
       }
 
     });
@@ -54,7 +54,7 @@ export class SearchResultComponent implements OnInit {
 
   pageChanged(newPageNumber){
 
-    console.log(newPageNumber);
+   
     this.resultStartIndex = (newPageNumber-1)*10;
     this.pageNumber = newPageNumber;
     this.search();
