@@ -89,6 +89,7 @@ export class ProfileComponent implements OnInit {
       if (this.userId == null) {
         console.log('HERE!!');
         this.userService.profile().then((loggedInUser) => {
+          console.log(loggedInUser);
           this.firstName = loggedInUser.firstName;
           this.lastName = loggedInUser.lastName;
           this.username = loggedInUser.username;
@@ -243,6 +244,7 @@ export class ProfileComponent implements OnInit {
           this.collectionService.findRecipeListByModerator(this.loggedInUserId).then((cols) => {
             console.log(cols);
             this.recipeCollections = cols;
+            this.clearCollectionFields();
           });
 
           // fetch all collections and reload

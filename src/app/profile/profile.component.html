@@ -167,14 +167,16 @@
                 Role </label>
               <div class="col-sm-8">
                 <select id="role" [(ngModel)]="role" name="role" class="form-control wbdv-role-fld" required>
-                  <option [value]="NORMAL">
+                  <option value="NORMAL" [selected] ="role===NORMAL">
                     Standard
                   </option>
-                  <option [value]="EXPERT">
+                  <option value="EXPERT" [selected] ="role===EXPERT">
                     Expert
                   </option>
 
                 </select>
+               
+
               </div>
             </div>
             <div class="form-group row">
