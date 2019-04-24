@@ -1,19 +1,20 @@
 # CS5610 
 * This repository is for Northeastern's coursework CS5610 - Web Development
 
-# The repository belongs to Team PRS 
+* The repository belongs to Team PRS
+* Application name: AlwaysHungry
 
 # Members of team are as follows:
 
-* Preyank Jain
-* Ritika Nair
-* Saptaparna Das
+* [Preyank Jain](https://www.linkedin.com/in/preyank-jain/)
+* [Ritika Nair](https://www.linkedin.com/in/ritika-v-nair/)
+* [Saptaparna Das](https://www.linkedin.com/in/saptaparna-das/)
 
 # The important links for the project are as follows:
 
+* [Application link](https://prsalwayshungry.herokuapp.com/)
 * [Github repo for client](https://github.com/Saptaparna10/cs5610-final-project-frontend)
 * [Github repo for server](https://github.com/Saptaparna10/cs5610-final-project-backend)
-* [Application link](https://prsalwayshungry.herokuapp.com/)
 * [Deployed server link](https://alwayshungry.herokuapp.com/)
 * [Demo video](https://youtu.be/5KQeh7-UMBw)
 
@@ -35,6 +36,6 @@
 * Spring boot
 
 # Project
-* The team is building an application to browse, save recipes and get experts' suggestions.
+* The team is building an application for user to browse, save recipes in one place and get experts' recommendations.
 
 # Checkout the wiki pages for more info.
