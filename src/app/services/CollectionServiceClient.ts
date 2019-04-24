@@ -126,7 +126,7 @@ export class CollectionServiceClient {
       );
 
   findRecipsByCollectionName = (name) =>
-    fetch(this.SERVER_API_URL + `/api/recipelist/${name}/recipes`)
+    fetch(this.SERVER_API_URL + `/api/recipelist/name/${name}/recipes`)
       .then(response => {
           if (response.headers.get('content-type') === null) {
             return null;
