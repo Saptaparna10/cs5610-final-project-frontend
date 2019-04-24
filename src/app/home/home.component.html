@@ -240,7 +240,7 @@
 
       <div class="container card-deck h-100">
         <div *ngFor="let mod of experts; let i=index" class="col-sm-4 mt-3">
-          <div *ngIf="i<6 && mod.username !== 'admin'">
+          <div *ngIf="i<6">
             <div class="card h-100">
               <img src="{{mod.imgurl}}}" alt="Not Found" onerror="this.src='../../assets/camera-icon.png'"
                 class="card-img-top " />
